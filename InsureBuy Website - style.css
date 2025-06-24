@@ -1,0 +1,14 @@
+/* Import Google Fonts - Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Basic Body Styling */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Error Message Styling for Form Validation */
+.error-message {
+    color: #dc2626; /* red-600 */
+    font-size: 0.875rem; /* text-sm */
+    margin-top: 0.25rem; /* mt-1 */
+}
