@@ -55,7 +55,7 @@ const scenarioInput = document.getElementById('scenarioInput');
 const getScenarioAnalysisBtn = document.getElementById('getScenarioAnalysisBtn');
 const scenarioOutput = document.getElementById('scenarioOutput');
 
-// User Registration Elements
+// User Registration Elements (these are only on index.html, but the script is shared)
 const radioRegister = document.getElementById('radioRegister');
 const radioLogin = document.getElementById('radioLogin');
 const radioGuest = document.getElementById('radioGuest');
@@ -72,7 +72,7 @@ const regPassword = document.getElementById('regPassword');
 const regConfirmPassword = document.getElementById('regConfirmPassword');
 const registerBtn = document.getElementById('registerBtn');
 const registerGmailBtn = document.getElementById('registerGmailBtn');
-const passwordStrength = document.getElementById('passwordStrength'); // New element
+const passwordStrength = document.getElementById('passwordStrength'); 
 
 const loginUsernameEmail = document.getElementById('loginUsernameEmail');
 const loginPassword = document.getElementById('loginPassword');
@@ -97,184 +97,197 @@ const loginPasswordError = document.getElementById('loginPasswordError');
 const forgotPasswordError = document.getElementById('forgotPasswordError');
 
 // Elements for page switching and account dashboard
-const mainContent = document.getElementById('mainContent');
-const userRegistrationPage = document.getElementById('user-registration-page');
-const backToMainWebsiteBtn = document.getElementById('backToMainWebsiteBtn');
+const mainContent = document.getElementById('mainContent'); // This is the wrapper for sections on index.html
+const userRegistrationPage = document.getElementById('user-registration-page'); // This is the separate registration page section
 
-// New: Header Login/Register buttons
+// Header Login/Register buttons (present on both index.html and plans.html)
 const loginBtnHeader = document.getElementById('loginBtnHeader');
 const registerBtnHeader = document.getElementById('registerBtnHeader');
 
 const myAccountDashboard = document.getElementById('myAccountDashboard');
 const loggedInUsernameSpan = document.getElementById('loggedInUsername');
 const signOutBtn = document.getElementById('signOutBtn');
-const authFormsContainer = document.getElementById('authFormsContainer'); // Container for all auth forms
+const authFormsContainer = document.getElementById('authFormsContainer'); 
 
-// New: For "Learn More" buttons to show specific details sections
-const learnMoreButtons = document.querySelectorAll('#our-plans-section .inline-block.bg-purple-600, #our-plans-section .inline-block.bg-blue-600, #our-plans-section .inline-block.bg-green-600, #our-plans-section .inline-block.bg-yellow-600, #our-plans-section .inline-block.bg-red-600, #our-plans-section .inline-block.bg-indigo-600, #our-plans-section .inline-block.bg-orange-600, #our-plans-section .inline-block.bg-pink-600');
+// For "Learn More" buttons on plans.html to show specific details sections on index.html
+const learnMoreButtons = document.querySelectorAll('.learn-more-btn');
 
-// New: Back to Main Content buttons on detail pages
-const backToMainContentButtons = document.querySelectorAll('.back-to-main-content-btn');
+// Back to Plans Overview buttons on detail pages (on index.html)
+const backToPlansPageButtons = document.querySelectorAll('.back-to-plans-page-btn');
+
+// Back to Main Website button on user registration page (on index.html)
+const backToMainWebsiteBtn = document.getElementById('backToMainWebsiteBtn');
 
 
 /**
- * Hides all main content sections and specific detail pages.
+ * Hides all main content sections on index.html.
+ * This is used when navigating to a detail page.
  */
 function hideAllMainContentSections() {
-    const sections = ['our-plans-section', 'why-choose-us', 'ai-assistant', 'about', 'contact',
-                      'life-insurance-details', 'health-insurance-details', 'auto-insurance-details',
-                      'home-insurance-details', 'travel-insurance-details', 'student-insurance-details',
-                      'business-insurance-details', 'pet-insurance-details'];
-    sections.forEach(id => {
-        const section = document.getElementById(id);
+    const sectionsToHide = [
+        document.querySelector('.bg-gradient-to-r.from-blue-600'), // Hero
+        document.querySelector('.py-12.bg-gray-100.rounded-lg.mx-4.mt-8.shadow-md.text-center'), // Trust Bar
+        document.getElementById('why-choose-us'),
+        document.getElementById('ai-assistant'),
+        document.querySelector('.py-16.bg-blue-700'), // Testimonials
+        document.getElementById('about'),
+        document.getElementById('contact')
+    ];
+    sectionsToHide.forEach(section => {
         if (section) {
             section.classList.add('hidden');
         }
     });
-    // Also hide the trust bar
-    const trustBar = document.querySelector('.py-12.bg-gray-100.rounded-lg.mx-4.mt-8.shadow-md.text-center');
-    if (trustBar) {
-        trustBar.classList.add('hidden');
-    }
 }
+
+/**
+ * Shows all primary main content sections on index.html.
+ * Used when returning from a detail page or starting on index.html.
+ */
+function showAllMainContentSections() {
+    const sectionsToShow = [
+        document.querySelector('.bg-gradient-to-r.from-blue-600'), // Hero
+        document.querySelector('.py-12.bg-gray-100.rounded-lg.mx-4.mt-8.shadow-md.text-center'), // Trust Bar
+        document.getElementById('why-choose-us'),
+        document.getElementById('ai-assistant'),
+        document.querySelector('.py-16.bg-blue-700'), // Testimonials
+        document.getElementById('about'),
+        document.getElementById('contact')
+    ];
+    sectionsToShow.forEach(section => {
+        if (section) {
+            section.classList.remove('hidden');
+        }
+    });
+    // Ensure detail sections are hidden when showing main content
+    const detailSections = document.querySelectorAll('[id$="-details"]');
+    detailSections.forEach(section => section.classList.add('hidden'));
+}
+
 
 /**
  * Clears all authentication-related error messages.
  */
 function clearAuthErrors() {
-    authMessage.classList.add('hidden');
-    regUsernameError.classList.add('hidden');
-    regEmailError.classList.add('hidden');
-    regPasswordError.classList.add('hidden');
-    regConfirmPasswordError.classList.add('hidden');
-    guestUsernameError.classList.add('hidden');
-    loginUsernameEmailError.classList.add('hidden');
-    loginPasswordError.classList.add('hidden');
-    forgotPasswordError.classList.add('hidden');
-    passwordStrength.textContent = ''; // Clear password strength message
-    passwordStrength.className = 'text-xs mt-1 text-gray-500'; // Reset class
+    if (authMessage) authMessage.classList.add('hidden');
+    if (regUsernameError) regUsernameError.classList.add('hidden');
+    if (regEmailError) regEmailError.classList.add('hidden');
+    if (regPasswordError) regPasswordError.classList.add('hidden');
+    if (regConfirmPasswordError) regConfirmPasswordError.classList.add('hidden');
+    if (guestUsernameError) guestUsernameError.classList.add('hidden');
+    if (loginUsernameEmailError) loginUsernameEmailError.classList.add('hidden');
+    if (loginPasswordError) loginPasswordError.classList.add('hidden');
+    if (forgotPasswordError) forgotPasswordError.classList.add('hidden');
+    if (passwordStrength) {
+        passwordStrength.textContent = ''; // Clear password strength message
+        passwordStrength.className = 'text-xs mt-1 text-gray-500'; // Reset class
+    }
 }
 
 /**
  * Clears all input fields in the authentication module.
  */
 function clearAuthFields() {
-    regUsername.value = '';
-    regEmail.value = '';
-    regPassword.value = '';
-    regConfirmPassword.value = '';
-    guestUsername.value = '';
-    loginUsernameEmail.value = '';
-    loginPassword.value = '';
-    forgotPasswordEmail.value = '';
-}
-
-/**
- * Shows the main content sections and hides the user registration page.
- */
-function showMainContent() {
-    console.log("showMainContent called.");
-    mainContent.classList.remove('hidden');
-    userRegistrationPage.classList.add('hidden');
-    
-    // Show all primary homepage sections
-    document.querySelector('.bg-gradient-to-r.from-blue-600').classList.remove('hidden'); // Hero
-    document.querySelector('.py-12.bg-gray-100.rounded-lg.mx-4.mt-8.shadow-md.text-center').classList.remove('hidden'); // Trust Bar
-    document.getElementById('our-plans-section').classList.remove('hidden');
-    document.getElementById('why-choose-us').classList.remove('hidden');
-    document.getElementById('ai-assistant').classList.remove('hidden');
-    document.querySelector('.py-16.bg-blue-700').classList.remove('hidden'); // Testimonials
-    document.getElementById('about').classList.remove('hidden');
-    document.getElementById('contact').classList.remove('hidden');
-
-    // Hide all detail pages
-    document.getElementById('life-insurance-details').classList.add('hidden');
-    document.getElementById('health-insurance-details').classList.add('hidden');
-    document.getElementById('auto-insurance-details').classList.add('hidden');
-    document.getElementById('home-insurance-details').classList.add('hidden');
-    document.getElementById('travel-insurance-details').classList.add('hidden');
-    document.getElementById('student-insurance-details').classList.add('hidden');
-    document.getElementById('business-insurance-details').classList.add('hidden');
-    document.getElementById('pet-insurance-details').classList.add('hidden');
-
-    console.log("mainContent classes after showMainContent:", mainContent.classList);
-    console.log("userRegistrationPage classes after showMainContent:", userRegistrationPage.classList);
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top of main content
-    clearAuthErrors(); // Clear any auth messages when navigating away
-    clearAuthFields(); // Clear any input fields
+    if (regUsername) regUsername.value = '';
+    if (regEmail) regEmail.value = '';
+    if (regPassword) regPassword.value = '';
+    if (regConfirmPassword) regConfirmPassword.value = '';
+    if (guestUsername) guestUsername.value = '';
+    if (loginUsernameEmail) loginUsernameEmail.value = '';
+    if (loginPassword) loginPassword.value = '';
+    if (forgotPasswordEmail) forgotPasswordEmail.value = '';
 }
 
 /**
  * Shows the user registration page and hides the main content sections.
+ * This function is designed to work whether it's called from index.html or plans.html.
+ * It always assumes the user registration page is on index.html.
  */
 function showUserRegistrationPage() {
     console.log("showUserRegistrationPage called.");
-    mainContent.classList.add('hidden');
-    userRegistrationPage.classList.remove('hidden');
-    console.log("mainContent classes after showUserRegistrationPage:", mainContent.classList);
-    console.log("userRegistrationPage classes after showUserRegistrationPage:", userRegistrationPage.classList);
+    // If we are not on index.html, navigate there first
+    if (window.location.pathname.endsWith('/plans.html')) {
+        window.location.href = 'index.html#user-registration-page';
+        return; // Exit to let the new page load and handle the display
+    }
+
+    // If we are on index.html, proceed with showing/hiding sections
+    if (mainContent) mainContent.classList.add('hidden');
+    if (userRegistrationPage) userRegistrationPage.classList.remove('hidden');
+    
+    console.log("mainContent classes after showUserRegistrationPage:", mainContent ? mainContent.classList : 'N/A');
+    console.log("userRegistrationPage classes after showUserRegistrationPage:", userRegistrationPage ? userRegistrationPage.classList : 'N/A');
+    
     window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top of registration page
     clearAuthErrors(); // Clear any auth messages when navigating to it
     clearAuthFields(); // Clear any input fields
 
     // Show auth forms and hide dashboard initially
-    authFormsContainer.classList.remove('hidden');
-    myAccountDashboard.classList.add('hidden');
+    if (authFormsContainer) authFormsContainer.classList.remove('hidden');
+    if (myAccountDashboard) myAccountDashboard.classList.add('hidden');
 
     // Ensure register form is active by default when showing auth page
-    radioRegister.checked = true;
-    registerFields.classList.remove('hidden');
-    loginFields.classList.add('hidden');
-    guestFields.classList.add('hidden');
-    forgotPasswordFields.classList.add('hidden');
+    if (radioRegister) radioRegister.checked = true;
+    if (registerFields) registerFields.classList.remove('hidden');
+    if (loginFields) loginFields.classList.add('hidden');
+    if (guestFields) guestFields.classList.add('hidden');
+    if (forgotPasswordFields) forgotPasswordFields.classList.add('hidden');
 }
+
 
 /**
  * Updates the UI based on the user's authentication status.
+ * This function runs on both index.html and plans.html
  */
 function checkUserStatus() {
     console.log("checkUserStatus called.");
     const authToken = localStorage.getItem('authToken');
     const username = localStorage.getItem('username');
 
-    if (authToken && username) {
-        // User is logged in
-        loginBtnHeader.classList.add('hidden');
-        registerBtnHeader.textContent = 'My Account';
-        registerBtnHeader.onclick = () => {
-            showUserRegistrationPage();
-            // Ensure dashboard is shown if already logged in
-            authFormsContainer.classList.add('hidden');
-            myAccountDashboard.classList.remove('hidden');
-        };
-        
-        loggedInUsernameSpan.textContent = username;
-        // If currently on the auth page, ensure dashboard is visible
-        if (!userRegistrationPage.classList.contains('hidden')) {
-            authFormsContainer.classList.add('hidden');
-            myAccountDashboard.classList.remove('hidden');
-            console.log("Currently on auth page, ensuring dashboard is visible.");
-        }
+    if (loginBtnHeader && registerBtnHeader) { // Ensure elements exist on the current page
+        if (authToken && username) {
+            // User is logged in
+            loginBtnHeader.classList.add('hidden');
+            registerBtnHeader.textContent = 'My Account';
+            registerBtnHeader.onclick = () => {
+                showUserRegistrationPage();
+                // Ensure dashboard is shown if already logged in (only applies if on index.html)
+                if (authFormsContainer && myAccountDashboard) {
+                    authFormsContainer.classList.add('hidden');
+                    myAccountDashboard.classList.remove('hidden');
+                }
+            };
+            
+            if (loggedInUsernameSpan) loggedInUsernameSpan.textContent = username;
+            // If currently on the auth page (which is on index.html), ensure dashboard is visible
+            if (userRegistrationPage && !userRegistrationPage.classList.contains('hidden')) {
+                if (authFormsContainer) authFormsContainer.classList.add('hidden');
+                if (myAccountDashboard) myAccountDashboard.classList.remove('hidden');
+                console.log("Currently on auth page, ensuring dashboard is visible.");
+            }
 
-    } else {
-        // User is logged out or guest
-        loginBtnHeader.classList.remove('hidden');
-        registerBtnHeader.textContent = 'Register';
-        registerBtnHeader.onclick = () => {
-            showUserRegistrationPage();
-            // Ensure register form is active by default when not logged in
-            radioRegister.checked = true;
-            registerFields.classList.remove('hidden');
-            loginFields.classList.add('hidden');
-            guestFields.classList.add('hidden');
-            forgotPasswordFields.classList.add('hidden');
-        };
-        
-        // If currently on the auth page, ensure forms are visible
-        if (!userRegistrationPage.classList.contains('hidden')) {
-            authFormsContainer.classList.remove('hidden');
-            myAccountDashboard.classList.add('hidden');
-            console.log("Currently on auth page, ensuring forms are visible.");
+        } else {
+            // User is logged out or guest
+            loginBtnHeader.classList.remove('hidden');
+            registerBtnHeader.textContent = 'Register';
+            registerBtnHeader.onclick = () => {
+                showUserRegistrationPage();
+                // Ensure register form is active by default when not logged in (only applies if on index.html)
+                if (radioRegister && registerFields && loginFields && guestFields && forgotPasswordFields) {
+                    radioRegister.checked = true;
+                    registerFields.classList.remove('hidden');
+                    loginFields.classList.add('hidden');
+                    guestFields.classList.add('hidden');
+                    forgotPasswordFields.classList.add('hidden');
+                }
+            };
+            
+            // If currently on the auth page (which is on index.html), ensure forms are visible
+            if (userRegistrationPage && !userRegistrationPage.classList.contains('hidden')) {
+                if (authFormsContainer) authFormsContainer.classList.remove('hidden');
+                if (myAccountDashboard) myAccountDashboard.classList.add('hidden');
+                console.log("Currently on auth page, ensuring forms are visible.");
+            }
         }
     }
 }
@@ -317,407 +330,450 @@ async function callGeminiAPI(promptText) {
 }
 
 // --- AI Assistant Feature: Personalized Plan Recommendation ---
-getRecommendationBtn.addEventListener('click', async () => {
-    const userNeeds = recommendationInput.value.trim();
-    if (userNeeds === "") {
+// Only attach if elements exist (i.e., on index.html)
+if (getRecommendationBtn) {
+    getRecommendationBtn.addEventListener('click', async () => {
+        const userNeeds = recommendationInput.value.trim();
+        if (userNeeds === "") {
+            recommendationOutput.classList.remove('hidden');
+            recommendationOutput.className = 'mt-6 p-4 bg-red-100 border border-red-300 rounded-lg text-left text-red-800';
+            recommendationOutput.innerHTML = '<p>Please describe your insurance needs.</p>';
+            return;
+        }
+
         recommendationOutput.classList.remove('hidden');
-        recommendationOutput.className = 'mt-6 p-4 bg-red-100 border border-red-300 rounded-lg text-left text-red-800';
-        recommendationOutput.innerHTML = '<p>Please describe your insurance needs.</p>';
-        return;
-    }
+        recommendationOutput.className = 'mt-6 p-4 bg-blue-100 border border-blue-300 rounded-lg text-left text-gray-800';
+        recommendationOutput.innerHTML = '<p class="text-gray-600 italic">Thinking...</p>'; // Show loading indicator
 
-    recommendationOutput.classList.remove('hidden');
-    recommendationOutput.className = 'mt-6 p-4 bg-blue-100 border border-blue-300 rounded-lg text-left text-gray-800';
-    recommendationOutput.innerHTML = '<p class="text-gray-600 italic">Thinking...</p>'; // Show loading indicator
+        const prompt = `Based on the following needs, suggest suitable insurance plan types (e.g., Health, Life, Auto, Home) and briefly explain why each is relevant. Also, suggest one or two common features to look for in such plans.
+        User needs: "${userNeeds}"
+        Format your response as a clear, concise recommendation.`;
 
-    const prompt = `Based on the following needs, suggest suitable insurance plan types (e.g., Health, Life, Auto, Home) and briefly explain why each is relevant. Also, suggest one or two common features to look for in such plans.
-    User needs: "${userNeeds}"
-    Format your response as a clear, concise recommendation.`;
-
-    const responseText = await callGeminiAPI(prompt);
-    recommendationOutput.innerHTML = `<p>${responseText}</p>`;
-});
+        const responseText = await callGeminiAPI(prompt);
+        recommendationOutput.innerHTML = `<p>${responseText}</p>`;
+    });
+}
 
 // --- AI Assistant Feature: Coverage Term Explainer ---
-explainTermBtn.addEventListener('click', async () => {
-    const termToExplain = termInput.value.trim();
-    if (termToExplain === "") {
+// Only attach if elements exist (i.e., on index.html)
+if (explainTermBtn) {
+    explainTermBtn.addEventListener('click', async () => {
+        const termToExplain = termInput.value.trim();
+        if (termToExplain === "") {
+            explanationOutput.classList.remove('hidden');
+            explanationOutput.className = 'mt-6 p-4 bg-red-100 border border-red-300 rounded-lg text-left text-red-800';
+            explanationOutput.innerHTML = '<p>Please enter an insurance term to explain.</p>';
+            return;
+        }
+
         explanationOutput.classList.remove('hidden');
-        explanationOutput.className = 'mt-6 p-4 bg-red-100 border border-red-300 rounded-lg text-left text-red-800';
-        explanationOutput.innerHTML = '<p>Please enter an insurance term to explain.</p>';
-        return;
-    }
+        explanationOutput.className = 'mt-6 p-4 bg-green-100 border border-green-300 rounded-lg text-left text-gray-800';
+        explanationOutput.innerHTML = '<p class="text-gray-600 italic">Thinking...</p>'; // Show loading indicator
 
-    explanationOutput.classList.remove('hidden');
-    explanationOutput.className = 'mt-6 p-4 bg-green-100 border border-green-300 rounded-lg text-left text-gray-800';
-    explanationOutput.innerHTML = '<p class="text-gray-600 italic">Thinking...</p>'; // Show loading indicator
+        const prompt = `Explain the insurance term "${termToExplain}" in simple, easy-to-understand language, avoiding jargon as much as possible. Provide a brief example if applicable.`;
 
-    const prompt = `Explain the insurance term "${termToExplain}" in simple, easy-to-understand language, avoiding jargon as much as possible. Provide a brief example if applicable.`;
-
-    const responseText = await callGeminiAPI(prompt);
-    explanationOutput.innerHTML = `<p>${responseText}</p>`;
-});
+        const responseText = await callGeminiAPI(prompt);
+        explanationOutput.innerHTML = `<p>${responseText}</p>`;
+    });
+}
 
 // --- NEW AI Assistant Feature: What If Scenario Planner ---
-getScenarioAnalysisBtn.addEventListener('click', async () => {
-    const userScenario = scenarioInput.value.trim();
-    if (userScenario === "") {
-        scenarioOutput.classList.remove('hidden');
-        scenarioOutput.className = 'mt-6 p-4 bg-red-100 border border-red-300 rounded-lg text-left text-red-800';
-        scenarioOutput.innerHTML = '<p>Please describe a "what if" scenario.</p>';
-        return;
-    }
-
-    scenarioOutput.classList.remove('hidden');
-    scenarioOutput.className = 'mt-6 p-4 bg-purple-100 border border-purple-300 rounded-lg text-left text-gray-800';
-    scenarioOutput.innerHTML = '<p class="text-gray-600 italic">Thinking...</p>'; // Show loading indicator
-
-    const prompt = `Consider the following hypothetical situation related to insurance: "${userScenario}". Describe the potential financial consequences for an individual or entity if they are *not* adequately insured for this scenario. Then, briefly suggest the type(s) of insurance that *would* mitigate these risks. Keep the explanation concise and clear.`;
-
-    const responseText = await callGeminiAPI(prompt);
-    scenarioOutput.innerHTML = `<p>${responseText}</p>`;
-});
-
-
-// --- User Registration Module Logic ---
-// Event listeners for radio buttons to switch forms
-radioRegister.addEventListener('change', () => {
-    clearAuthErrors();
-    clearAuthFields();
-    registerFields.classList.remove('hidden');
-    loginFields.classList.add('hidden');
-    guestFields.classList.add('hidden');
-    forgotPasswordFields.classList.add('hidden'); // Hide forgot password
-});
-
-radioLogin.addEventListener('change', () => {
-    clearAuthErrors();
-    clearAuthFields();
-    registerFields.classList.add('hidden');
-    loginFields.classList.remove('hidden');
-    guestFields.classList.add('hidden');
-    forgotPasswordFields.classList.add('hidden'); // Hide forgot password
-});
-
-radioGuest.addEventListener('change', () => {
-    clearAuthErrors();
-    clearAuthFields();
-    registerFields.classList.add('hidden');
-    loginFields.classList.add('hidden');
-    guestFields.classList.remove('hidden');
-    forgotPasswordFields.classList.add('hidden'); // Hide forgot password
-});
-
-guestOkBtn.addEventListener('click', () => {
-    const username = guestUsername.value.trim();
-    clearAuthErrors(); // Clear all errors before displaying a new one
-
-    if (username === "") {
-        guestUsernameError.classList.remove('hidden');
-        guestUsernameError.textContent = 'Please Enter User Name';
-        authMessage.classList.remove('hidden');
-        authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-red-100 text-red-800 border border-red-300';
-        authMessage.innerHTML = 'Guest login failed: Username is mandatory.';
-    } else {
-        // Simulate guest login success
-        localStorage.setItem('authToken', 'guest_token_' + Date.now());
-        localStorage.setItem('username', username);
-        authMessage.classList.remove('hidden');
-        authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-green-100 text-green-800 border border-green-300';
-        authMessage.innerHTML = `Welcome, ${username}! You are logged in as a Guest.`;
-        clearAuthFields();
-        checkUserStatus(); // Update UI to show dashboard
-    }
-});
-
-// Password strength indicator logic
-regPassword.addEventListener('input', () => {
-    const password = regPassword.value;
-    let strength = 0;
-    let message = '';
-    let color = 'text-gray-500';
-
-    if (password.length > 0) {
-        // Criteria for strength
-        if (password.length >= 8) strength++;
-        if (/[A-Z]/.test(password)) strength++; // Uppercase
-        if (/[a-z]/.test(password)) strength++; // Lowercase
-        if (/\d/.test(password)) strength++; // Number
-        if (/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) strength++; // Special character
-
-        if (strength <= 2) {
-            message = 'Weak';
-            color = 'text-red-500';
-        } else if (strength <= 4) {
-            message = 'Medium';
-            color = 'text-yellow-500';
-        } else {
-            message = 'Strong';
-            color = 'text-green-500';
+// Only attach if elements exist (i.e., on index.html)
+if (getScenarioAnalysisBtn) {
+    getScenarioAnalysisBtn.addEventListener('click', async () => {
+        const userScenario = scenarioInput.value.trim();
+        if (userScenario === "") {
+            scenarioOutput.classList.remove('hidden');
+            scenarioOutput.className = 'mt-6 p-4 bg-red-100 border border-red-300 rounded-lg text-left text-red-800';
+            scenarioOutput.innerHTML = '<p>Please describe a "what if" scenario.</p>';
+            return;
         }
-    }
 
-    passwordStrength.textContent = message;
-    passwordStrength.className = `text-xs mt-1 ${color}`;
-});
+        scenarioOutput.classList.remove('hidden');
+        scenarioOutput.className = 'mt-6 p-4 bg-purple-100 border border-purple-300 rounded-lg text-left text-gray-800';
+        scenarioOutput.innerHTML = '<p class="text-gray-600 italic">Thinking...</p>'; // Show loading indicator
+
+        const prompt = `Consider the following hypothetical situation related to insurance: "${userScenario}". Describe the potential financial consequences for an individual or entity if they are *not* adequately insured for this scenario. Then, briefly suggest the type(s) of insurance that *would* mitigate these risks. Keep the explanation concise and clear.`;
+
+        const responseText = await callGeminiAPI(prompt);
+        scenarioOutput.innerHTML = `<p>${responseText}</p>`;
+    });
+}
 
 
-registerBtn.addEventListener('click', () => {
-    let isValid = true;
-    clearAuthErrors(); // Clear all errors before re-validating
-    
-    const username = regUsername.value.trim();
-    const email = regEmail.value.trim();
-    const password = regPassword.value.trim();
-    const confirmPassword = regConfirmPassword.value.trim();
-
-    if (username === "") {
-        regUsernameError.classList.remove('hidden');
-        regUsernameError.textContent = 'Please Enter User Name';
-        isValid = false;
-    }
-
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (email === "") {
-        regEmailError.classList.remove('hidden');
-        regEmailError.textContent = 'Please Enter Valid Email';
-        isValid = false;
-    } else if (!emailPattern.test(email)) {
-        regEmailError.classList.remove('hidden');
-        regEmailError.textContent = 'Please Enter Valid Email (e.g., user@domain.com)';
-        isValid = false;
-    }
-
-    const passwordPattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])[A-Za-z\d!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]{8,16}$/;
-    if (password === "") {
-        regPasswordError.classList.remove('hidden');
-        regPasswordError.textContent = 'Please Enter Password';
-        isValid = false;
-    } else if (!passwordPattern.test(password)) {
-        regPasswordError.classList.remove('hidden');
-        regPasswordError.textContent = 'Password must be 8-16 chars, include an uppercase letter, a number, and a special symbol.';
-        isValid = false;
-    }
-
-    if (confirmPassword === "") {
-        regConfirmPasswordError.classList.remove('hidden');
-        regConfirmPasswordError.textContent = 'Please confirm your password.';
-        isValid = false;
-    } else if (password !== confirmPassword) {
-        regConfirmPasswordError.classList.remove('hidden');
-        regConfirmPasswordError.textContent = 'Confirm Password should match with Password field.';
-        isValid = false;
-    }
-
-    if (isValid) {
-        // Simulate successful registration
-        localStorage.setItem('authToken', 'reg_token_' + Date.now()); // Dummy token
-        localStorage.setItem('username', username); // Store username
-        authMessage.classList.remove('hidden');
-        authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-green-100 text-green-800 border border-green-300';
-        authMessage.innerHTML = `Registration successful for ${username}! You are now logged in.`;
+// --- User Registration Module Logic (only attach if elements exist on the current page) ---
+if (radioRegister) {
+    radioRegister.addEventListener('change', () => {
+        clearAuthErrors();
         clearAuthFields();
-        checkUserStatus(); // Update UI to show dashboard
-    } else {
-        authMessage.classList.remove('hidden');
-        authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-red-100 text-red-800 border border-red-300';
-        authMessage.innerHTML = 'Please fix the errors above to register.';
-    }
-});
+        registerFields.classList.remove('hidden');
+        loginFields.classList.add('hidden');
+        guestFields.classList.add('hidden');
+        forgotPasswordFields.classList.add('hidden'); // Hide forgot password
+    });
+}
+if (radioLogin) {
+    radioLogin.addEventListener('change', () => {
+        clearAuthErrors();
+        clearAuthFields();
+        registerFields.classList.add('hidden');
+        loginFields.classList.remove('hidden');
+        guestFields.classList.add('hidden');
+        forgotPasswordFields.classList.add('hidden'); // Hide forgot password
+    });
+}
+if (radioGuest) {
+    radioGuest.addEventListener('change', () => {
+        clearAuthErrors();
+        clearAuthFields();
+        registerFields.classList.add('hidden');
+        loginFields.classList.add('hidden');
+        guestFields.classList.remove('hidden');
+        forgotPasswordFields.classList.add('hidden'); // Hide forgot password
+    });
+}
 
-registerGmailBtn.addEventListener('click', () => {
-    clearAuthErrors();
-    authMessage.classList.remove('hidden');
-    authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-blue-100 text-blue-800 border border-blue-300';
-    authMessage.innerHTML = 'Redirecting to Gmail for registration... (Feature under development)';
-    clearAuthFields();
-});
+if (guestOkBtn) {
+    guestOkBtn.addEventListener('click', () => {
+        const username = guestUsername.value.trim();
+        clearAuthErrors(); // Clear all errors before displaying a new one
 
-// Login button logic (basic validation)
-loginBtn.addEventListener('click', () => {
-    let isValid = true;
-    clearAuthErrors();
-
-    const usernameEmail = loginUsernameEmail.value.trim();
-    const password = loginPassword.value.trim();
-
-    if (usernameEmail === "") {
-        loginUsernameEmailError.classList.remove('hidden');
-        loginUsernameEmailError.textContent = 'Please enter your username or email.';
-        isValid = false;
-    }
-    if (password === "") {
-        loginPasswordError.classList.remove('hidden');
-        loginPasswordError.textContent = 'Please enter your password.';
-        isValid = false;
-    }
-
-    if (isValid) {
-        // Simulate successful login
-        // In a real app, you'd verify credentials with a backend
-        const dummyUsers = {
-            'testuser': 'Password123!',
-            'test@example.com': 'Password123!'
-        };
-
-        if (dummyUsers[usernameEmail] === password) {
-            localStorage.setItem('authToken', 'dummy_auth_token_' + Date.now());
-            localStorage.setItem('username', usernameEmail.split('@')[0]); // Use username part of email or full username
+        if (username === "") {
+            guestUsernameError.classList.remove('hidden');
+            guestUsernameError.textContent = 'Please Enter User Name';
+            authMessage.classList.remove('hidden');
+            authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-red-100 text-red-800 border border-red-300';
+            authMessage.innerHTML = 'Guest login failed: Username is mandatory.';
+        } else {
+            // Simulate guest login success
+            localStorage.setItem('authToken', 'guest_token_' + Date.now());
+            localStorage.setItem('username', username);
             authMessage.classList.remove('hidden');
             authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-green-100 text-green-800 border border-green-300';
-            authMessage.innerHTML = `Login successful for ${usernameEmail}!`;
+            authMessage.innerHTML = `Welcome, ${username}! You are logged in as a Guest.`;
+            clearAuthFields();
+            checkUserStatus(); // Update UI to show dashboard
+        }
+    });
+}
+
+// Password strength indicator logic
+if (regPassword) {
+    regPassword.addEventListener('input', () => {
+        const password = regPassword.value;
+        let strength = 0;
+        let message = '';
+        let color = 'text-gray-500';
+
+        if (password.length > 0) {
+            // Criteria for strength
+            if (password.length >= 8) strength++;
+            if (/[A-Z]/.test(password)) strength++; // Uppercase
+            if (/[a-z]/.test(password)) strength++; // Lowercase
+            if (/\d/.test(password)) strength++; // Number
+            if (/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) strength++; // Special character
+
+            if (strength <= 2) {
+                message = 'Weak';
+                color = 'text-red-500';
+            } else if (strength <= 4) {
+                message = 'Medium';
+                color = 'text-yellow-500';
+            } else {
+                message = 'Strong';
+                color = 'text-green-500';
+            }
+        }
+
+        passwordStrength.textContent = message;
+        passwordStrength.className = `text-xs mt-1 ${color}`;
+    });
+}
+
+if (registerBtn) {
+    registerBtn.addEventListener('click', () => {
+        let isValid = true;
+        clearAuthErrors(); // Clear all errors before re-validating
+        
+        const username = regUsername.value.trim();
+        const email = regEmail.value.trim();
+        const password = regPassword.value.trim();
+        const confirmPassword = regConfirmPassword.value.trim();
+
+        if (username === "") {
+            regUsernameError.classList.remove('hidden');
+            regUsernameError.textContent = 'Please Enter User Name';
+            isValid = false;
+        }
+
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (email === "") {
+            regEmailError.classList.remove('hidden');
+            regEmailError.textContent = 'Please Enter Valid Email';
+            isValid = false;
+        } else if (!emailPattern.test(email)) {
+            regEmailError.classList.remove('hidden');
+            regEmailError.textContent = 'Please Enter Valid Email (e.g., user@domain.com)';
+            isValid = false;
+        }
+
+        const passwordPattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])[A-Za-z\d!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]{8,16}$/;
+        if (password === "") {
+            regPasswordError.classList.remove('hidden');
+            regPasswordError.textContent = 'Please Enter Password';
+            isValid = false;
+        } else if (!passwordPattern.test(password)) {
+            regPasswordError.classList.remove('hidden');
+            regPasswordError.textContent = 'Password must be 8-16 chars, include an uppercase letter, a number, and a special symbol.';
+            isValid = false;
+        }
+
+        if (confirmPassword === "") {
+            regConfirmPasswordError.classList.remove('hidden');
+            regConfirmPasswordError.textContent = 'Please confirm your password.';
+            isValid = false;
+        } else if (password !== confirmPassword) {
+            regConfirmPasswordError.classList.remove('hidden');
+            regConfirmPasswordError.textContent = 'Confirm Password should match with Password field.';
+            isValid = false;
+        }
+
+        if (isValid) {
+            // Simulate successful registration
+            localStorage.setItem('authToken', 'reg_token_' + Date.now()); // Dummy token
+            localStorage.setItem('username', username); // Store username
+            authMessage.classList.remove('hidden');
+            authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-green-100 text-green-800 border border-green-300';
+            authMessage.innerHTML = `Registration successful for ${username}! You are now logged in.`;
             clearAuthFields();
             checkUserStatus(); // Update UI to show dashboard
         } else {
             authMessage.classList.remove('hidden');
             authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-red-100 text-red-800 border border-red-300';
-            authMessage.innerHTML = 'Invalid username/email or password.';
-            isValid = false; // Mark as invalid for message consistency
+            authMessage.innerHTML = 'Please fix the errors above to register.';
         }
-    } else {
+    });
+}
+
+if (registerGmailBtn) {
+    registerGmailBtn.addEventListener('click', () => {
+        clearAuthErrors();
         authMessage.classList.remove('hidden');
-        authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-red-100 text-red-800 border border-red-300';
-        authMessage.innerHTML = 'Please fill in both fields to log in.';
-    }
-});
+        authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-blue-100 text-blue-800 border border-blue-300';
+        authMessage.innerHTML = 'Redirecting to Gmail for registration... (Feature under development)';
+        clearAuthFields();
+    });
+}
+
+// Login button logic (basic validation)
+if (loginBtn) {
+    loginBtn.addEventListener('click', () => {
+        let isValid = true;
+        clearAuthErrors();
+
+        const usernameEmail = loginUsernameEmail.value.trim();
+        const password = loginPassword.value.trim();
+
+        if (usernameEmail === "") {
+            loginUsernameEmailError.classList.remove('hidden');
+            loginUsernameEmailError.textContent = 'Please enter your username or email.';
+            isValid = false;
+        }
+        if (password === "") {
+            loginPasswordError.classList.remove('hidden');
+            loginPasswordError.textContent = 'Please enter your password.';
+            isValid = false;
+        }
+
+        if (isValid) {
+            // Simulate successful login
+            // In a real app, you'd verify credentials with a backend
+            const dummyUsers = {
+                'testuser': 'Password123!',
+                'test@example.com': 'Password123!'
+            };
+
+            if (dummyUsers[usernameEmail] === password) {
+                localStorage.setItem('authToken', 'dummy_auth_token_' + Date.now());
+                localStorage.setItem('username', usernameEmail.split('@')[0]); // Use username part of email or full username
+                authMessage.classList.remove('hidden');
+                authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-green-100 text-green-800 border border-green-300';
+                authMessage.innerHTML = `Login successful for ${usernameEmail}!`;
+                clearAuthFields();
+                checkUserStatus(); // Update UI to show dashboard
+            } else {
+                authMessage.classList.remove('hidden');
+                authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-red-100 text-red-800 border border-red-300';
+                authMessage.innerHTML = 'Invalid username/email or password.';
+                isValid = false; // Mark as invalid for message consistency
+            }
+        } else {
+            authMessage.classList.remove('hidden');
+            authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-red-100 text-red-800 border border-red-300';
+            authMessage.innerHTML = 'Please fill in both fields to log in.';
+        }
+    });
+}
 
 // Forgot Password Link functionality - Now shows a new frame
-forgotPasswordLink.addEventListener('click', (event) => {
-    event.preventDefault(); // Prevent default link behavior
-    clearAuthErrors();
-    clearAuthFields(); // Clear all fields
-    
-    // Hide all other forms and show forgot password form
-    registerFields.classList.add('hidden');
-    loginFields.classList.add('hidden');
-    guestFields.classList.add('hidden');
-    forgotPasswordFields.classList.remove('hidden');
-    
-    authMessage.classList.remove('hidden');
-    authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-blue-100 text-blue-800 border border-blue-300';
-    authMessage.innerHTML = 'Please enter your registered email to reset your password.';
-});
+if (forgotPasswordLink) {
+    forgotPasswordLink.addEventListener('click', (event) => {
+        event.preventDefault(); // Prevent default link behavior
+        clearAuthErrors();
+        clearAuthFields(); // Clear all fields
+        
+        // Hide all other forms and show forgot password form
+        if (registerFields) registerFields.classList.add('hidden');
+        if (loginFields) loginFields.classList.add('hidden');
+        if (guestFields) guestFields.classList.add('hidden');
+        if (forgotPasswordFields) forgotPasswordFields.classList.remove('hidden');
+        
+        if (authMessage) {
+            authMessage.classList.remove('hidden');
+            authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-blue-100 text-blue-800 border border-blue-300';
+            authMessage.innerHTML = 'Please enter your registered email to reset your password.';
+        }
+    });
+}
 
 // Forgot Password OK button logic
-forgotPasswordOkBtn.addEventListener('click', () => {
-    const email = forgotPasswordEmail.value.trim();
-    clearAuthErrors(); // Clear errors
+if (forgotPasswordOkBtn) {
+    forgotPasswordOkBtn.addEventListener('click', () => {
+        const email = forgotPasswordEmail.value.trim();
+        clearAuthErrors(); // Clear errors
 
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (email === "") {
-        forgotPasswordError.classList.remove('hidden');
-        forgotPasswordError.textContent = 'Please Enter Registered Valid Email';
-        authMessage.classList.remove('hidden');
-        authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-red-100 text-red-800 border border-red-300';
-        authMessage.innerHTML = 'Password reset failed: Email is mandatory.';
-    } else if (!emailPattern.test(email)) {
-        forgotPasswordError.classList.remove('hidden');
-        forgotPasswordError.textContent = 'Please Enter Valid Email (e.g., user@domain.com)';
-        authMessage.classList.remove('hidden');
-        authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-red-100 text-red-800 border border-red-300';
-        authMessage.innerHTML = 'Password reset failed: Invalid email format.';
-    } else {
-        // In a real app, send email to backend for password reset
-        authMessage.classList.remove('hidden');
-        authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-green-100 text-green-800 border border-green-300';
-        authMessage.innerHTML = `If ${email} is a registered email, a password reset link has been sent.`;
-        forgotPasswordEmail.value = ''; // Clear email field after submission
-    }
-});
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (email === "") {
+            if (forgotPasswordError) forgotPasswordError.classList.remove('hidden');
+            if (forgotPasswordError) forgotPasswordError.textContent = 'Please Enter Registered Valid Email';
+            if (authMessage) {
+                authMessage.classList.remove('hidden');
+                authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-red-100 text-red-800 border border-red-300';
+                authMessage.innerHTML = 'Password reset failed: Email is mandatory.';
+            }
+        } else if (!emailPattern.test(email)) {
+            if (forgotPasswordError) forgotPasswordError.classList.remove('hidden');
+            if (forgotPasswordError) forgotPasswordError.textContent = 'Please Enter Valid Email (e.g., user@domain.com)';
+            if (authMessage) {
+                authMessage.classList.remove('hidden');
+                authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-red-100 text-red-800 border border-red-300';
+                authMessage.innerHTML = 'Password reset failed: Invalid email format.';
+            }
+        } else {
+            // In a real app, send email to backend for password reset
+            if (authMessage) {
+                authMessage.classList.remove('hidden');
+                authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-green-100 text-green-800 border border-green-300';
+                authMessage.innerHTML = `If ${email} is a registered email, a password reset link has been sent.`;
+            }
+            if (forgotPasswordEmail) forgotPasswordEmail.value = ''; // Clear email field after submission
+        }
+    });
+}
 
 // Back to Login button from Forgot Password frame
-backToLoginFromForgot.addEventListener('click', () => {
-    clearAuthErrors();
-    clearAuthFields();
-    forgotPasswordFields.classList.add('hidden');
-    loginFields.classList.remove('hidden'); // Go back to login form
-    radioLogin.checked = true; // Set login radio button as checked
-});
+if (backToLoginFromForgot) {
+    backToLoginFromForgot.addEventListener('click', () => {
+        clearAuthErrors();
+        clearAuthFields();
+        if (forgotPasswordFields) forgotPasswordFields.classList.add('hidden');
+        if (loginFields) loginFields.classList.remove('hidden'); // Go back to login form
+        if (radioLogin) radioLogin.checked = true; // Set login radio button as checked
+    });
+}
 
-// Event listener for the "Login" button in header
-loginBtnHeader.addEventListener('click', () => {
-    console.log("Header Login button clicked.");
-    showUserRegistrationPage();
-    radioLogin.checked = true; // Select Login radio button
-    loginFields.classList.remove('hidden');
-    registerFields.classList.add('hidden');
-    guestFields.classList.add('hidden');
-    forgotPasswordFields.classList.add('hidden');
-});
+// Event listener for the "Back to Main Website" button on Auth page (on index.html)
+if (backToMainWebsiteBtn) {
+    backToMainWebsiteBtn.addEventListener('click', () => {
+        console.log("Back to Main Website button clicked from Auth Page.");
+        showAllMainContentSections(); // Show all primary homepage sections
+        if (userRegistrationPage) userRegistrationPage.classList.add('hidden'); // Hide the auth page
+        clearAuthErrors(); // Clear any auth messages when going back
+        clearAuthFields();
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top
+    });
+}
 
-// Event listener for the "Register" button in header (or "My Account")
-registerBtnHeader.addEventListener('click', () => {
-    console.log("Header Register/My Account button clicked.");
-    showUserRegistrationPage();
-    // checkUserStatus() will handle showing dashboard or register form
-});
-
-
-// Event listener for the "Back to Main Website" button on Auth page
-backToMainWebsiteBtn.addEventListener('click', () => {
-    console.log("Back to Main Website button clicked from Auth Page.");
-    showMainContent();
-    clearAuthErrors(); // Clear any auth messages when going back
-    clearAuthFields();
-});
-
-// Sign Out button logic
-signOutBtn.addEventListener('click', () => {
-    console.log("Sign Out button clicked.");
-    localStorage.removeItem('authToken');
-    localStorage.removeItem('username');
-    clearAuthErrors();
-    clearAuthFields();
-    authMessage.classList.remove('hidden');
-    authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-green-100 text-green-800 border border-green-300';
-    authMessage.innerHTML = 'You have been signed out.';
-    checkUserStatus(); // Update UI to show login/register forms
-});
+// Sign Out button logic (on index.html)
+if (signOutBtn) {
+    signOutBtn.addEventListener('click', () => {
+        console.log("Sign Out button clicked.");
+        localStorage.removeItem('authToken');
+        localStorage.removeItem('username');
+        clearAuthErrors();
+        clearAuthFields();
+        if (authMessage) {
+            authMessage.classList.remove('hidden');
+            authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-green-100 text-green-800 border border-green-300';
+            authMessage.innerHTML = 'You have been signed out.';
+        }
+        checkUserStatus(); // Update UI to show login/register forms
+    });
+}
 
 
-// Event listeners for "Learn More" buttons on the plans section
+// Event listeners for "Learn More" buttons on the plans.html page
 learnMoreButtons.forEach(button => {
     button.addEventListener('click', (event) => {
         event.preventDefault(); // Prevent default anchor behavior
-        const targetId = event.target.getAttribute('href').substring(1); // Get the ID from href
-        const targetSection = document.getElementById(targetId);
-
-        if (targetSection) {
-            hideAllMainContentSections(); // Hide all other main content sections
-            userRegistrationPage.classList.add('hidden'); // Ensure auth page is hidden
-            targetSection.classList.remove('hidden'); // Show the specific detail section
-            window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to the detail section
-        }
+        const targetHref = event.target.getAttribute('href'); // Get the full href (e.g., index.html#life-insurance-details)
+        window.location.href = targetHref; // Navigate to index.html and let the hash handle scrolling
     });
 });
 
-// Event listeners for "Back to Main Content" buttons on detail pages
-backToMainContentButtons.forEach(button => {
+// Event listeners for "Back to Plans Overview" buttons on detail pages (on index.html)
+backToPlansPageButtons.forEach(button => {
     button.addEventListener('click', () => {
-        showMainContent(); // Show all primary homepage sections
+        window.location.href = 'plans.html'; // Navigate back to the plans.html page
     });
 });
 
-// Event listeners for main navigation links (Features, AI Assistant, About Us, Contact)
+// Event listeners for main navigation links (on both index.html and plans.html)
 document.querySelectorAll('nav .nav-link').forEach(link => {
     link.addEventListener('click', (event) => {
         const href = event.target.getAttribute('href');
-        if (href.startsWith('#')) {
+        if (href.startsWith('index.html#') || href.startsWith('#')) { // If it's an internal link on index.html
             event.preventDefault(); // Prevent default anchor behavior
-            showMainContent(); // Ensure main content is visible
-            // Scroll to the target section on the main page
-            const targetElement = document.querySelector(href);
-            if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (window.location.pathname.endsWith('/plans.html') || window.location.pathname.endsWith('/plans.html/')) {
+                // If currently on plans.html, navigate to index.html and then scroll
+                window.location.href = href;
+            } else {
+                // If already on index.html, just scroll
+                showAllMainContentSections(); // Ensure all main sections are visible
+                const targetElement = document.querySelector(href.substring(href.indexOf('#')));
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             }
         }
+        // If it's a direct link to plans.html, let default behavior handle it
     });
 });
 
 
-// Initial state setup: show main content and check user status
+// Initial state setup based on the current page
 document.addEventListener('DOMContentLoaded', () => {
     console.log("DOMContentLoaded fired.");
-    checkUserStatus(); // Check user status first to set up the header links
-    showMainContent(); // Always start on the main content page
+    checkUserStatus(); // Check user status to set up header links correctly
+
+    const hash = window.location.hash;
+    if (window.location.pathname.endsWith('/index.html') || window.location.pathname === '/') {
+        // This is index.html
+        if (hash === '#user-registration-page') {
+            showUserRegistrationPage();
+        } else if (hash.endsWith('-details')) { // If it's a detail section hash
+            hideAllMainContentSections();
+            const targetSection = document.getElementById(hash.substring(1));
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        } else {
+            showAllMainContentSections(); // Default for index.html
+        }
+    } else if (window.location.pathname.endsWith('/plans.html')) {
+        // This is plans.html, no special section hiding is needed here as it's the only content
+        // But ensure header buttons are correctly set up
+        console.log("On plans.html");
+    }
 });
