@@ -72,6 +72,7 @@ const regPassword = document.getElementById('regPassword');
 const regConfirmPassword = document.getElementById('regConfirmPassword');
 const registerBtn = document.getElementById('registerBtn');
 const registerGmailBtn = document.getElementById('registerGmailBtn');
+const passwordStrength = document.getElementById('passwordStrength'); // New element
 
 const loginUsernameEmail = document.getElementById('loginUsernameEmail');
 const loginPassword = document.getElementById('loginPassword');
@@ -95,6 +96,16 @@ const loginUsernameEmailError = document.getElementById('loginUsernameEmailError
 const loginPasswordError = document.getElementById('loginPasswordError');
 const forgotPasswordError = document.getElementById('forgotPasswordError');
 
+// New elements for page switching and account dashboard
+const mainContent = document.getElementById('mainContent');
+const userRegistrationPage = document.getElementById('user-registration-page');
+const backToMainWebsiteBtn = document.getElementById('backToMainWebsiteBtn');
+const authNavLink = document.getElementById('authNavLink'); // The "Register/Login" or "My Account" link
+const myAccountDashboard = document.getElementById('myAccountDashboard');
+const loggedInUsernameSpan = document.getElementById('loggedInUsername');
+const signOutBtn = document.getElementById('signOutBtn');
+const authFormsContainer = document.getElementById('authFormsContainer'); // Container for all auth forms
+
 /**
  * Clears all authentication-related error messages.
  */
@@ -108,6 +119,8 @@ function clearAuthErrors() {
     loginUsernameEmailError.classList.add('hidden');
     loginPasswordError.classList.add('hidden');
     forgotPasswordError.classList.add('hidden');
+    passwordStrength.textContent = ''; // Clear password strength message
+    passwordStrength.className = 'text-xs mt-1 text-gray-500'; // Reset class
 }
 
 /**
@@ -123,6 +136,89 @@ function clearAuthFields() {
     loginPassword.value = '';
     forgotPasswordEmail.value = '';
 }
+
+/**
+ * Shows the main content sections and hides the user registration page.
+ */
+function showMainContent() {
+    console.log("showMainContent called.");
+    mainContent.classList.remove('hidden');
+    userRegistrationPage.classList.add('hidden');
+    console.log("mainContent classes after showMainContent:", mainContent.classList);
+    console.log("userRegistrationPage classes after showMainContent:", userRegistrationPage.classList);
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top of main content
+    clearAuthErrors(); // Clear any auth messages when navigating away
+    clearAuthFields(); // Clear any input fields
+}
+
+/**
+ * Shows the user registration page and hides the main content sections.
+ */
+function showUserRegistrationPage() {
+    console.log("showUserRegistrationPage called.");
+    mainContent.classList.add('hidden');
+    userRegistrationPage.classList.remove('hidden');
+    console.log("mainContent classes after showUserRegistrationPage:", mainContent.classList);
+    console.log("userRegistrationPage classes after showUserRegistrationPage:", userRegistrationPage.classList);
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top of registration page
+    clearAuthErrors(); // Clear any auth messages when navigating to it
+    clearAuthFields(); // Clear any input fields
+
+    // Show auth forms and hide dashboard initially
+    authFormsContainer.classList.remove('hidden');
+    myAccountDashboard.classList.add('hidden');
+
+    // Ensure register form is active by default when showing auth page
+    radioRegister.checked = true;
+    registerFields.classList.remove('hidden');
+    loginFields.classList.add('hidden');
+    guestFields.classList.add('hidden');
+    forgotPasswordFields.classList.add('hidden');
+}
+
+/**
+ * Updates the UI based on the user's authentication status.
+ */
+function checkUserStatus() {
+    console.log("checkUserStatus called.");
+    const authToken = localStorage.getItem('authToken');
+    const username = localStorage.getItem('username');
+
+    if (authToken && username) {
+        // User is logged in
+        authNavLink.textContent = 'My Account';
+        authNavLink.href = '#user-registration-page'; // Still links to the same section
+        
+        loggedInUsernameSpan.textContent = username;
+        authFormsContainer.classList.add('hidden'); // Hide forms
+        myAccountDashboard.classList.remove('hidden'); // Show dashboard
+        console.log("User is logged in. Showing dashboard.");
+        
+        // Ensure that if we are on the auth page, the dashboard is shown
+        if (!userRegistrationPage.classList.contains('hidden')) {
+            authFormsContainer.classList.add('hidden');
+            myAccountDashboard.classList.remove('hidden');
+            console.log("Currently on auth page, ensuring dashboard is visible.");
+        }
+
+    } else {
+        // User is logged out or guest
+        authNavLink.textContent = 'Register/Login';
+        authNavLink.href = '#user-registration-page'; // Still links to the same section
+
+        authFormsContainer.classList.remove('hidden'); // Show forms
+        myAccountDashboard.classList.add('hidden'); // Hide dashboard
+        console.log("User is logged out/guest. Showing auth forms.");
+
+        // Ensure register form is active by default when not logged in
+        radioRegister.checked = true;
+        registerFields.classList.remove('hidden');
+        loginFields.classList.add('hidden');
+        guestFields.classList.add('hidden');
+        forgotPasswordFields.classList.add('hidden');
+    }
+}
+
 
 /**
  * Calls the Gemini API with a given prompt and returns the response.
@@ -263,12 +359,48 @@ guestOkBtn.addEventListener('click', () => {
         authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-red-100 text-red-800 border border-red-300';
         authMessage.innerHTML = 'Guest login failed: Username is mandatory.';
     } else {
+        // Simulate guest login success
+        localStorage.setItem('authToken', 'guest_token_' + Date.now());
+        localStorage.setItem('username', username);
         authMessage.classList.remove('hidden');
         authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-green-100 text-green-800 border border-green-300';
         authMessage.innerHTML = `Welcome, ${username}! You are logged in as a Guest.`;
-        guestUsername.value = '';
+        clearAuthFields();
+        checkUserStatus(); // Update UI to show dashboard
     }
 });
+
+// Password strength indicator logic
+regPassword.addEventListener('input', () => {
+    const password = regPassword.value;
+    let strength = 0;
+    let message = '';
+    let color = 'text-gray-500';
+
+    if (password.length > 0) {
+        // Criteria for strength
+        if (password.length >= 8) strength++;
+        if (/[A-Z]/.test(password)) strength++; // Uppercase
+        if (/[a-z]/.test(password)) strength++; // Lowercase
+        if (/\d/.test(password)) strength++; // Number
+        if (/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) strength++; // Special character
+
+        if (strength <= 2) {
+            message = 'Weak';
+            color = 'text-red-500';
+        } else if (strength <= 4) {
+            message = 'Medium';
+            color = 'text-yellow-500';
+        } else {
+            message = 'Strong';
+            color = 'text-green-500';
+        }
+    }
+
+    passwordStrength.textContent = message;
+    passwordStrength.className = `text-xs mt-1 ${color}`;
+});
+
 
 registerBtn.addEventListener('click', () => {
     let isValid = true;
@@ -318,10 +450,14 @@ registerBtn.addEventListener('click', () => {
     }
 
     if (isValid) {
+        // Simulate successful registration
+        localStorage.setItem('authToken', 'reg_token_' + Date.now()); // Dummy token
+        localStorage.setItem('username', username); // Store username
         authMessage.classList.remove('hidden');
         authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-green-100 text-green-800 border border-green-300';
-        authMessage.innerHTML = `Registration successful for ${username}!`;
+        authMessage.innerHTML = `Registration successful for ${username}! You are now logged in.`;
         clearAuthFields();
+        checkUserStatus(); // Update UI to show dashboard
     } else {
         authMessage.classList.remove('hidden');
         authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-red-100 text-red-800 border border-red-300';
@@ -357,10 +493,27 @@ loginBtn.addEventListener('click', () => {
     }
 
     if (isValid) {
-        authMessage.classList.remove('hidden');
-        authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-green-100 text-green-800 border border-green-300';
-        authMessage.innerHTML = `Login attempt for ${usernameEmail}... (Authentication logic would go here)`;
-        clearAuthFields();
+        // Simulate successful login
+        // In a real app, you'd verify credentials with a backend
+        const dummyUsers = {
+            'testuser': 'Password123!',
+            'test@example.com': 'Password123!'
+        };
+
+        if (dummyUsers[usernameEmail] === password) {
+            localStorage.setItem('authToken', 'dummy_auth_token_' + Date.now());
+            localStorage.setItem('username', usernameEmail.split('@')[0]); // Use username part of email or full username
+            authMessage.classList.remove('hidden');
+            authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-green-100 text-green-800 border border-green-300';
+            authMessage.innerHTML = `Login successful for ${usernameEmail}!`;
+            clearAuthFields();
+            checkUserStatus(); // Update UI to show dashboard
+        } else {
+            authMessage.classList.remove('hidden');
+            authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-red-100 text-red-800 border border-red-300';
+            authMessage.innerHTML = 'Invalid username/email or password.';
+            isValid = false; // Mark as invalid for message consistency
+        }
     } else {
         authMessage.classList.remove('hidden');
         authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-red-100 text-red-800 border border-red-300';
@@ -390,12 +543,19 @@ forgotPasswordOkBtn.addEventListener('click', () => {
     const email = forgotPasswordEmail.value.trim();
     clearAuthErrors(); // Clear errors
 
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (email === "") {
         forgotPasswordError.classList.remove('hidden');
         forgotPasswordError.textContent = 'Please Enter Registered Valid Email';
         authMessage.classList.remove('hidden');
         authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-red-100 text-red-800 border border-red-300';
         authMessage.innerHTML = 'Password reset failed: Email is mandatory.';
+    } else if (!emailPattern.test(email)) {
+        forgotPasswordError.classList.remove('hidden');
+        forgotPasswordError.textContent = 'Please Enter Valid Email (e.g., user@domain.com)';
+        authMessage.classList.remove('hidden');
+        authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-red-100 text-red-800 border border-red-300';
+        authMessage.innerHTML = 'Password reset failed: Invalid email format.';
     } else {
         // In a real app, send email to backend for password reset
         authMessage.classList.remove('hidden');
@@ -414,12 +574,39 @@ backToLoginFromForgot.addEventListener('click', () => {
     radioLogin.checked = true; // Set login radio button as checked
 });
 
-// Initial state setup for the module
+// Event listener for the "Register/Login" navigation link
+authNavLink.addEventListener('click', (event) => {
+    console.log("Auth Nav Link clicked.");
+    event.preventDefault(); // Prevent default anchor behavior
+    showUserRegistrationPage();
+    checkUserStatus(); // Update the forms/dashboard based on current login status
+});
+
+// Event listener for the "Back to Main Website" button
+backToMainWebsiteBtn.addEventListener('click', () => {
+    console.log("Back to Main Website button clicked.");
+    showMainContent();
+    clearAuthErrors(); // Clear any auth messages when going back
+    clearAuthFields();
+});
+
+// Sign Out button logic
+signOutBtn.addEventListener('click', () => {
+    console.log("Sign Out button clicked.");
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('username');
+    clearAuthErrors();
+    clearAuthFields();
+    authMessage.classList.remove('hidden');
+    authMessage.className = 'mt-6 p-3 rounded-lg text-sm bg-green-100 text-green-800 border border-green-300';
+    authMessage.innerHTML = 'You have been signed out.';
+    checkUserStatus(); // Update UI to show login/register forms
+});
+
+
+// Initial state setup: show main content, hide registration page, and check user status
 document.addEventListener('DOMContentLoaded', () => {
-    // Ensure only register fields are shown on initial load, and others are hidden
-    radioRegister.checked = true;
-    registerFields.classList.remove('hidden');
-    loginFields.classList.add('hidden');
-    guestFields.classList.add('hidden');
-    forgotPasswordFields.classList.add('hidden'); // Ensure this is hidden initially
+    console.log("DOMContentLoaded fired.");
+    checkUserStatus(); // Check user status first to set up the header link
+    showMainContent(); // Always start on the main content page
 });
