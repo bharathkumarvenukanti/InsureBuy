@@ -99,8 +99,11 @@ const forgotPasswordError = document.getElementById('forgotPasswordError');
 // New elements for page switching and account dashboard
 const mainContent = document.getElementById('mainContent');
 const userRegistrationPage = document.getElementById('user-registration-page');
+const plansPage = document.getElementById('plans-page'); // New: Our Popular Insurance Plans Page
 const backToMainWebsiteBtn = document.getElementById('backToMainWebsiteBtn');
+const backToMainWebsiteFromPlansBtn = document.getElementById('backToMainWebsiteFromPlansBtn'); // New button for plans page
 const authNavLink = document.getElementById('authNavLink'); // The "Register/Login" or "My Account" link
+const plansNavLink = document.getElementById('plansNavLink'); // New: Our Popular Insurance Plans nav link
 const myAccountDashboard = document.getElementById('myAccountDashboard');
 const loggedInUsernameSpan = document.getElementById('loggedInUsername');
 const signOutBtn = document.getElementById('signOutBtn');
@@ -138,28 +141,32 @@ function clearAuthFields() {
 }
 
 /**
- * Shows the main content sections and hides the user registration page.
+ * Shows the main content sections and hides other dedicated pages.
  */
 function showMainContent() {
     console.log("showMainContent called.");
     mainContent.classList.remove('hidden');
     userRegistrationPage.classList.add('hidden');
+    plansPage.classList.add('hidden'); // Ensure plans page is hidden
     console.log("mainContent classes after showMainContent:", mainContent.classList);
     console.log("userRegistrationPage classes after showMainContent:", userRegistrationPage.classList);
+    console.log("plansPage classes after showMainContent:", plansPage.classList);
     window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top of main content
     clearAuthErrors(); // Clear any auth messages when navigating away
     clearAuthFields(); // Clear any input fields
 }
 
 /**
- * Shows the user registration page and hides the main content sections.
+ * Shows the user registration page and hides other dedicated pages.
  */
 function showUserRegistrationPage() {
     console.log("showUserRegistrationPage called.");
     mainContent.classList.add('hidden');
     userRegistrationPage.classList.remove('hidden');
+    plansPage.classList.add('hidden'); // Ensure plans page is hidden
     console.log("mainContent classes after showUserRegistrationPage:", mainContent.classList);
     console.log("userRegistrationPage classes after showUserRegistrationPage:", userRegistrationPage.classList);
+    console.log("plansPage classes after showUserRegistrationPage:", plansPage.classList);
     window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top of registration page
     clearAuthErrors(); // Clear any auth messages when navigating to it
     clearAuthFields(); // Clear any input fields
@@ -175,6 +182,23 @@ function showUserRegistrationPage() {
     guestFields.classList.add('hidden');
     forgotPasswordFields.classList.add('hidden');
 }
+
+/**
+ * Shows the "Our Popular Insurance Plans" page and hides other dedicated pages.
+ */
+function showPlansPage() {
+    console.log("showPlansPage called.");
+    mainContent.classList.add('hidden');
+    userRegistrationPage.classList.add('hidden');
+    plansPage.classList.remove('hidden');
+    console.log("mainContent classes after showPlansPage:", mainContent.classList);
+    console.log("userRegistrationPage classes after showPlansPage:", userRegistrationPage.classList);
+    console.log("plansPage classes after showPlansPage:", plansPage.classList);
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top of plans page
+    clearAuthErrors(); // Clear any auth messages when navigating to it
+    clearAuthFields(); // Clear any input fields
+}
+
 
 /**
  * Updates the UI based on the user's authentication status.
@@ -582,9 +606,24 @@ authNavLink.addEventListener('click', (event) => {
     checkUserStatus(); // Update the forms/dashboard based on current login status
 });
 
-// Event listener for the "Back to Main Website" button
+// New: Event listener for "Our Popular Insurance Plans" navigation link
+plansNavLink.addEventListener('click', (event) => {
+    console.log("Plans Nav Link clicked.");
+    event.preventDefault(); // Prevent default anchor behavior
+    showPlansPage();
+});
+
+// Event listener for the "Back to Main Website" button on Auth page
 backToMainWebsiteBtn.addEventListener('click', () => {
-    console.log("Back to Main Website button clicked.");
+    console.log("Back to Main Website button clicked from Auth Page.");
+    showMainContent();
+    clearAuthErrors(); // Clear any auth messages when going back
+    clearAuthFields();
+});
+
+// New: Event listener for the "Back to Main Website" button on Plans page
+backToMainWebsiteFromPlansBtn.addEventListener('click', () => {
+    console.log("Back to Main Website button clicked from Plans Page.");
     showMainContent();
     clearAuthErrors(); // Clear any auth messages when going back
     clearAuthFields();
