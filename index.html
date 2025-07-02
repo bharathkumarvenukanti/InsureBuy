@@ -18,7 +18,7 @@
             <nav>
                 <ul class="flex space-x-6">
                     <li><a href="#features" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link" data-section="main">Features</a></li>
-                    <li><a href="#plans" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link" data-section="main">Plans</a></li>
+                    <li><a href="#plans-page" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link" id="plansNavLink">Our Popular Insurance Plans</a></li>
                     <li><a href="#ai-assistant" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link" data-section="main">AI Assistant</a></li>
                     <li><a href="#user-registration-page" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100" id="authNavLink">Register/Login</a></li>
                     <li><a href="#about" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link" data-section="main">About Us</a></li>
@@ -77,57 +77,51 @@
             </div>
         </section>
 
-        <section id="plans" class="py-16 bg-gray-100 rounded-lg mx-4 mt-8 shadow-md">
+        <!-- The original #plans section is now empty or can be removed if its content is fully moved -->
+        <section id="plans" class="hidden"></section> 
+        
+        <section id="ai-assistant" class="py-16 bg-blue-50 rounded-lg mx-4 mt-8 shadow-md">
             <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Our Popular Insurance Plans</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="bg-white p-6 rounded-xl shadow-md border border-purple-200 hover:border-purple-400 transition duration-300 transform hover:scale-100">
-                        <img src="https://placehold.co/100x100/DDA0DD/000000?text=Life" alt="Life Insurance" class="mx-auto mb-4 rounded-full">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Life Insurance</h3>
-                        <p class="text-gray-700 mb-4">Secure your family's financial future with our flexible life insurance options.</p>
-                        <a href="#life-insurance-details" class="inline-block bg-purple-600 text-white font-medium py-2 px-5 rounded-full hover:bg-purple-700 transition duration-300">Learn More</a>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">InsureBuy AI Assistant</h2>
+                <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
+                    Leverage the power of AI to get personalized recommendations and clear explanations for insurance terms.
+                </p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-10"> <!-- Changed to 3 columns for new feature -->
+                    <!-- Personalized Plan Recommendation -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-blue-200">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-4">✨ Get Personalized Plan Recommendations</h3>
+                        <textarea id="recommendationInput" class="w-full p-4 border border-gray-300 rounded-lg mb-4 focus:ring-blue-500 focus:border-blue-500" rows="5" placeholder="Tell us about your needs (e.g., 'I am 30, married with two kids, looking for health and life insurance that covers chronic conditions.')."></textarea>
+                        <button id="getRecommendationBtn" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-md hover:bg-blue-700 transition duration-300 transform hover:scale-105">
+                            Get ✨ Personalized Plan Recommendation
+                        </button>
+                        <div id="recommendationOutput" class="mt-6 p-4 bg-blue-100 border border-blue-300 rounded-lg text-left text-gray-800 hidden">
+                            <p class="text-gray-600 italic">Thinking...</p>
+                        </div>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-md border border-blue-200 hover:border-blue-400 transition duration-300 transform hover:scale-100">
-                        <img src="https://placehold.co/100x100/ADD8E6/000000?text=Health" alt="Health Insurance" class="mx-auto mb-4 rounded-full">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Health Insurance</h3>
-                        <p class="text-gray-700 mb-4">Comprehensive coverage for medical expenses, hospital stays, and more.</p>
-                        <a href="#health-insurance-details" class="inline-block bg-blue-600 text-white font-medium py-2 px-5 rounded-full hover:bg-blue-700 transition duration-300">Learn More</a>
+
+                    <!-- Coverage Explainer -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-green-200">
+                        <h3 class="2xl font-semibold text-gray-900 mb-4">✨ Explain Coverage Term</h3>
+                        <input type="text" id="termInput" class="w-full p-4 border border-gray-300 rounded-lg mb-4 focus:ring-green-500 focus:border-green-500" placeholder="e.g., 'deductible', 'premium', 'liability coverage'">
+                        <button id="explainTermBtn" class="bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-md hover:bg-green-700 transition duration-300 transform hover:scale-105">
+                            ✨ Explain Coverage Term
+                        </button>
+                        <div id="explanationOutput" class="mt-6 p-4 bg-green-100 border border-green-300 rounded-lg text-left text-gray-800 hidden">
+                            <p class="text-gray-600 italic">Thinking...</p>
+                        </div>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-md border border-green-200 hover:border-green-400 transition duration-300 transform hover:scale-100">
-                        <img src="https://placehold.co/100x100/90EE90/000000?text=Auto" alt="Auto Insurance" class="mx-auto mb-4 rounded-full">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Auto Insurance</h3>
-                        <p class="text-gray-700 mb-4">Protect your vehicle and yourself on the road with our tailored policies.</p>
-                        <a href="#auto-insurance-details" class="inline-block bg-green-600 text-white font-medium py-2 px-5 rounded-full hover:bg-green-700 transition duration-300">Learn More</a>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl shadow-md border border-yellow-200 hover:border-yellow-400 transition duration-300 transform hover:scale-100">
-                        <img src="https://placehold.co/100x100/FFD700/000000?text=Home" alt="Home Insurance" class="mx-auto mb-4 rounded-full">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Home Insurance</h3>
-                        <p class="text-gray-700 mb-4">Protect your most valuable asset from unforeseen damages and liabilities.</p>
-                        <a href="#home-insurance-details" class="inline-block bg-yellow-600 text-white font-medium py-2 px-5 rounded-full hover:bg-yellow-700 transition duration-300">Learn More</a>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl shadow-md border border-red-200 hover:border-red-400 transition duration-300 transform hover:scale-100">
-                        <img src="https://placehold.co/100x100/F08080/000000?text=Travel" alt="Travel Insurance" class="mx-auto mb-4 rounded-full">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Travel Insurance</h3>
-                        <p class="text-gray-700 mb-4">Travel with peace of mind. Coverage for trips, cancellations, medical emergencies, and more.</p>
-                        <a href="#travel-insurance-details" class="inline-block bg-red-600 text-white font-medium py-2 px-5 rounded-full hover:bg-red-700 transition duration-300">Learn More</a>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl shadow-md border border-indigo-200 hover:border-indigo-400 transition duration-300 transform hover:scale-100">
-                        <img src="https://placehold.co/100x100/87CEEB/000000?text=Student" alt="Student Insurance" class="mx-auto mb-4 rounded-full">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Student Insurance</h3>
-                        <p class="text-gray-700 mb-4">Tailored plans for students, covering health, property, and study interruptions.</p>
-                        <a href="#student-insurance-details" class="inline-block bg-indigo-600 text-white font-medium py-2 px-5 rounded-full hover:bg-indigo-700 transition duration-300">Learn More</a>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl shadow-md border border-orange-200 hover:border-orange-400 transition duration-300 transform hover:scale-100">
-                        <img src="https://placehold.co/100x100/FFA500/000000?text=Business" alt="Business Insurance" class="mx-auto mb-4 rounded-full">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Business Insurance</h3>
-                        <p class="text-gray-700 mb-4">Protect your business assets, employees, and operations with comprehensive coverage.</p>
-                        <a href="#business-insurance-details" class="inline-block bg-orange-600 text-white font-medium py-2 px-5 rounded-full hover:bg-orange-700 transition duration-300">Learn More</a>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl shadow-md border border-pink-200 hover:border-pink-400 transition duration-300 transform hover:scale-100">
-                        <img src="https://placehold.co/100x100/FFC0CB/000000?text=Pet" alt="Pet Insurance" class="mx-auto mb-4 rounded-full">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Pet Insurance</h3>
-                        <p class="text-gray-700 mb-4">Keep your furry friends healthy with coverage for vet visits, emergencies, and more.</p>
-                        <a href="#pet-insurance-details" class="inline-block bg-pink-600 text-white font-medium py-2 px-5 rounded-full hover:bg-pink-700 transition duration-300">Learn More</a>
+
+                    <!-- NEW: What If Scenario Planner -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-purple-200">
+                        <h3 class="2xl font-semibold text-gray-900 mb-4">✨ What If Scenario Planner</h3>
+                        <textarea id="scenarioInput" class="w-full p-4 border border-gray-300 rounded-lg mb-4 focus:ring-purple-500 focus:border-purple-500" rows="5" placeholder="Describe a hypothetical situation (e.g., 'What if my car is stolen and I only have liability insurance?')."></textarea>
+                        <button id="getScenarioAnalysisBtn" class="bg-purple-600 text-white font-bold py-3 px-8 rounded-full shadow-md hover:bg-purple-700 transition duration-300 transform hover:scale-105">
+                            Get ✨ Scenario Analysis
+                        </button>
+                        <div id="scenarioOutput" class="mt-6 p-4 bg-purple-100 border border-purple-300 rounded-lg text-left text-gray-800 hidden">
+                            <p class="text-gray-600 italic">Thinking...</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -449,53 +443,6 @@
             </div>
         </section>
 
-        <section id="ai-assistant" class="py-16 bg-blue-50 rounded-lg mx-4 mt-8 shadow-md">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">InsureBuy AI Assistant</h2>
-                <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-                    Leverage the power of AI to get personalized recommendations and clear explanations for insurance terms.
-                </p>
-
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-10"> <!-- Changed to 3 columns for new feature -->
-                    <!-- Personalized Plan Recommendation -->
-                    <div class="bg-white p-8 rounded-xl shadow-lg border border-blue-200">
-                        <h3 class="text-2xl font-semibold text-gray-900 mb-4">✨ Get Personalized Plan Recommendations</h3>
-                        <textarea id="recommendationInput" class="w-full p-4 border border-gray-300 rounded-lg mb-4 focus:ring-blue-500 focus:border-blue-500" rows="5" placeholder="Tell us about your needs (e.g., 'I am 30, married with two kids, looking for health and life insurance that covers chronic conditions.')."></textarea>
-                        <button id="getRecommendationBtn" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-md hover:bg-blue-700 transition duration-300 transform hover:scale-105">
-                            Get ✨ Personalized Plan Recommendation
-                        </button>
-                        <div id="recommendationOutput" class="mt-6 p-4 bg-blue-100 border border-blue-300 rounded-lg text-left text-gray-800 hidden">
-                            <p class="text-gray-600 italic">Thinking...</p>
-                        </div>
-                    </div>
-
-                    <!-- Coverage Explainer -->
-                    <div class="bg-white p-8 rounded-xl shadow-lg border border-green-200">
-                        <h3 class="2xl font-semibold text-gray-900 mb-4">✨ Explain Coverage Term</h3>
-                        <input type="text" id="termInput" class="w-full p-4 border border-gray-300 rounded-lg mb-4 focus:ring-green-500 focus:border-green-500" placeholder="e.g., 'deductible', 'premium', 'liability coverage'">
-                        <button id="explainTermBtn" class="bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-md hover:bg-green-700 transition duration-300 transform hover:scale-105">
-                            ✨ Explain Coverage Term
-                        </button>
-                        <div id="explanationOutput" class="mt-6 p-4 bg-green-100 border border-green-300 rounded-lg text-left text-gray-800 hidden">
-                            <p class="text-gray-600 italic">Thinking...</p>
-                        </div>
-                    </div>
-
-                    <!-- NEW: What If Scenario Planner -->
-                    <div class="bg-white p-8 rounded-xl shadow-lg border border-purple-200">
-                        <h3 class="2xl font-semibold text-gray-900 mb-4">✨ What If Scenario Planner</h3>
-                        <textarea id="scenarioInput" class="w-full p-4 border border-gray-300 rounded-lg mb-4 focus:ring-purple-500 focus:border-purple-500" rows="5" placeholder="Describe a hypothetical situation (e.g., 'What if my car is stolen and I only have liability insurance?')."></textarea>
-                        <button id="getScenarioAnalysisBtn" class="bg-purple-600 text-white font-bold py-3 px-8 rounded-full shadow-md hover:bg-purple-700 transition duration-300 transform hover:scale-105">
-                            Get ✨ Scenario Analysis
-                        </button>
-                        <div id="scenarioOutput" class="mt-6 p-4 bg-purple-100 border border-purple-300 rounded-lg text-left text-gray-800 hidden">
-                            <p class="text-gray-600 italic">Thinking...</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <section id="about" class="py-16 bg-white rounded-lg mx-4 mt-8 shadow-md">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">About InsureBuy</h2>
@@ -691,6 +638,66 @@
             </div>
 
             <button id="backToMainWebsiteBtn" class="w-full bg-gray-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-800 transition duration-300 transform hover:scale-105 mt-8">
+                Back to Main Website
+            </button>
+        </div>
+    </section>
+
+    <!-- New: Our Popular Insurance Plans Page -->
+    <section id="plans-page" class="hidden py-16 bg-gray-100 rounded-lg mx-4 mt-8 shadow-md scroll-mt-20">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Our Popular Insurance Plans</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-purple-200 hover:border-purple-400 transition duration-300 transform hover:scale-100">
+                    <img src="https://placehold.co/100x100/DDA0DD/000000?text=Life" alt="Life Insurance" class="mx-auto mb-4 rounded-full">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Life Insurance</h3>
+                    <p class="text-gray-700 mb-4">Secure your family's financial future with our flexible life insurance options.</p>
+                    <a href="#life-insurance-details" class="inline-block bg-purple-600 text-white font-medium py-2 px-5 rounded-full hover:bg-purple-700 transition duration-300">Learn More</a>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-blue-200 hover:border-blue-400 transition duration-300 transform hover:scale-100">
+                    <img src="https://placehold.co/100x100/ADD8E6/000000?text=Health" alt="Health Insurance" class="mx-auto mb-4 rounded-full">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Health Insurance</h3>
+                    <p class="text-gray-700 mb-4">Comprehensive coverage for medical expenses, hospital stays, and more.</p>
+                    <a href="#health-insurance-details" class="inline-block bg-blue-600 text-white font-medium py-2 px-5 rounded-full hover:bg-blue-700 transition duration-300">Learn More</a>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-green-200 hover:border-green-400 transition duration-300 transform hover:scale-100">
+                    <img src="https://placehold.co/100x100/90EE90/000000?text=Auto" alt="Auto Insurance" class="mx-auto mb-4 rounded-full">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Auto Insurance</h3>
+                    <p class="text-gray-700 mb-4">Protect your vehicle and yourself on the road with our tailored policies.</p>
+                    <a href="#auto-insurance-details" class="inline-block bg-green-600 text-white font-medium py-2 px-5 rounded-full hover:bg-green-700 transition duration-300">Learn More</a>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-yellow-200 hover:border-yellow-400 transition duration-300 transform hover:scale-100">
+                    <img src="https://placehold.co/100x100/FFD700/000000?text=Home" alt="Home Insurance" class="mx-auto mb-4 rounded-full">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Home Insurance</h3>
+                    <p class="text-gray-700 mb-4">Protect your most valuable asset from unforeseen damages and liabilities.</p>
+                    <a href="#home-insurance-details" class="inline-block bg-yellow-600 text-white font-medium py-2 px-5 rounded-full hover:bg-yellow-700 transition duration-300">Learn More</a>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-red-200 hover:border-red-400 transition duration-300 transform hover:scale-100">
+                    <img src="https://placehold.co/100x100/F08080/000000?text=Travel" alt="Travel Insurance" class="mx-auto mb-4 rounded-full">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Travel Insurance</h3>
+                    <p class="text-gray-700 mb-4">Travel with peace of mind. Coverage for trips, cancellations, medical emergencies, and more.</p>
+                    <a href="#travel-insurance-details" class="inline-block bg-red-600 text-white font-medium py-2 px-5 rounded-full hover:bg-red-700 transition duration-300">Learn More</a>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-indigo-200 hover:border-indigo-400 transition duration-300 transform hover:scale-100">
+                    <img src="https://placehold.co/100x100/87CEEB/000000?text=Student" alt="Student Insurance" class="mx-auto mb-4 rounded-full">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Student Insurance</h3>
+                    <p class="text-gray-700 mb-4">Tailored plans for students, covering health, property, and study interruptions.</p>
+                    <a href="#student-insurance-details" class="inline-block bg-indigo-600 text-white font-medium py-2 px-5 rounded-full hover:bg-indigo-700 transition duration-300">Learn More</a>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-orange-200 hover:border-orange-400 transition duration-300 transform hover:scale-100">
+                    <img src="https://placehold.co/100x100/FFA500/000000?text=Business" alt="Business Insurance" class="mx-auto mb-4 rounded-full">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Business Insurance</h3>
+                    <p class="text-gray-700 mb-4">Protect your business assets, employees, and operations with comprehensive coverage.</p>
+                    <a href="#business-insurance-details" class="inline-block bg-orange-600 text-white font-medium py-2 px-5 rounded-full hover:bg-orange-700 transition duration-300">Learn More</a>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-pink-200 hover:border-pink-400 transition duration-300 transform hover:scale-100">
+                    <img src="https://placehold.co/100x100/FFC0CB/000000?text=Pet" alt="Pet Insurance" class="mx-auto mb-4 rounded-full">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Pet Insurance</h3>
+                    <p class="text-gray-700 mb-4">Keep your furry friends healthy with coverage for vet visits, emergencies, and more.</p>
+                    <a href="#pet-insurance-details" class="inline-block bg-pink-600 text-white font-medium py-2 px-5 rounded-full hover:bg-pink-700 transition duration-300">Learn More</a>
+                </div>
+            </div>
+            <button id="backToMainWebsiteFromPlansBtn" class="w-full bg-gray-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-800 transition duration-300 transform hover:scale-105 mt-8">
                 Back to Main Website
             </button>
         </div>
