@@ -96,18 +96,47 @@ const loginUsernameEmailError = document.getElementById('loginUsernameEmailError
 const loginPasswordError = document.getElementById('loginPasswordError');
 const forgotPasswordError = document.getElementById('forgotPasswordError');
 
-// New elements for page switching and account dashboard
+// Elements for page switching and account dashboard
 const mainContent = document.getElementById('mainContent');
 const userRegistrationPage = document.getElementById('user-registration-page');
-const plansPage = document.getElementById('plans-page'); // New: Our Popular Insurance Plans Page
 const backToMainWebsiteBtn = document.getElementById('backToMainWebsiteBtn');
-const backToMainWebsiteFromPlansBtn = document.getElementById('backToMainWebsiteFromPlansBtn'); // New button for plans page
-const authNavLink = document.getElementById('authNavLink'); // The "Register/Login" or "My Account" link
-const plansNavLink = document.getElementById('plansNavLink'); // New: Our Popular Insurance Plans nav link
+
+// New: Header Login/Register buttons
+const loginBtnHeader = document.getElementById('loginBtnHeader');
+const registerBtnHeader = document.getElementById('registerBtnHeader');
+
 const myAccountDashboard = document.getElementById('myAccountDashboard');
 const loggedInUsernameSpan = document.getElementById('loggedInUsername');
 const signOutBtn = document.getElementById('signOutBtn');
 const authFormsContainer = document.getElementById('authFormsContainer'); // Container for all auth forms
+
+// New: For "Learn More" buttons to show specific details sections
+const learnMoreButtons = document.querySelectorAll('#our-plans-section .inline-block.bg-purple-600, #our-plans-section .inline-block.bg-blue-600, #our-plans-section .inline-block.bg-green-600, #our-plans-section .inline-block.bg-yellow-600, #our-plans-section .inline-block.bg-red-600, #our-plans-section .inline-block.bg-indigo-600, #our-plans-section .inline-block.bg-orange-600, #our-plans-section .inline-block.bg-pink-600');
+
+// New: Back to Main Content buttons on detail pages
+const backToMainContentButtons = document.querySelectorAll('.back-to-main-content-btn');
+
+
+/**
+ * Hides all main content sections and specific detail pages.
+ */
+function hideAllMainContentSections() {
+    const sections = ['our-plans-section', 'why-choose-us', 'ai-assistant', 'about', 'contact',
+                      'life-insurance-details', 'health-insurance-details', 'auto-insurance-details',
+                      'home-insurance-details', 'travel-insurance-details', 'student-insurance-details',
+                      'business-insurance-details', 'pet-insurance-details'];
+    sections.forEach(id => {
+        const section = document.getElementById(id);
+        if (section) {
+            section.classList.add('hidden');
+        }
+    });
+    // Also hide the trust bar
+    const trustBar = document.querySelector('.py-12.bg-gray-100.rounded-lg.mx-4.mt-8.shadow-md.text-center');
+    if (trustBar) {
+        trustBar.classList.add('hidden');
+    }
+}
 
 /**
  * Clears all authentication-related error messages.
@@ -141,32 +170,49 @@ function clearAuthFields() {
 }
 
 /**
- * Shows the main content sections and hides other dedicated pages.
+ * Shows the main content sections and hides the user registration page.
  */
 function showMainContent() {
     console.log("showMainContent called.");
     mainContent.classList.remove('hidden');
     userRegistrationPage.classList.add('hidden');
-    plansPage.classList.add('hidden'); // Ensure plans page is hidden
+    
+    // Show all primary homepage sections
+    document.querySelector('.bg-gradient-to-r.from-blue-600').classList.remove('hidden'); // Hero
+    document.querySelector('.py-12.bg-gray-100.rounded-lg.mx-4.mt-8.shadow-md.text-center').classList.remove('hidden'); // Trust Bar
+    document.getElementById('our-plans-section').classList.remove('hidden');
+    document.getElementById('why-choose-us').classList.remove('hidden');
+    document.getElementById('ai-assistant').classList.remove('hidden');
+    document.querySelector('.py-16.bg-blue-700').classList.remove('hidden'); // Testimonials
+    document.getElementById('about').classList.remove('hidden');
+    document.getElementById('contact').classList.remove('hidden');
+
+    // Hide all detail pages
+    document.getElementById('life-insurance-details').classList.add('hidden');
+    document.getElementById('health-insurance-details').classList.add('hidden');
+    document.getElementById('auto-insurance-details').classList.add('hidden');
+    document.getElementById('home-insurance-details').classList.add('hidden');
+    document.getElementById('travel-insurance-details').classList.add('hidden');
+    document.getElementById('student-insurance-details').classList.add('hidden');
+    document.getElementById('business-insurance-details').classList.add('hidden');
+    document.getElementById('pet-insurance-details').classList.add('hidden');
+
     console.log("mainContent classes after showMainContent:", mainContent.classList);
     console.log("userRegistrationPage classes after showMainContent:", userRegistrationPage.classList);
-    console.log("plansPage classes after showMainContent:", plansPage.classList);
     window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top of main content
     clearAuthErrors(); // Clear any auth messages when navigating away
     clearAuthFields(); // Clear any input fields
 }
 
 /**
- * Shows the user registration page and hides other dedicated pages.
+ * Shows the user registration page and hides the main content sections.
  */
 function showUserRegistrationPage() {
     console.log("showUserRegistrationPage called.");
     mainContent.classList.add('hidden');
     userRegistrationPage.classList.remove('hidden');
-    plansPage.classList.add('hidden'); // Ensure plans page is hidden
     console.log("mainContent classes after showUserRegistrationPage:", mainContent.classList);
     console.log("userRegistrationPage classes after showUserRegistrationPage:", userRegistrationPage.classList);
-    console.log("plansPage classes after showUserRegistrationPage:", plansPage.classList);
     window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top of registration page
     clearAuthErrors(); // Clear any auth messages when navigating to it
     clearAuthFields(); // Clear any input fields
@@ -184,23 +230,6 @@ function showUserRegistrationPage() {
 }
 
 /**
- * Shows the "Our Popular Insurance Plans" page and hides other dedicated pages.
- */
-function showPlansPage() {
-    console.log("showPlansPage called.");
-    mainContent.classList.add('hidden');
-    userRegistrationPage.classList.add('hidden');
-    plansPage.classList.remove('hidden');
-    console.log("mainContent classes after showPlansPage:", mainContent.classList);
-    console.log("userRegistrationPage classes after showPlansPage:", userRegistrationPage.classList);
-    console.log("plansPage classes after showPlansPage:", plansPage.classList);
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top of plans page
-    clearAuthErrors(); // Clear any auth messages when navigating to it
-    clearAuthFields(); // Clear any input fields
-}
-
-
-/**
  * Updates the UI based on the user's authentication status.
  */
 function checkUserStatus() {
@@ -210,15 +239,17 @@ function checkUserStatus() {
 
     if (authToken && username) {
         // User is logged in
-        authNavLink.textContent = 'My Account';
-        authNavLink.href = '#user-registration-page'; // Still links to the same section
+        loginBtnHeader.classList.add('hidden');
+        registerBtnHeader.textContent = 'My Account';
+        registerBtnHeader.onclick = () => {
+            showUserRegistrationPage();
+            // Ensure dashboard is shown if already logged in
+            authFormsContainer.classList.add('hidden');
+            myAccountDashboard.classList.remove('hidden');
+        };
         
         loggedInUsernameSpan.textContent = username;
-        authFormsContainer.classList.add('hidden'); // Hide forms
-        myAccountDashboard.classList.remove('hidden'); // Show dashboard
-        console.log("User is logged in. Showing dashboard.");
-        
-        // Ensure that if we are on the auth page, the dashboard is shown
+        // If currently on the auth page, ensure dashboard is visible
         if (!userRegistrationPage.classList.contains('hidden')) {
             authFormsContainer.classList.add('hidden');
             myAccountDashboard.classList.remove('hidden');
@@ -227,19 +258,24 @@ function checkUserStatus() {
 
     } else {
         // User is logged out or guest
-        authNavLink.textContent = 'Register/Login';
-        authNavLink.href = '#user-registration-page'; // Still links to the same section
-
-        authFormsContainer.classList.remove('hidden'); // Show forms
-        myAccountDashboard.classList.add('hidden'); // Hide dashboard
-        console.log("User is logged out/guest. Showing auth forms.");
-
-        // Ensure register form is active by default when not logged in
-        radioRegister.checked = true;
-        registerFields.classList.remove('hidden');
-        loginFields.classList.add('hidden');
-        guestFields.classList.add('hidden');
-        forgotPasswordFields.classList.add('hidden');
+        loginBtnHeader.classList.remove('hidden');
+        registerBtnHeader.textContent = 'Register';
+        registerBtnHeader.onclick = () => {
+            showUserRegistrationPage();
+            // Ensure register form is active by default when not logged in
+            radioRegister.checked = true;
+            registerFields.classList.remove('hidden');
+            loginFields.classList.add('hidden');
+            guestFields.classList.add('hidden');
+            forgotPasswordFields.classList.add('hidden');
+        };
+        
+        // If currently on the auth page, ensure forms are visible
+        if (!userRegistrationPage.classList.contains('hidden')) {
+            authFormsContainer.classList.remove('hidden');
+            myAccountDashboard.classList.add('hidden');
+            console.log("Currently on auth page, ensuring forms are visible.");
+        }
     }
 }
 
@@ -598,32 +634,28 @@ backToLoginFromForgot.addEventListener('click', () => {
     radioLogin.checked = true; // Set login radio button as checked
 });
 
-// Event listener for the "Register/Login" navigation link
-authNavLink.addEventListener('click', (event) => {
-    console.log("Auth Nav Link clicked.");
-    event.preventDefault(); // Prevent default anchor behavior
+// Event listener for the "Login" button in header
+loginBtnHeader.addEventListener('click', () => {
+    console.log("Header Login button clicked.");
     showUserRegistrationPage();
-    checkUserStatus(); // Update the forms/dashboard based on current login status
+    radioLogin.checked = true; // Select Login radio button
+    loginFields.classList.remove('hidden');
+    registerFields.classList.add('hidden');
+    guestFields.classList.add('hidden');
+    forgotPasswordFields.classList.add('hidden');
 });
 
-// New: Event listener for "Our Popular Insurance Plans" navigation link
-plansNavLink.addEventListener('click', (event) => {
-    console.log("Plans Nav Link clicked.");
-    event.preventDefault(); // Prevent default anchor behavior
-    showPlansPage();
+// Event listener for the "Register" button in header (or "My Account")
+registerBtnHeader.addEventListener('click', () => {
+    console.log("Header Register/My Account button clicked.");
+    showUserRegistrationPage();
+    // checkUserStatus() will handle showing dashboard or register form
 });
+
 
 // Event listener for the "Back to Main Website" button on Auth page
 backToMainWebsiteBtn.addEventListener('click', () => {
     console.log("Back to Main Website button clicked from Auth Page.");
-    showMainContent();
-    clearAuthErrors(); // Clear any auth messages when going back
-    clearAuthFields();
-});
-
-// New: Event listener for the "Back to Main Website" button on Plans page
-backToMainWebsiteFromPlansBtn.addEventListener('click', () => {
-    console.log("Back to Main Website button clicked from Plans Page.");
     showMainContent();
     clearAuthErrors(); // Clear any auth messages when going back
     clearAuthFields();
@@ -643,9 +675,49 @@ signOutBtn.addEventListener('click', () => {
 });
 
 
-// Initial state setup: show main content, hide registration page, and check user status
+// Event listeners for "Learn More" buttons on the plans section
+learnMoreButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
+        event.preventDefault(); // Prevent default anchor behavior
+        const targetId = event.target.getAttribute('href').substring(1); // Get the ID from href
+        const targetSection = document.getElementById(targetId);
+
+        if (targetSection) {
+            hideAllMainContentSections(); // Hide all other main content sections
+            userRegistrationPage.classList.add('hidden'); // Ensure auth page is hidden
+            targetSection.classList.remove('hidden'); // Show the specific detail section
+            window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to the detail section
+        }
+    });
+});
+
+// Event listeners for "Back to Main Content" buttons on detail pages
+backToMainContentButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        showMainContent(); // Show all primary homepage sections
+    });
+});
+
+// Event listeners for main navigation links (Features, AI Assistant, About Us, Contact)
+document.querySelectorAll('nav .nav-link').forEach(link => {
+    link.addEventListener('click', (event) => {
+        const href = event.target.getAttribute('href');
+        if (href.startsWith('#')) {
+            event.preventDefault(); // Prevent default anchor behavior
+            showMainContent(); // Ensure main content is visible
+            // Scroll to the target section on the main page
+            const targetElement = document.querySelector(href);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    });
+});
+
+
+// Initial state setup: show main content and check user status
 document.addEventListener('DOMContentLoaded', () => {
     console.log("DOMContentLoaded fired.");
-    checkUserStatus(); // Check user status first to set up the header link
+    checkUserStatus(); // Check user status first to set up the header links
     showMainContent(); // Always start on the main content page
 });
