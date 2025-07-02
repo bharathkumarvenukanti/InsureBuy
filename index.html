@@ -16,13 +16,18 @@
             <a href="#" class="text-3xl font-bold text-blue-700 rounded-lg p-2 hover:bg-blue-50 transition duration-300">InsureBuy</a>
 
             <nav>
-                <ul class="flex space-x-6">
-                    <li><a href="#features" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link" data-section="main">Features</a></li>
-                    <li><a href="#plans-page" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link" id="plansNavLink">Our Popular Insurance Plans</a></li>
-                    <li><a href="#ai-assistant" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link" data-section="main">AI Assistant</a></li>
-                    <li><a href="#user-registration-page" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100" id="authNavLink">Register/Login</a></li>
-                    <li><a href="#about" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link" data-section="main">About Us</a></li>
-                    <li><a href="#contact" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link" data-section="main">Contact</a></li>
+                <ul class="flex space-x-6 items-center">
+                    <li><a href="#our-plans-section" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">Plans</a></li>
+                    <li><a href="#ai-assistant" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">AI Assistant</a></li>
+                    <li><a href="#why-choose-us" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">Why Choose Us?</a></li>
+                    <li><a href="#about" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">About Us</a></li>
+                    <li><a href="#contact" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">Contact</a></li>
+                    <li>
+                        <button id="loginBtnHeader" class="bg-blue-600 text-white font-bold py-2 px-5 rounded-full shadow-md hover:bg-blue-700 transition duration-300 transform hover:scale-105">Login</button>
+                    </li>
+                    <li>
+                        <button id="registerBtnHeader" class="bg-blue-600 text-white font-bold py-2 px-5 rounded-full shadow-md hover:bg-blue-700 transition duration-300 transform hover:scale-105">Register</button>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -33,61 +38,128 @@
         <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20 md:py-32 rounded-b-lg shadow-lg">
             <div class="container mx-auto px-4 text-center">
                 <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
-                    Your Future, Protected. <br class="hidden md:inline">Simplified Insurance Buying.
+                    Secure Your Future in Minutes. <br class="hidden md:inline">Your Trusted Partner in Protection.
                 </h1>
                 <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto opacity-90">
-                    Compare, choose, and buy the best insurance plans tailored for your life, health, home, and auto.
+                    Simplified Insurance Buying. Compare, choose, and buy the best insurance plans tailored for your life, health, home, and auto.
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                    <a href="#plans" class="bg-white text-blue-700 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-blue-100 transition duration-300 transform hover:scale-105">
-                        Explore Plans
+                    <a href="#contact" class="bg-yellow-400 text-blue-800 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-yellow-300 transition duration-300 transform hover:scale-105 text-xl">
+                        Get Your Free Quote Now
                     </a>
-                    <a href="#contact" class="border-2 border-white text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-white hover:text-blue-700 transition duration-300 transform hover:scale-105">
-                        Get a Quote
+                    <a href="#our-plans-section" class="border-2 border-white text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-white hover:text-blue-700 transition duration-300 transform hover:scale-105">
+                        Explore Plans
                     </a>
                 </div>
             </div>
         </section>
 
-        <section id="features" class="py-16 bg-white rounded-lg shadow-md mx-4 -mt-12 relative z-10">
+        <!-- New: As Seen On / Trusted By Section -->
+        <section class="py-12 bg-gray-100 rounded-lg mx-4 mt-8 shadow-md text-center">
+            <div class="container mx-auto px-4">
+                <h3 class="text-2xl font-bold text-gray-700 mb-8">Trusted by Partners like:</h3>
+                <div class="flex flex-wrap justify-center items-center gap-8">
+                    <img src="https://via.placeholder.com/100x40?text=Insurer+A" alt="Insurer A Logo" class="h-10 opacity-75 hover:opacity-100 transition-opacity duration-300">
+                    <img src="https://via.placeholder.com/100x40?text=Insurer+B" alt="Insurer B Logo" class="h-10 opacity-75 hover:opacity-100 transition-opacity duration-300">
+                    <img src="https://via.placeholder.co/100x40?text=Insurer+C" alt="Insurer C Logo" class="h-10 opacity-75 hover:opacity-100 transition-opacity duration-300">
+                    <img src="https://via.placeholder.co/100x40?text=Insurer+D" alt="Insurer D Logo" class="h-10 opacity-75 hover:opacity-100 transition-opacity duration-300">
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Popular Insurance Plans Section (formerly a separate page) -->
+        <section id="our-plans-section" class="py-16 bg-gray-100 rounded-lg mx-4 mt-8 shadow-md">
             <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Why Choose InsureBuy?</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Find the Right Coverage for You</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-purple-200 hover:border-purple-400 transition duration-300 transform hover:scale-100">
+                        <div class="text-purple-600 text-5xl mb-4">❤️</div> <!-- ICON: Heart -->
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Life Insurance</h3>
+                        <p class="text-gray-700 mb-4">Protect your loved ones' financial future.</p>
+                        <a href="#life-insurance-details" class="inline-block bg-purple-600 text-white font-medium py-2 px-5 rounded-full hover:bg-purple-700 transition duration-300">Learn More →</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-blue-200 hover:border-blue-400 transition duration-300 transform hover:scale-100">
+                        <div class="text-blue-600 text-5xl mb-4">🏥</div> <!-- ICON: Hospital/Health -->
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Health Insurance</h3>
+                        <p class="text-gray-700 mb-4">Comprehensive coverage for medical expenses.</p>
+                        <a href="#health-insurance-details" class="inline-block bg-blue-600 text-white font-medium py-2 px-5 rounded-full hover:bg-blue-700 transition duration-300">Learn More →</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-green-200 hover:border-green-400 transition duration-300 transform hover:scale-100">
+                        <div class="text-green-600 text-5xl mb-4">🚗</div> <!-- ICON: Car -->
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Auto Insurance</h3>
+                        <p class="text-gray-700 mb-4">Protect your vehicle and yourself on the road.</p>
+                        <a href="#auto-insurance-details" class="inline-block bg-green-600 text-white font-medium py-2 px-5 rounded-full hover:bg-green-700 transition duration-300">Learn More →</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-yellow-200 hover:border-yellow-400 transition duration-300 transform hover:scale-100">
+                        <div class="text-yellow-600 text-5xl mb-4">🏠</div> <!-- ICON: Home -->
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Home Insurance</h3>
+                        <p class="text-gray-700 mb-4">Safeguard your valuable asset from damages.</p>
+                        <a href="#home-insurance-details" class="inline-block bg-yellow-600 text-white font-medium py-2 px-5 rounded-full hover:bg-yellow-700 transition duration-300">Learn More →</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-red-200 hover:border-red-400 transition duration-300 transform hover:scale-100">
+                        <div class="text-red-600 text-5xl mb-4">✈️</div> <!-- ICON: Airplane -->
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Travel Insurance</h3>
+                        <p class="text-gray-700 mb-4">Travel with peace of mind, covered for emergencies.</p>
+                        <a href="#travel-insurance-details" class="inline-block bg-red-600 text-white font-medium py-2 px-5 rounded-full hover:bg-red-700 transition duration-300">Learn More →</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-indigo-200 hover:border-indigo-400 transition duration-300 transform hover:scale-100">
+                        <div class="text-indigo-600 text-5xl mb-4">🎓</div> <!-- ICON: Graduation Cap -->
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Student Insurance</h3>
+                        <p class="text-gray-700 mb-4">Tailored plans for students, covering health & property.</p>
+                        <a href="#student-insurance-details" class="inline-block bg-indigo-600 text-white font-medium py-2 px-5 rounded-full hover:bg-indigo-700 transition duration-300">Learn More →</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-orange-200 hover:border-orange-400 transition duration-300 transform hover:scale-100">
+                        <div class="text-orange-600 text-5xl mb-4">🏢</div> <!-- ICON: Building -->
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Business Insurance</h3>
+                        <p class="text-gray-700 mb-4">Protect your business assets and operations.</p>
+                        <a href="#business-insurance-details" class="inline-block bg-orange-600 text-white font-medium py-2 px-5 rounded-full hover:bg-orange-700 transition duration-300">Learn More →</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-pink-200 hover:border-pink-400 transition duration-300 transform hover:scale-100">
+                        <div class="text-pink-600 text-5xl mb-4">🐾</div> <!-- ICON: Paw Print -->
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Pet Insurance</h3>
+                        <p class="text-gray-700 mb-4">Keep your furry friends healthy with vet coverage.</p>
+                        <a href="#pet-insurance-details" class="inline-block bg-pink-600 text-white font-medium py-2 px-5 rounded-full hover:bg-pink-700 transition duration-300">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="why-choose-us" class="py-16 bg-white rounded-lg shadow-md mx-4 mt-8">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">An Insurance Experience Designed for You</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <div class="bg-blue-50 p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
-                        <div class="text-blue-600 text-5xl mb-4">💡</div>
+                        <div class="text-blue-600 text-5xl mb-4">🔍</div> <!-- ICON: Magnifying Glass -->
                         <h3 class="text-xl font-semibold text-gray-900 mb-3">Easy Comparison</h3>
-                        <p class="text-gray-700">Compare multiple insurance plans side-by-side to find the best fit for your needs.</p>
+                        <p class="text-gray-700">Compare multiple plans side-by-side to find the best fit for your needs.</p>
                     </div>
                     <div class="bg-green-50 p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
-                        <div class="text-green-600 text-5xl mb-4">🌍</div>
+                        <div class="text-green-600 text-5xl mb-4">🌐</div> <!-- ICON: Globe -->
                         <h3 class="text-xl font-semibold text-gray-900 mb-3">Wide Range of Plans</h3>
                         <p class="text-gray-700">From health to auto, life to home – we cover all your insurance needs.</p>
                     </div>
                     <div class="bg-purple-50 p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
-                        <div class="text-purple-600 text-5xl mb-4">🔒</div>
+                        <div class="text-purple-600 text-5xl mb-4">🛡️</div> <!-- ICON: Shield/Lock -->
                         <h3 class="text-xl font-semibold text-gray-900 mb-3">Secure & Trustworthy</h3>
-                        <p class="text-gray-700">Your data is safe with us. We partner only with reputable insurance providers.</p>
+                        <p class="text-gray-700">Your data is safe. We only partner with reputable insurance providers.</p>
                     </div>
                     <div class="bg-yellow-50 p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
-                        <div class="text-yellow-600 text-5xl mb-4">🤝</div>
+                        <div class="text-yellow-600 text-5xl mb-4">🎧</div> <!-- ICON: Headset/Support -->
                         <h3 class="text-xl font-semibold text-gray-900 mb-3">Expert Support</h3>
                         <p class="text-gray-700">Our dedicated team is here to guide you every step of the way.</p>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- The original #plans section is now empty or can be removed if its content is fully moved -->
-        <section id="plans" class="hidden"></section> 
         
         <section id="ai-assistant" class="py-16 bg-blue-50 rounded-lg mx-4 mt-8 shadow-md">
             <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">InsureBuy AI Assistant</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Meet Your Personal Insurance Ally: The InsureBuy AI Assistant</h2>
                 <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-                    Leverage the power of AI to get personalized recommendations and clear explanations for insurance terms.
+                    Leverage the power of AI to get personalized recommendations, clear explanations for insurance terms, and plan for your future.
                 </p>
 
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-10"> <!-- Changed to 3 columns for new feature -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
                     <!-- Personalized Plan Recommendation -->
                     <div class="bg-white p-8 rounded-xl shadow-lg border border-blue-200">
                         <h3 class="text-2xl font-semibold text-gray-900 mb-4">✨ Get Personalized Plan Recommendations</h3>
@@ -127,7 +199,62 @@
             </div>
         </section>
 
-        <section id="life-insurance-details" class="py-16 bg-blue-50 rounded-lg mx-4 mt-8 shadow-md">
+        <section class="py-16 bg-blue-700 text-white mt-8 rounded-lg mx-4 shadow-md">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12">Loved by Thousands of Users</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-blue-800 p-8 rounded-xl shadow-lg">
+                        <img src="https://placehold.co/80x80/FFFFFF/000000?text=JD" alt="Customer Jane Doe" class="mx-auto rounded-full mb-4">
+                        <p class="text-lg italic mb-4">"InsureBuy made finding the right health insurance incredibly easy. Their comparison tool is top-notch!"</p>
+                        <p class="font-semibold">- Jane D., New York - Health Insurance</p>
+                    </div>
+                    <div class="bg-blue-800 p-8 rounded-xl shadow-lg">
+                        <img src="https://placehold.co/80x80/FFFFFF/000000?text=JS" alt="Customer John Smith" class="mx-auto rounded-full mb-4">
+                        <p class="text-lg italic mb-4">"I saved so much on my auto insurance thanks to InsureBuy. Highly recommend their service!"</p>
+                        <p class="font-semibold">- John S., California - Auto Insurance</p>
+                    </div>
+                    <div class="bg-blue-800 p-8 rounded-xl shadow-lg">
+                        <img src="https://placehold.co/80x80/FFFFFF/000000?text=SL" alt="Customer Sarah Lee" class="mx-auto rounded-full mb-4">
+                        <p class="text-lg italic mb-4">"The customer support was exceptional. They guided me through every step of getting life insurance."</p>
+                        <p class="font-semibold">- Sarah L., Texas - Life Insurance</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-16 bg-white rounded-lg mx-4 mt-8 shadow-md">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Our Story: Simplifying Insurance for You</h2>
+                <div class="max-w-3xl mx-auto text-left text-gray-700 text-lg leading-relaxed">
+                    <img src="https://placehold.co/150x150/E0E0E0/000000?text=Team" alt="InsureBuy Team" class="mx-auto rounded-full mb-6 shadow-md">
+                    <p class="mb-6">
+                        At InsureBuy, our journey began with a simple yet powerful idea: to demystify insurance and make it
+                        accessible for everyone. We noticed that many people found insurance policies confusing, overwhelming,
+                        and difficult to compare. That's why we set out to create a platform that prioritizes clarity,
+                        simplicity, and personalized guidance.
+                    </p>
+                    <p class="mb-6">
+                        Our team of passionate experts combines years of experience in the insurance industry with cutting-edge
+                        technology, including our innovative AI Assistant. This unique blend allows us to offer not just
+                        a wide range of plans, but also intelligent tools that help you understand what you're buying and
+                        why it's the right fit for your unique life.
+                    </p>
+                    <p class="mb-6">
+                        We believe that protecting your future shouldn't be a complex chore. It should be a straightforward,
+                        empowering decision. Every feature on InsureBuy, from our easy comparison tools to our direct contact
+                        support, is designed with you in mind. We're committed to being your trusted partner, ensuring you
+                        feel confident and secure with your insurance choices.
+                    </p>
+                    <p>
+                        Join the thousands who have already simplified their insurance journey with InsureBuy. We're here
+                        to help you navigate the world of health, auto, life, and home insurance with ease and confidence.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- In-depth "Learn More" sections (remaining on mainContent) -->
+        <section id="life-insurance-details" class="py-16 bg-blue-50 rounded-lg mx-4 mt-8 shadow-md hidden">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Learn More About Life Insurance</h2>
                 <div class="max-w-3xl mx-auto text-left text-gray-700 text-lg leading-relaxed">
@@ -164,10 +291,13 @@
                         At InsureBuy, we help you understand these options and find a life insurance policy that aligns perfectly with your financial goals and family's needs.
                     </p>
                 </div>
+                <button class="back-to-main-content-btn bg-gray-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-800 transition duration-300 transform hover:scale-105 mt-8">
+                    Back to Main Content
+                </button>
             </div>
         </section>
 
-        <section id="health-insurance-details" class="py-16 bg-green-50 rounded-lg mx-4 mt-8 shadow-md">
+        <section id="health-insurance-details" class="py-16 bg-green-50 rounded-lg mx-4 mt-8 shadow-md hidden">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Learn More About Health Insurance</h2>
                 <div class="max-w-3xl mx-auto text-left text-gray-700 text-lg leading-relaxed">
@@ -201,10 +331,13 @@
                         Given the high cost of healthcare, everyone needs health insurance to protect themselves and their families from unexpected medical expenses. It ensures access to necessary medical care, from routine check-ups to emergency treatments.
                     </p>
                 </div>
+                <button class="back-to-main-content-btn bg-gray-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-800 transition duration-300 transform hover:scale-105 mt-8">
+                    Back to Main Content
+                </button>
             </div>
         </section>
 
-        <section id="auto-insurance-details" class="py-16 bg-yellow-50 rounded-lg mx-4 mt-8 shadow-md">
+        <section id="auto-insurance-details" class="py-16 bg-yellow-50 rounded-lg mx-4 mt-8 shadow-md hidden">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Learn More About Auto Insurance</h2>
                 <div class="max-w-3xl mx-auto text-left text-gray-700 text-lg leading-relaxed">
@@ -241,10 +374,13 @@
                         Anyone who owns or drives a car needs auto insurance. It's legally required in most places and provides crucial financial protection against the unpredictable nature of road travel.
                     </p>
                 </div>
+                <button class="back-to-main-content-btn bg-gray-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-800 transition duration-300 transform hover:scale-105 mt-8">
+                    Back to Main Content
+                </button>
             </div>
         </section>
 
-        <section id="home-insurance-details" class="py-16 bg-purple-50 rounded-lg mx-4 mt-8 shadow-md">
+        <section id="home-insurance-details" class="py-16 bg-purple-50 rounded-lg mx-4 mt-8 shadow-md hidden">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Learn More About Home Insurance</h2>
                 <div class="max-w-3xl mx-auto text-left text-gray-700 text-lg leading-relaxed">
@@ -284,10 +420,13 @@
                         Anyone who owns a home, whether it's a primary residence, a condo, or a rental property, needs home insurance. It's often a requirement for mortgage lenders and essential for protecting your significant investment.
                     </p>
                 </div>
+                <button class="back-to-main-content-btn bg-gray-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-800 transition duration-300 transform hover:scale-105 mt-8">
+                    Back to Main Content
+                </button>
             </div>
         </section>
 
-        <section id="travel-insurance-details" class="py-16 bg-red-50 rounded-lg mx-4 mt-8 shadow-md">
+        <section id="travel-insurance-details" class="py-16 bg-red-50 rounded-lg mx-4 mt-8 shadow-md hidden">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Learn More About Travel Insurance</h2>
                 <div class="max-w-3xl mx-auto text-left text-gray-700 text-lg leading-relaxed">
@@ -324,10 +463,13 @@
                         Anyone planning a trip, especially international travelers, those with pre-existing medical conditions, or individuals making significant non-refundable travel investments, should consider travel insurance. It's an essential safeguard against the unexpected.
                     </p>
                 </div>
+                <button class="back-to-main-content-btn bg-gray-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-800 transition duration-300 transform hover:scale-105 mt-8">
+                    Back to Main Content
+                </button>
             </div>
         </section>
 
-        <section id="student-insurance-details" class="py-16 bg-indigo-50 rounded-lg mx-4 mt-8 shadow-md">
+        <section id="student-insurance-details" class="py-16 bg-indigo-50 rounded-lg mx-4 mt-8 shadow-md hidden">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Learn More About Student Insurance</h2>
                 <div class="max-w-3xl mx-auto text-left text-gray-700 text-lg leading-relaxed">
@@ -361,10 +503,13 @@
                         Students, particularly those attending college or university, international students, or those living independently, should consider student insurance. It provides a safety net for potential health issues, property losses, and unexpected academic interruptions.
                     </p>
                 </div>
+                <button class="back-to-main-content-btn bg-gray-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-800 transition duration-300 transform hover:scale-105 mt-8">
+                    Back to Main Content
+                </button>
             </div>
         </section>
 
-        <section id="business-insurance-details" class="py-16 bg-orange-50 rounded-lg mx-4 mt-8 shadow-md">
+        <section id="business-insurance-details" class="py-16 bg-orange-50 rounded-lg mx-4 mt-8 shadow-md hidden">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Learn More About Business Insurance</h2>
                 <div class="max-w-3xl mx-auto text-left text-gray-700 text-lg leading-relaxed">
@@ -404,10 +549,13 @@
                         Virtually all businesses, regardless of size or industry, need business insurance. It's a fundamental part of risk management that protects against the significant financial impact of unforeseen events.
                     </p>
                 </div>
+                <button class="back-to-main-content-btn bg-gray-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-800 transition duration-300 transform hover:scale-105 mt-8">
+                    Back to Main Content
+                </button>
             </div>
         </section>
 
-        <section id="pet-insurance-details" class="py-16 bg-pink-50 rounded-lg mx-4 mt-8 shadow-md">
+        <section id="pet-insurance-details" class="py-16 bg-pink-50 rounded-lg mx-4 mt-8 shadow-md hidden">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Learn More About Pet Insurance</h2>
                 <div class="max-w-3xl mx-auto text-left text-gray-700 text-lg leading-relaxed">
@@ -432,64 +580,15 @@
                         <li>Allows you to choose the best treatment for your pet without budget constraints.</li>
                         <li>Covers a wide range of medical conditions and emergencies.</li>
                         <li>Provides peace of mind for pet owners.</li>
-                        <li>Can be used for estate planning and wealth transfer.</li>
-                        <li>Can be used for estate planning and wealth transfer.</li>
                     </ul>
                     <h3 class="text-2xl font-semibold text-gray-900 mb-4">Who Needs Pet Insurance?</h3>
                     <p class="mb-6">
                         Pet owners who want to ensure their furry, feathered, or scaled family members receive top-notch medical care without facing significant financial stress should consider pet insurance. It's particularly beneficial for young pets who are prone to accidents or older pets who may develop chronic conditions.
                     </p>
                 </div>
-            </div>
-        </section>
-
-        <section id="about" class="py-16 bg-white rounded-lg mx-4 mt-8 shadow-md">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">About InsureBuy</h2>
-                <div class="max-w-3xl mx-auto text-left text-gray-700 text-lg leading-relaxed">
-                    <p class="mb-6">
-                        At InsureBuy, our journey began with a simple yet powerful idea: to demystify insurance and make it
-                        accessible for everyone. We noticed that many people found insurance policies confusing, overwhelming,
-                        and difficult to compare. That's why we set out to create a platform that prioritizes clarity,
-                        simplicity, and personalized guidance.
-                    </p>
-                    <p class="mb-6">
-                        Our team of passionate experts combines years of experience in the insurance industry with cutting-edge
-                        technology, including our innovative AI Assistant. This unique blend allows us to offer not just
-                        a wide range of plans, but also intelligent tools that help you understand what you're buying and
-                        why it's the right fit for your unique life.
-                    </p>
-                    <p class="mb-6">
-                        We believe that protecting your future shouldn't be a complex chore. It should be a straightforward,
-                        empowering decision. Every feature on InsureBuy, from our easy comparison tools to our direct contact
-                        support, is designed with you in mind. We're committed to being your trusted partner, ensuring you
-                        feel confident and secure with your insurance choices.
-                    </p>
-                    <p>
-                        Join the thousands who have already simplified their insurance journey with InsureBuy. We're here
-                        to help you navigate the world of health, auto, life, and home insurance with ease and confidence.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-16 bg-blue-700 text-white mt-8 rounded-lg mx-4 shadow-md">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-12">What Our Customers Say</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-blue-800 p-8 rounded-xl shadow-lg">
-                        <p class="text-lg italic mb-4">"InsureBuy made finding the right health insurance incredibly easy. Their comparison tool is top-notch!"</p>
-                        <p class="font-semibold">- Jane Doe, New York</p>
-                    </div>
-                    <div class="bg-blue-800 p-8 rounded-xl shadow-lg">
-                        <p class="text-lg italic mb-4">"I saved so much on my auto insurance thanks to InsureBuy. Highly recommend their service!"</p>
-                        <p class="font-semibold">- John Smith, California</p>
-                    </div>
-                    <div class="bg-blue-800 p-8 rounded-xl shadow-lg">
-                        <p class="text-lg italic mb-4">"The customer support was exceptional. They guided me through every step of getting life insurance."</p>
-                        <p class="font-semibold">- Sarah Lee, Texas</p>
-                    </div>
-                </div>
+                <button class="back-to-main-content-btn bg-gray-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-800 transition duration-300 transform hover:scale-105 mt-8">
+                    Back to Main Content
+                </button>
             </div>
         </section>
 
@@ -513,7 +612,7 @@
         </section>
     </div> <!-- End of mainContent -->
 
-    <!-- User Registration/Login Page -->
+    <!-- User Registration/Login Page (remains separate) -->
     <section id="user-registration-page" class="hidden py-16 bg-blue-50 rounded-lg mx-4 mt-8 shadow-md scroll-mt-20">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">Account Access</h2>
@@ -643,83 +742,67 @@
         </div>
     </section>
 
-    <!-- New: Our Popular Insurance Plans Page -->
-    <section id="plans-page" class="hidden py-16 bg-gray-100 rounded-lg mx-4 mt-8 shadow-md scroll-mt-20">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Our Popular Insurance Plans</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-white p-6 rounded-xl shadow-md border border-purple-200 hover:border-purple-400 transition duration-300 transform hover:scale-100">
-                    <img src="https://placehold.co/100x100/DDA0DD/000000?text=Life" alt="Life Insurance" class="mx-auto mb-4 rounded-full">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Life Insurance</h3>
-                    <p class="text-gray-700 mb-4">Secure your family's financial future with our flexible life insurance options.</p>
-                    <a href="#life-insurance-details" class="inline-block bg-purple-600 text-white font-medium py-2 px-5 rounded-full hover:bg-purple-700 transition duration-300">Learn More</a>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md border border-blue-200 hover:border-blue-400 transition duration-300 transform hover:scale-100">
-                    <img src="https://placehold.co/100x100/ADD8E6/000000?text=Health" alt="Health Insurance" class="mx-auto mb-4 rounded-full">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Health Insurance</h3>
-                    <p class="text-gray-700 mb-4">Comprehensive coverage for medical expenses, hospital stays, and more.</p>
-                    <a href="#health-insurance-details" class="inline-block bg-blue-600 text-white font-medium py-2 px-5 rounded-full hover:bg-blue-700 transition duration-300">Learn More</a>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md border border-green-200 hover:border-green-400 transition duration-300 transform hover:scale-100">
-                    <img src="https://placehold.co/100x100/90EE90/000000?text=Auto" alt="Auto Insurance" class="mx-auto mb-4 rounded-full">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Auto Insurance</h3>
-                    <p class="text-gray-700 mb-4">Protect your vehicle and yourself on the road with our tailored policies.</p>
-                    <a href="#auto-insurance-details" class="inline-block bg-green-600 text-white font-medium py-2 px-5 rounded-full hover:bg-green-700 transition duration-300">Learn More</a>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md border border-yellow-200 hover:border-yellow-400 transition duration-300 transform hover:scale-100">
-                    <img src="https://placehold.co/100x100/FFD700/000000?text=Home" alt="Home Insurance" class="mx-auto mb-4 rounded-full">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Home Insurance</h3>
-                    <p class="text-gray-700 mb-4">Protect your most valuable asset from unforeseen damages and liabilities.</p>
-                    <a href="#home-insurance-details" class="inline-block bg-yellow-600 text-white font-medium py-2 px-5 rounded-full hover:bg-yellow-700 transition duration-300">Learn More</a>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md border border-red-200 hover:border-red-400 transition duration-300 transform hover:scale-100">
-                    <img src="https://placehold.co/100x100/F08080/000000?text=Travel" alt="Travel Insurance" class="mx-auto mb-4 rounded-full">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Travel Insurance</h3>
-                    <p class="text-gray-700 mb-4">Travel with peace of mind. Coverage for trips, cancellations, medical emergencies, and more.</p>
-                    <a href="#travel-insurance-details" class="inline-block bg-red-600 text-white font-medium py-2 px-5 rounded-full hover:bg-red-700 transition duration-300">Learn More</a>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md border border-indigo-200 hover:border-indigo-400 transition duration-300 transform hover:scale-100">
-                    <img src="https://placehold.co/100x100/87CEEB/000000?text=Student" alt="Student Insurance" class="mx-auto mb-4 rounded-full">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Student Insurance</h3>
-                    <p class="text-gray-700 mb-4">Tailored plans for students, covering health, property, and study interruptions.</p>
-                    <a href="#student-insurance-details" class="inline-block bg-indigo-600 text-white font-medium py-2 px-5 rounded-full hover:bg-indigo-700 transition duration-300">Learn More</a>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md border border-orange-200 hover:border-orange-400 transition duration-300 transform hover:scale-100">
-                    <img src="https://placehold.co/100x100/FFA500/000000?text=Business" alt="Business Insurance" class="mx-auto mb-4 rounded-full">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Business Insurance</h3>
-                    <p class="text-gray-700 mb-4">Protect your business assets, employees, and operations with comprehensive coverage.</p>
-                    <a href="#business-insurance-details" class="inline-block bg-orange-600 text-white font-medium py-2 px-5 rounded-full hover:bg-orange-700 transition duration-300">Learn More</a>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md border border-pink-200 hover:border-pink-400 transition duration-300 transform hover:scale-100">
-                    <img src="https://placehold.co/100x100/FFC0CB/000000?text=Pet" alt="Pet Insurance" class="mx-auto mb-4 rounded-full">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Pet Insurance</h3>
-                    <p class="text-gray-700 mb-4">Keep your furry friends healthy with coverage for vet visits, emergencies, and more.</p>
-                    <a href="#pet-insurance-details" class="inline-block bg-pink-600 text-white font-medium py-2 px-5 rounded-full hover:bg-pink-700 transition duration-300">Learn More</a>
-                </div>
-            </div>
-            <button id="backToMainWebsiteFromPlansBtn" class="w-full bg-gray-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-800 transition duration-300 transform hover:scale-105 mt-8">
-                Back to Main Website
-            </button>
-        </div>
-    </section>
-
     <footer class="bg-gray-800 text-white py-8 mt-12 rounded-t-lg">
         <div class="container mx-auto px-4 text-center">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-6">
-                <div class="mb-4 md:mb-0">
-                    <h3 class="text-2xl font-bold text-blue-400">InsureBuy</h3>
-                    <p class="text-gray-400">Your trusted partner for insurance.</p>
+            <div class="flex flex-col md:flex-row justify-between items-start mb-6 text-left">
+                <div class="mb-6 md:mb-0 md:w-1/4">
+                    <h3 class="text-2xl font-bold text-blue-400 mb-2">InsureBuy</h3>
+                    <p class="text-gray-400 text-sm">Your trusted partner for simplified insurance buying.</p>
+                    <div class="flex space-x-3 mt-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.071 1.623-4.661 2.603-7.498 2.603-.485 0-.965-.029-1.439-.084 2.981 1.905 6.504 3.007 10.29 3.007 12.359 0 19.151-10.347 19.151-19.313 0-.372-.012-.742-.038-1.11z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.77 1.624 4.996 4.887.017.244.027.509.027.765v5.594c0 1.25-.011 1.516-.07 2.765-.148 3.252-1.624 4.77-4.887 4.996-.244.017-.509.027-.765.027h-5.594c-1.25 0-1.516-.011-2.765-.07-3.252-.148-4.77-1.624-4.996-4.887-.017-.244-.027-.509-.027-.765v-5.594c0-1.25.011-1.516.07-2.765.148-3.252 1.624-4.77 4.887-4.996.244-.017.509-.027.765-.027h5.594zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.987 6.987-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.947.2 4.358 2.618 6.78 6.987 6.987 1.281.059 1.689.073 4.948.073 3.259 0 3.668-.014 4.947-.072 4.358-.2 6.78-2.618 6.987-6.987.059-1.281.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.2-4.358-2.618-6.78-6.987-6.987-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
                 </div>
-                <nav class="flex space-x-6">
-                    <a href="#features" class="text-gray-300 hover:text-white transition duration-300">Features</a>
-                    <a href="#plans" class="text-gray-300 hover:text-white transition duration-300">Plans</a>
-                    <a href="#ai-assistant" class="text-gray-300 hover:text-white transition duration-300">AI Assistant</a>
-                    <a href="#about" class="text-gray-300 hover:text-white transition duration-300">About Us</a>
-                    <a href="#contact" class="text-gray-300 hover:text-white transition duration-300">Contact</a>
-                </nav>
+                </div>
+                <div class="md:w-1/4 mb-6 md:mb-0">
+                    <h4 class="text-lg font-semibold text-white mb-3">PLANS</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#our-plans-section" class="text-gray-300 hover:text-white transition duration-300">Health Insurance</a></li>
+                        <li><a href="#our-plans-section" class="text-gray-300 hover:text-white transition duration-300">Auto Insurance</a></li>
+                        <li><a href="#our-plans-section" class="text-gray-300 hover:text-white transition duration-300">Life Insurance</a></li>
+                        <li><a href="#our-plans-section" class="text-gray-300 hover:text-white transition duration-300">Home Insurance</a></li>
+                        <li><a href="#our-plans-section" class="text-gray-300 hover:text-white transition duration-300">Travel Insurance</a></li>
+                        <li><a href="#our-plans-section" class="text-gray-300 hover:text-white transition duration-300">Student Insurance</a></li>
+                        <li><a href="#our-plans-section" class="text-gray-300 hover:text-white transition duration-300">Business Insurance</a></li>
+                        <li><a href="#our-plans-section" class="text-gray-300 hover:text-white transition duration-300">Pet Insurance</a></li>
+                    </ul>
+                </div>
+                <div class="md:w-1/4 mb-6 md:mb-0">
+                    <h4 class="text-lg font-semibold text-white mb-3">COMPANY</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-300 hover:text-white transition duration-300">About Us</a></li>
+                        <li><a href="#why-choose-us" class="text-gray-300 hover:text-white transition duration-300">Why InsureBuy?</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">Learning Center</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="md:w-1/4 mb-6 md:mb-0">
+                    <h4 class="text-lg font-semibold text-white mb-3">SUPPORT</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#contact" class="text-gray-300 hover:text-white transition duration-300">Contact Us</a></li>
+                        <li><a href="#ai-assistant" class="text-gray-300 hover:text-white transition duration-300">AI Assistant</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">FAQ</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="border-t border-gray-700 pt-6 text-gray-500">
-                &copy; 2025 InsureBuy. All rights reserved.
+            <div class="border-t border-gray-700 pt-6 text-gray-500 text-sm flex flex-col md:flex-row justify-between items-center">
+                <p>&copy; 2025 InsureBuy. All rights reserved.</p>
+                <div class="flex space-x-4 mt-2 md:mt-0">
+                    <a href="#" class="text-gray-500 hover:text-white transition duration-300">Privacy Policy</a>
+                    <a href="#" class="text-gray-500 hover:text-white transition duration-300">Terms of Service</a>
+                </div>
             </div>
         </div>
     </footer>
