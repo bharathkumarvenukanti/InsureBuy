@@ -1,14 +1,54 @@
-/* Import Google Fonts - Inter */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* style.css */
 
-/* Basic Body Styling */
 body {
     font-family: 'Inter', sans-serif;
+    background-color: #f0f2f5; /* Light gray background */
+}
+.gradient-bg {
+    background: linear-gradient(to right, #4a90e2, #50b3e8); /* Blue gradient */
+}
+.card {
+    background-color: white;
+    border-radius: 12px; /* More rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Softer shadow */
+}
+.btn-primary {
+    background-color: #4a90e2; /* Primary blue */
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+.btn-primary:hover {
+    background-color: #3a7bd5; /* Darker blue on hover */
+}
+.btn-secondary {
+    background-color: #e2e8f0; /* Light gray */
+    color: #4a90e2;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+.btn-secondary:hover {
+    background-color: #cbd5e1; /* Darker gray on hover */
+}
+.input-field {
+    border: 1px solid #d1d5db; /* Light gray border */
+    border-radius: 8px;
+    padding: 10px 14px;
+    width: 100%;
+    transition: border-color 0.3s ease;
+}
+.input-field:focus {
+    outline: none;
+    border-color: #4a90e2; /* Highlight on focus */
 }
 
-/* Error Message Styling for Form Validation */
+/* Specific styles for auth forms */
 .error-message {
-    color: #dc2626; /* red-600 */
+    color: #ef4444; /* Red-500 */
     font-size: 0.875rem; /* text-sm */
     margin-top: 0.25rem; /* mt-1 */
 }
