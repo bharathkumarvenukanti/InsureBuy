@@ -255,7 +255,8 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("showUserRegistrationPage called.");
         // If we are not on index.html, navigate there first
         if (window.location.pathname.includes('/plans.html') || window.location.pathname.includes('/dashboard.html')) {
-            window.location.href = getBaseUrl() + 'index.html#user-registration-page';
+            // Use a query parameter to indicate which form to show after navigation
+            window.location.href = getBaseUrl() + 'index.html?form=register';
             return; // Exit to let the new page load and handle the display
         }
 
@@ -278,6 +279,43 @@ document.addEventListener('DOMContentLoaded', function() {
         if (radioRegister) radioRegister.checked = true;
         if (registerFields) registerFields.classList.remove('hidden');
         if (loginFields) loginFields.classList.add('hidden');
+        if (guestFields) guestFields.classList.add('hidden');
+        if (forgotPasswordFields) forgotPasswordFields.classList.add('hidden');
+    }
+
+    /**
+     * Shows the user login page and hides the main content sections.
+     * This function is designed to work whether it's called from index.html or plans.html.
+     * It always assumes the user login page is on index.html.
+     */
+    function showUserLoginPage() {
+        console.log("showUserLoginPage called.");
+        // If we are not on index.html, navigate there first
+        if (window.location.pathname.includes('/plans.html') || window.location.pathname.includes('/dashboard.html')) {
+            // Use a query parameter to indicate which form to show after navigation
+            window.location.href = getBaseUrl() + 'index.html?form=login';
+            return; // Exit to let the new page load and handle the display
+        }
+
+        // If we are on index.html, proceed with showing/hiding sections
+        if (mainContentSection) mainContentSection.classList.add('hidden');
+        if (userRegistrationPage) userRegistrationPage.classList.remove('hidden');
+        
+        console.log("mainContentSection classes after showUserLoginPage:", mainContentSection ? mainContentSection.classList : 'N/A');
+        console.log("userRegistrationPage classes after showUserLoginPage:", userRegistrationPage ? userRegistrationPage.classList : 'N/A');
+        
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top of login page
+        clearAuthErrors(); // Clear any auth messages when navigating to it
+        clearAuthFields(); // Clear any input fields
+
+        // Show auth forms and hide dashboard initially
+        if (authFormsContainer) authFormsContainer.classList.remove('hidden');
+        if (myAccountDashboard) myAccountDashboard.classList.add('hidden');
+
+        // Ensure login form is active by default when showing auth page
+        if (radioLogin) radioLogin.checked = true;
+        if (loginFields) loginFields.classList.remove('hidden');
+        if (registerFields) registerFields.classList.add('hidden');
         if (guestFields) guestFields.classList.add('hidden');
         if (forgotPasswordFields) forgotPasswordFields.classList.add('hidden');
     }
@@ -817,13 +855,13 @@ document.addEventListener('DOMContentLoaded', function() {
     if (headerLoginBtn) {
         headerLoginBtn.addEventListener('click', (event) => {
             event.preventDefault();
-            window.location.href = getBaseUrl() + 'index.html?form=login';
+            showUserLoginPage(); // Call the function to show the login page
         });
     }
     if (headerRegisterBtn) {
         headerRegisterBtn.addEventListener('click', (event) => {
             event.preventDefault();
-            window.location.href = getBaseUrl() + 'index.html?form=register';
+            showUserRegistrationPage(); // Call the function to show the registration page
         });
     }
 
@@ -833,20 +871,23 @@ document.addEventListener('DOMContentLoaded', function() {
         checkUserStatus(); // Check user status to set up header links correctly
 
         const hash = window.location.hash;
+        const urlParams = new URLSearchParams(window.location.search);
+        const formParam = urlParams.get('form');
+        const sectionParam = urlParams.get('section'); // New param for scrolling to section
+
         if (window.location.pathname.includes('index.html') || window.location.pathname === '/') {
             // This is index.html
-            const urlParams = new URLSearchParams(window.location.search);
-            const formParam = urlParams.get('form');
-            const sectionParam = urlParams.get('section'); // New param for scrolling to section
-
             if (hash === '#user-registration-page' || formParam === 'register') {
                 showUserRegistrationPage();
-                if (formParam === 'login' && radioLogin) radioLogin.checked = true; // Ensure login is checked if coming via login param
+                // If coming via ?form=login, ensure login radio is checked
+                if (formParam === 'login' && radioLogin) {
+                    radioLogin.checked = true;
+                    if (registerFields) registerFields.classList.add('hidden');
+                    if (loginFields) loginFields.classList.remove('hidden');
+                }
             } else if (formParam === 'login') {
-                showUserRegistrationPage(); // Show auth page
-                if (radioLogin) radioLogin.checked = true; // Set login radio button as checked
-                if (registerFields) registerFields.classList.add('hidden'); // Hide register form
-                if (loginFields) loginFields.classList.remove('hidden'); // Show login form
+                // If specifically ?form=login, ensure login form is shown
+                showUserLoginPage(); // Use the specific login page function
             } else if (sectionParam) { // If a section is specified, hide forms and scroll to section
                 showMainContent(); // Ensure main content is visible
                 setTimeout(() => { // Give browser a moment to render content
