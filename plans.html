@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InsureBuy - Your One-Stop Insurance Solution</title>
+    <title>InsureBuy - Our Popular Insurance Plans</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Custom CSS -->
@@ -19,12 +19,12 @@
 
             <nav>
                 <ul class="flex space-x-6 items-center">
-                    <li><a href="index.html" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">Home</a></li>
-                    <li><a href="plans.html" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">Plans</a></li>
-                    <li><a href="#ai-assistant" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">AI Assistant</a></li>
-                    <li><a href="#why-choose-us" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">Why Choose Us?</a></li>
-                    <li><a href="#about" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">About Us</a></li>
-                    <li><a href="#contact" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">Contact</a></li>
+                    <li><a href="index.html" id="navHomeLinkPlans" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">Home</a></li>
+                    <li><a href="plans.html" id="navPlansLinkPlans" class="text-lg font-medium text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">Plans</a></li>
+                    <li><a href="index.html#ai-assistant" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">AI Assistant</a></li>
+                    <li><a href="index.html#why-choose-us" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">Why Choose Us?</a></li>
+                    <li><a href="index.html#about" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">About Us</a></li>
+                    <li><a href="index.html#contact" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">Contact</a></li>
                     <li>
                         <button id="loginBtnHeader" class="bg-blue-600 text-white font-bold py-2 px-5 rounded-full shadow-md hover:bg-blue-700 transition duration-300 transform hover:scale-105">Login</button>
                     </li>
@@ -36,659 +36,63 @@
         </div>
     </header>
 
-    <!-- Main Website Content Wrapper -->
-    <div id="mainContent" class="transition-opacity duration-500">
-        <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20 md:py-32 rounded-b-lg shadow-lg">
-            <div class="container mx-auto px-4 text-center">
-                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
-                    Secure Your Future in Minutes. <br class="hidden md:inline">Your Trusted Partner in Protection.
-                </h1>
-                <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto opacity-90">
-                    Simplified Insurance Buying. Compare, choose, and buy the best insurance plans tailored for your life, health, home, and auto.
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                    <a href="#contact" class="bg-yellow-400 text-blue-800 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-yellow-300 transition duration-300 transform hover:scale-105 text-xl">
-                        Get Your Free Quote Now
-                    </a>
-                    <a href="plans.html" class="border-2 border-white text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-white hover:text-blue-700 transition duration-300 transform hover:scale-105">
-                        Explore Plans
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- New: As Seen On / Trusted By Section -->
-        <section class="py-12 bg-gray-100 rounded-lg mx-4 mt-8 shadow-md text-center">
-            <div class="container mx-auto px-4">
-                <h3 class="text-2xl font-bold text-gray-700 mb-8">Trusted by Partners like:</h3>
-                <div class="flex flex-wrap justify-center items-center gap-8">
-                    <img src="https://via.placeholder.com/100x40?text=Insurer+A" alt="Insurer A Logo" class="h-10 opacity-75 hover:opacity-100 transition-opacity duration-300">
-                    <img src="https://via.placeholder.com/100x40?text=Insurer+B" alt="Insurer B Logo" class="h-10 opacity-75 hover:opacity-100 transition-opacity duration-300">
-                    <img src="https://via.placeholder.co/100x40?text=Insurer+C" alt="Insurer C Logo" class="h-10 opacity-75 hover:opacity-100 transition-opacity duration-300">
-                    <img src="https://via.placeholder.co/100x40?text=Insurer+D" alt="Insurer D Logo" class="h-10 opacity-75 hover:opacity-100 transition-opacity duration-300">
-                </div>
-            </div>
-        </section>
-
-        <!-- The "Our Popular Insurance Plans" section content is now in plans.html -->
-        <!-- This section is just a placeholder if needed, or can be removed entirely -->
-        <section id="our-plans-section" class="hidden"></section>
-
-        <section id="why-choose-us" class="py-16 bg-white rounded-lg shadow-md mx-4 mt-8">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">An Insurance Experience Designed for You</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="bg-blue-50 p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
-                        <div class="text-blue-600 text-5xl mb-4">🔍</div> <!-- ICON: Magnifying Glass -->
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Easy Comparison</h3>
-                        <p class="text-gray-700">Compare multiple plans side-by-side to find the best fit for your needs.</p>
-                    </div>
-                    <div class="bg-green-50 p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
-                        <div class="text-green-600 text-5xl mb-4">🌐</div> <!-- ICON: Globe -->
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Wide Range of Plans</h3>
-                        <p class="text-gray-700">From health to auto, life to home – we cover all your insurance needs.</p>
-                    </div>
-                    <div class="bg-purple-50 p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
-                        <div class="text-purple-600 text-5xl mb-4">🛡️</div> <!-- ICON: Shield/Lock -->
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Secure & Trustworthy</h3>
-                        <p class="text-gray-700">Your data is safe. We only partner with reputable insurance providers.</p>
-                    </div>
-                    <div class="bg-yellow-50 p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
-                        <div class="text-yellow-600 text-5xl mb-4">🎧</div> <!-- ICON: Headset/Support -->
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Expert Support</h3>
-                        <p class="text-gray-700">Our dedicated team is here to guide you every step of the way.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="ai-assistant" class="py-16 bg-blue-50 rounded-lg mx-4 mt-8 shadow-md">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Meet Your Personal Insurance Ally: The InsureBuy AI Assistant</h2>
-                <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-                    Leverage the power of AI to get personalized recommendations, clear explanations for insurance terms, and plan for your future.
-                </p>
-
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
-                    <!-- Personalized Plan Recommendation -->
-                    <div class="bg-white p-8 rounded-xl shadow-lg border border-blue-200">
-                        <h3 class="text-2xl font-semibold text-gray-900 mb-4">✨ Get Personalized Plan Recommendations</h3>
-                        <textarea id="recommendationInput" class="w-full p-4 border border-gray-300 rounded-lg mb-4 focus:ring-blue-500 focus:border-blue-500" rows="5" placeholder="Tell us about your needs (e.g., 'I am 30, married with two kids, looking for health and life insurance that covers chronic conditions.')."></textarea>
-                        <button id="getRecommendationBtn" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-md hover:bg-blue-700 transition duration-300 transform hover:scale-105">
-                            Get ✨ Personalized Plan Recommendation
-                        </button>
-                        <div id="recommendationOutput" class="mt-6 p-4 bg-blue-100 border border-blue-300 rounded-lg text-left text-gray-800 hidden">
-                            <p class="text-gray-600 italic">Thinking...</p>
-                        </div>
-                    </div>
-
-                    <!-- Coverage Explainer -->
-                    <div class="bg-white p-8 rounded-xl shadow-lg border border-green-200">
-                        <h3 class="2xl font-semibold text-gray-900 mb-4">✨ Explain Coverage Term</h3>
-                        <input type="text" id="termInput" class="w-full p-4 border border-gray-300 rounded-lg mb-4 focus:ring-green-500 focus:border-green-500" placeholder="e.g., 'deductible', 'premium', 'liability coverage'">
-                        <button id="explainTermBtn" class="bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-md hover:bg-green-700 transition duration-300 transform hover:scale-105">
-                            ✨ Explain Coverage Term
-                        </button>
-                        <div id="explanationOutput" class="mt-6 p-4 bg-green-100 border border-green-300 rounded-lg text-left text-gray-800 hidden">
-                            <p class="text-gray-600 italic">Thinking...</p>
-                        </div>
-                    </div>
-
-                    <!-- NEW: What If Scenario Planner -->
-                    <div class="bg-white p-8 rounded-xl shadow-lg border border-purple-200">
-                        <h3 class="2xl font-semibold text-gray-900 mb-4">✨ What If Scenario Planner</h3>
-                        <textarea id="scenarioInput" class="w-full p-4 border border-gray-300 rounded-lg mb-4 focus:ring-purple-500 focus:border-purple-500" rows="5" placeholder="Describe a hypothetical situation (e.g., 'What if my car is stolen and I only have liability insurance?')."></textarea>
-                        <button id="getScenarioAnalysisBtn" class="bg-purple-600 text-white font-bold py-3 px-8 rounded-full shadow-md hover:bg-purple-700 transition duration-300 transform hover:scale-105">
-                            Get ✨ Scenario Analysis
-                        </button>
-                        <div id="scenarioOutput" class="mt-6 p-4 bg-purple-100 border border-purple-300 rounded-lg text-left text-gray-800 hidden">
-                            <p class="text-gray-600 italic">Thinking...</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-16 bg-blue-700 text-white mt-8 rounded-lg mx-4 shadow-md">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-12">Loved by Thousands of Users</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-blue-800 p-8 rounded-xl shadow-lg">
-                        <img src="https://placehold.co/80x80/FFFFFF/000000?text=JD" alt="Customer Jane Doe" class="mx-auto rounded-full mb-4">
-                        <p class="text-lg italic mb-4">"InsureBuy made finding the right health insurance incredibly easy. Their comparison tool is top-notch!"</p>
-                        <p class="font-semibold">- Jane D., New York - Health Insurance</p>
-                    </div>
-                    <div class="bg-blue-800 p-8 rounded-xl shadow-lg">
-                        <img src="https://placehold.co/80x80/FFFFFF/000000?text=JS" alt="Customer John Smith" class="mx-auto rounded-full mb-4">
-                        <p class="text-lg italic mb-4">"I saved so much on my auto insurance thanks to InsureBuy. Highly recommend their service!"</p>
-                        <p class="font-semibold">- John S., California - Auto Insurance</p>
-                    </div>
-                    <div class="bg-blue-800 p-8 rounded-xl shadow-lg">
-                        <img src="https://placehold.co/80x80/FFFFFF/000000?text=SL" alt="Customer Sarah Lee" class="mx-auto rounded-full mb-4">
-                        <p class="text-lg italic mb-4">"The customer support was exceptional. They guided me through every step of getting life insurance."</p>
-                        <p class="font-semibold">- Sarah L., Texas - Life Insurance</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="py-16 bg-white rounded-lg mx-4 mt-8 shadow-md">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Our Story: Simplifying Insurance for You</h2>
-                <div class="max-w-3xl mx-auto text-left text-gray-700 text-lg leading-relaxed">
-                    <img src="https://placehold.co/150x150/E0E0E0/000000?text=Team" alt="InsureBuy Team" class="mx-auto rounded-full mb-6 shadow-md">
-                    <p class="mb-6">
-                        At InsureBuy, our journey began with a simple yet powerful idea: to demystify insurance and make it
-                        accessible for everyone. We noticed that many people found insurance policies confusing, overwhelming,
-                        and difficult to compare. That's why we set out to create a platform that prioritizes clarity,
-                        simplicity, and personalized guidance.
-                    </p>
-                    <p class="mb-6">
-                        Our team of passionate experts combines years of experience in the insurance industry with cutting-edge
-                        technology, including our innovative AI Assistant. This unique blend allows us to offer not just
-                        a wide range of plans, but also intelligent tools that help you understand what you're buying and
-                        why it's the right fit for your unique life.
-                    </p>
-                    <p class="mb-6">
-                        We believe that protecting your future shouldn't be a complex chore. It should be a straightforward,
-                        empowering decision. Every feature on InsureBuy, from our easy comparison tools to our direct contact
-                        support, is designed with you in mind. We're committed to being your trusted partner, ensuring you
-                        feel confident and secure with your insurance choices.
-                    </p>
-                    <p>
-                        Join the thousands who have already simplified their insurance journey with InsureBuy. We're here
-                        to help you navigate the world of health, auto, life, and home insurance with ease and confidence.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- In-depth "Learn More" sections (remaining on mainContent) -->
-        <section id="life-insurance-details" class="py-16 bg-blue-50 rounded-lg mx-4 mt-8 shadow-md hidden">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Learn More About Life Insurance</h2>
-                <div class="max-w-3xl mx-auto text-left text-gray-700 text-lg leading-relaxed">
-                    <p class="mb-6">
-                        Life insurance is a contract between an insurance policy holder and an insurer or assurer, where the insurer promises to pay a designated beneficiary a sum of money upon the death of an insured person (often the policy holder). In exchange for the payment of premium, the insurer pays out a lump sum called a "death benefit" to the beneficiaries after the insured's death.
-                    </p>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Types of Life Insurance:</h3>
-                    <ul class="list-disc list-inside mb-6 space-y-2">
-                        <li>
-                            <strong>Term Life Insurance:</strong> Provides coverage for a specific period (e.g., 10, 20, 30 years). It's generally more affordable and pays out if the insured dies within the term.
-                        </li>
-                        <li>
-                            <strong>Whole Life Insurance:</strong> Offers lifelong coverage as long as premiums are paid. It includes a cash value component that grows over time on a tax-deferred basis, which you can borrow against or withdraw.
-                        </li>
-                        <li>
-                            <strong>Universal Life Insurance:</strong> A type of permanent life insurance with flexible premiums and a cash value component. It offers more flexibility than whole life insurance regarding premiums and death benefits.
-                        </li>
-                        <li>
-                            <strong>Variable Life Insurance:</strong> A permanent life insurance policy with a cash value that can be invested in a variety of sub-accounts, similar to mutual funds. The cash value and death benefit can fluctuate based on investment performance.
-                        </li>
-                    </ul>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Key Benefits:</h3>
-                    <ul class="list-disc list-inside mb-6 space-y-2">
-                        <li>Provides financial security for your loved ones after your passing.</li>
-                        <li>Can cover funeral costs, outstanding debts, and daily living expenses for your family.</li>
-                        <li>Some policies offer cash value that can be accessed during your lifetime.</li>
-                        <li>Can be used for estate planning and financial transfer.</li>
-                    </ul>
-                    <h3 class="2xl font-semibold text-gray-900 mb-4">Who Needs Life Insurance?</h3>
-                    <p class="mb-6">
-                        Anyone who has dependents (spouse, children, elderly parents) or significant debts (mortgage, student loans) that would be a burden to others if they were no longer around should consider life insurance. It's also a valuable tool for business owners and those looking to leave a legacy.
-                    </p>
-                    <p>
-                        At InsureBuy, we help you understand these options and find a life insurance policy that aligns perfectly with your financial goals and family's needs.
-                    </p>
-                </div>
-                <button class="back-to-plans-page-btn bg-gray-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-800 transition duration-300 transform hover:scale-105 mt-8">
-                    Back to Plans Overview
-                </button>
-            </div>
-        </section>
-
-        <section id="health-insurance-details" class="py-16 bg-green-50 rounded-lg mx-4 mt-8 shadow-md hidden">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Learn More About Health Insurance</h2>
-                <div class="max-w-3xl mx-auto text-left text-gray-700 text-lg leading-relaxed">
-                    <p class="mb-6">
-                        Health insurance is a type of insurance coverage that covers the cost of an insured individual's medical and surgical expenses. Depending on the type of health insurance coverage, either the insured pays costs out-of-pocket and is then reimbursed, or the insurer makes payments directly to the provider.
-                    </p>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Types of Health Insurance Plans:</h3>
-                    <ul class="list-disc list-inside mb-6 space-y-2">
-                        <li>
-                            <strong>HMO (Health Maintenance Organization):</strong> Generally limits coverage to care from doctors who work for or contract with the HMO. It usually won't cover out-of-network care except in an emergency.
-                        </li>
-                        <li>
-                            <strong>PPO (Preferred Provider Organization):</strong> Allows you to choose your own doctors and hospitals. You pay less if you use providers in the plan's network, but you can go out-of-network for a higher cost.
-                        </li>
-                        <li>
-                            <strong>EPO (Exclusive Provider Organization):</strong> A managed care plan where services are covered only if you use doctors, specialists, or hospitals in the plan’s network (except in an emergency).
-                        </li>
-                        <li>
-                            <strong>POS (Point of Service):</strong> A hybrid of HMO and PPO plans. You choose a primary care doctor within the network, but you can go outside the network for care, though you'll pay more.
-                        </li>
-                    </ul>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Key Benefits:</h3>
-                    <ul class="list-disc list-inside mb-6 space-y-2">
-                        <li>Covers costs for doctor visits, hospital stays, and emergency services.</li>
-                        <li>Includes prescription drug coverage.</li>
-                        <li>Often covers preventive care like screenings and vaccinations.</li>
-                        <li>Provides financial protection against high medical bills.</li>
-                    </ul>
-                    <h3 class="2xl font-semibold text-gray-900 mb-4">Who Needs Health Insurance?</h3>
-                    <p class="mb-6">
-                        Given the high cost of healthcare, everyone needs health insurance to protect themselves and their families from unexpected medical expenses. It ensures access to necessary medical care, from routine check-ups to emergency treatments.
-                    </p>
-                </div>
-                <button class="back-to-plans-page-btn bg-gray-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-800 transition duration-300 transform hover:scale-105 mt-8">
-                    Back to Plans Overview
-                </button>
-            </div>
-        </section>
-
-        <section id="auto-insurance-details" class="py-16 bg-yellow-50 rounded-lg mx-4 mt-8 shadow-md hidden">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Learn More About Auto Insurance</h2>
-                <div class="max-w-3xl mx-auto text-left text-gray-700 text-lg leading-relaxed">
-                    <p class="mb-6">
-                        Auto insurance protects you financially in the event of an accident or theft involving your vehicle. It can cover damages to your car, damages to other vehicles or property, and medical expenses for injuries. Most states require drivers to have at least a minimum amount of auto insurance.
-                    </p>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Common Types of Auto Coverage:</h3>
-                    <ul class="list-disc list-inside mb-6 space-y-2">
-                        <li>
-                            <strong>Liability Coverage:</strong> Covers damages and injuries you cause to others in an at-fault accident. It includes bodily injury liability and property damage liability.
-                        </li>
-                        <li>
-                            <strong>Collision Coverage:</b> Pays for damage to your own vehicle if you hit another car or object, regardless of who is at fault.
-                        </li>
-                        <li>
-                            <strong>Comprehensive Coverage:</strong> Covers damage to your car from incidents other than collisions, such as theft, vandalism, fire, or natural disasters.
-                        </li>
-                        <li>
-                            <strong>Uninsured/Underinsured Motorist Coverage:</strong> Protects you if you're hit by a driver who doesn't have insurance or doesn't have enough insurance to cover your damages.
-                        </li>
-                        <li>
-                            <strong>Medical Payments/Personal Injury Protection (PIP):</strong> Covers medical expenses for you and your passengers after an accident, regardless of fault.
-                        </li>
-                    </ul>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Key Benefits:</h3>
-                    <ul class="list-disc list-inside mb-6 space-y-2">
-                        <li>Protects your financial assets in case of an accident.</li>
-                        <li>Covers repair or replacement costs for your vehicle.</li>
-                        <li>Pays for medical expenses resulting from car accidents.</li>
-                        <li>Provides legal protection in liability cases.</li>
-                    </ul>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Who Needs Auto Insurance?</h3>
-                    <p class="mb-6">
-                        Anyone who owns or drives a car needs auto insurance. It's legally required in most places and provides crucial financial protection against the unpredictable nature of road travel.
-                    </p>
-                </div>
-                <button class="back-to-plans-page-btn bg-gray-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-800 transition duration-300 transform hover:scale-105 mt-8">
-                    Back to Plans Overview
-                </button>
-            </div>
-        </section>
-
-        <section id="home-insurance-details" class="py-16 bg-purple-50 rounded-lg mx-4 mt-8 shadow-md hidden">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Learn More About Home Insurance</h2>
-                <div class="max-w-3xl mx-auto text-left text-gray-700 text-lg leading-relaxed">
-                    <p class="mb-6">
-                        Home insurance, also known as homeowner's insurance, protects your house and your belongings from covered perils like fire, theft, vandalism, and certain natural disasters. It also provides liability coverage for accidents that occur on your property.
-                    </p>
-                    <h3 class="2xl font-semibold text-gray-900 mb-4">Key Components of Home Insurance:</h3>
-                    <ul class="list-disc list-inside mb-6 space-y-2">
-                        <li>
-                            <strong>Dwelling Coverage:</strong> Pays to repair or rebuild your home's structure if it's damaged by a covered peril.
-                        </li>
-                        <li>
-                            <strong>Other Structures Coverage:</strong> Covers detached structures on your property, like garages or sheds.
-                        </li>
-                        <li>
-                            <strong>Personal Property Coverage:</strong> Protects your belongings inside your home, such as furniture, electronics, and clothing, whether they're at home or stolen elsewhere.
-                        </li>
-                        <li>
-                            <strong>Loss of Use/Additional Living Expenses:</strong> Pays for extra living costs (like hotel bills and meals) if you can't live in your home due to a covered loss.
-                        </li>
-                        <li>
-                            <strong>Personal Liability Coverage:</strong> Protects you financially if someone is injured on your property and you're found responsible.
-                        </li>
-                        <li>
-                            <strong>Medical Payments Coverage:</strong> Pays for medical expenses for guests injured on your property, regardless of fault.
-                        </li>
-                    </ul>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Key Benefits:</h3>
-                    <ul class="list-disc list-inside mb-6 space-y-2">
-                        <li>Financial protection for your home and personal belongings.</li>
-                        <li>Coverage for living expenses if your home becomes uninhabitable.</li>
-                        <li>Liability protection against lawsuits from injuries on your property.</li>
-                        <li>Peace of mind knowing your largest asset is protected.</li>
-                    </ul>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Who Needs Home Insurance?</h3>
-                    <p class="mb-6">
-                        Anyone who owns a home, whether it's a primary residence, a condo, or a rental property, needs home insurance. It's often a requirement for mortgage lenders and essential for protecting your significant investment.
-                    </p>
-                </div>
-                <button class="back-to-plans-page-btn bg-gray-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-800 transition duration-300 transform hover:scale-105 mt-8">
-                    Back to Plans Overview
-                </button>
-            </div>
-        </section>
-
-        <section id="travel-insurance-details" class="py-16 bg-red-50 rounded-lg mx-4 mt-8 shadow-md hidden">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Learn More About Travel Insurance</h2>
-                <div class="max-w-3xl mx-auto text-left text-gray-700 text-lg leading-relaxed">
-                    <p class="mb-6">
-                        Travel insurance is designed to protect you from financial risks and losses that can occur while you're traveling, both domestically and internationally. These can range from minor inconveniences like delayed luggage to major emergencies like unexpected medical issues or trip cancellations.
-                    </p>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Common Coverages in Travel Insurance:</h3>
-                    <ul class="list-disc list-inside mb-6 space-y-2">
-                        <li>
-                            <strong>Trip Cancellation/Interruption:</strong> Reimburses non-refundable expenses if your trip is canceled or cut short due to a covered reason (e.g., illness, natural disaster).
-                        </li>
-                        <li>
-                            <strong>Emergency Medical & Dental:</strong> Covers medical emergencies, hospital stays, and emergency dental treatment while you're away from home.
-                        </li>
-                        <li>
-                            <strong>Emergency Evacuation:</strong> Covers the cost of transporting you to the nearest adequate medical facility or back home if medically necessary.
-                        </li>
-                        <li>
-                            <strong>Baggage Loss/Delay:</strong> Reimburses you for lost, stolen, or damaged luggage, and provides funds for essential items if your bags are delayed.
-                        </li>
-                        <li>
-                            <strong>Travel Delay:</strong> Covers expenses like meals and accommodation if your trip is delayed for a covered reason.
-                        </li>
-                    </ul>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Key Benefits:</h3>
-                    <ul class="list-disc list-inside mb-6 space-y-2">
-                        <li>Financial protection against unforeseen travel disruptions.</li>
-                        <li>Access to emergency medical care away from home.</li>
-                        <li>Assistance services for travel emergencies (e.g., rebooking flights).</li>
-                        <li>Peace of mind to enjoy your trip without worry.</li>
-                    </ul>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Who Needs Travel Insurance?</h3>
-                    <p class="mb-6">
-                        Anyone planning a trip, especially international travelers, those with pre-existing medical conditions, or individuals making significant non-refundable travel investments, should consider travel insurance. It's an essential safeguard against the unexpected.
-                    </p>
-                </div>
-                <button class="back-to-plans-page-btn bg-gray-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-800 transition duration-300 transform hover:scale-105 mt-8">
-                    Back to Plans Overview
-                </button>
-            </div>
-        </section>
-
-        <section id="student-insurance-details" class="py-16 bg-indigo-50 rounded-lg mx-4 mt-8 shadow-md hidden">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Learn More About Student Insurance</h2>
-                <div class="max-w-3xl mx-auto text-left text-gray-700 text-lg leading-relaxed">
-                    <p class="mb-6">
-                        Student insurance is a specialized type of insurance designed to meet the unique needs of students, whether they are studying abroad, living in a dormitory, or simply need specific coverage for their academic life. It often combines elements of health, property, and liability insurance.
-                    </p>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Types of Student Insurance Coverage:</h3>
-                    <ul class="list-disc list-inside mb-6 space-y-2">
-                        <li>
-                            <strong>Student Health Insurance:</strong> Provides coverage for medical expenses, doctor visits, hospitalizations, and sometimes mental health services, especially crucial for international students or those not covered by a family plan.
-                        </li>
-                        <li>
-                            <strong>Renters/Contents Insurance:</strong> Protects personal belongings (laptops, textbooks, clothes) from theft, fire, or damage, particularly important for students living in dorms or rented accommodations.
-                        </li>
-                        <li>
-                            <strong>Tuition Protection/Refund Insurance:</strong> Reimburses tuition costs if a student needs to withdraw from school due to a covered illness, accident, or other unforeseen event.
-                        </li>
-                        <li>
-                            <strong>Liability Insurance:</strong> Covers legal costs and damages if the student accidentally causes injury to someone or damage to property.
-                        </li>
-                    </ul>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Key Benefits:</h3>
-                    <ul class="list-disc list-inside mb-6 space-y-2">
-                        <li>Access to medical care while away from home or in a foreign country.</li>
-                        <li>Protection for valuable personal items.</li>
-                        <li>Financial safeguard for educational investments.</li>
-                        <li>Peace of mind for students and their families.</li>
-                    </ul>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Who Needs Student Insurance?</h3>
-                    <p class="mb-6">
-                        Students, particularly those attending college or university, international students, or those living independently, should consider student insurance. It provides a safety net for potential health issues, property losses, and unexpected academic interruptions.
-                    </p>
-                </div>
-                <button class="back-to-plans-page-btn bg-gray-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-800 transition duration-300 transform hover:scale-105 mt-8">
-                    Back to Plans Overview
-                </button>
-            </div>
-        </section>
-
-        <section id="business-insurance-details" class="py-16 bg-orange-50 rounded-lg mx-4 mt-8 shadow-md hidden">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Learn More About Business Insurance</h2>
-                <div class="max-w-3xl mx-auto text-left text-gray-700 text-lg leading-relaxed">
-                    <p class="mb-6">
-                        Business insurance protects businesses from financial losses due to various risks inherent in operations. This can include property damage, liability claims, employee injuries, and loss of income. Having adequate business insurance is crucial for safeguarding your company's assets and ensuring its continuity.
-                    </p>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Common Types of Business Insurance:</h3>
-                    <ul class="list-disc list-inside mb-6 space-y-2">
-                        <li>
-                            <strong>General Liability Insurance:</strong> Covers claims of bodily injury or property damage caused by your business operations, products, or at your business location.
-                        </li>
-                        <li>
-                            <strong>Commercial Property Insurance:</strong> Protects your business's physical assets, such as buildings, equipment, inventory, and furniture, from perils like fire, theft, and natural disasters.
-                        </li>
-                        <li>
-                            <strong>Business Interruption Insurance:</strong> Replaces lost income and covers extra expenses if your business has to temporarily close due to a covered property loss.
-                        </li>
-                        <li>
-                            <strong>Workers' Compensation Insurance:</strong> Covers medical expenses and lost wages for employees who be injured or become ill on the job. It's legally required in most states.
-                        </li>
-                        <li>
-                            <strong>Professional Liability Insurance (E&O):</strong> Protects professionals from claims of negligence or mistakes in their services.
-                        </li>
-                        <li>
-                            <strong>Commercial Auto Insurance:</strong> Covers vehicles used for business purposes, providing similar coverages to personal auto insurance but for business operations.
-                        </li>
-                    </ul>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Key Benefits:</h3>
-                    <ul class="list-disc list-inside mb-6 space-y-2">
-                        <li>Protects business assets and operations from unexpected events.</li>
-                        <li>Covers legal costs and settlements for liability claims.</li>
-                        <li>Ensures financial stability during business interruptions.</li>
-                        <li>Helps maintain compliance with legal and contractual requirements.</li>
-                    </ul>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Who Needs Business Insurance?</h3>
-                    <p class="mb-6">
-                        Virtually all businesses, regardless of size or industry, need business insurance. It's a fundamental part of risk management that protects against the significant financial impact of unforeseen events.
-                    </p>
-                </div>
-                <button class="back-to-plans-page-btn bg-gray-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-800 transition duration-300 transform hover:scale-105 mt-8">
-                    Back to Plans Overview
-                </button>
-            </div>
-        </section>
-
-        <section id="pet-insurance-details" class="py-16 bg-pink-50 rounded-lg mx-4 mt-8 shadow-md hidden">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Learn More About Pet Insurance</h2>
-                <div class="max-w-3xl mx-auto text-left text-gray-700 text-lg leading-relaxed">
-                    <p class="mb-6">
-                        Pet insurance helps cover the cost of veterinary care for your beloved animal companions. It can significantly reduce out-of-pocket expenses for accidents, illnesses, and routine care, ensuring your pet gets the best medical attention without financial strain.
-                    </p>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Types of Pet Insurance Plans:</h3>
-                    <ul class="list-disc list-inside mb-6 space-y-2">
-                        <li>
-                            <strong>Accident-Only Plans:</strong> Covers costs related to accidents, such as broken bones, swallowed objects, or injuries from falls. These are typically the most affordable plans.
-                        </li>
-                        <li>
-                            <strong>Accident & Illness Plans:</strong> The most common type, covering both accidents and illnesses like infections, cancer, digestive issues, and chronic conditions.
-                        </li>
-                        <li>
-                            <strong>Wellness/Routine Care Plans:</strong> An add-on or separate plan that covers preventive care, such as annual check-ups, vaccinations, flea and heartworm prevention, and teeth cleaning.
-                        </li>
-                    </ul>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Key Benefits:</h3>
-                    <ul class="list-disc list-inside mb-6 space-y-2">
-                        <li>Reduces the financial burden of unexpected veterinary bills.</li>
-                        <li>Allows you to choose the best treatment for your pet without budget constraints.</li>
-                        <li>Covers a wide range of medical conditions and emergencies.</li>
-                        <li>Provides peace of mind for pet owners.</li>
-                    </ul>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Who Needs Pet Insurance?</h3>
-                    <p class="mb-6">
-                        Pet owners who want to ensure their furry, feathered, or scaled family members receive top-notch medical care without facing significant financial stress should consider pet insurance. It's particularly beneficial for young pets who are prone to accidents or older pets who may develop chronic conditions.
-                    </p>
-                </div>
-                <button class="back-to-plans-page-btn bg-gray-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-800 transition duration-300 transform hover:scale-105 mt-8">
-                    Back to Plans Overview
-                </button>
-            </div>
-        </section>
-
-        <section id="contact" class="py-16 bg-white rounded-lg mx-4 mt-8 shadow-md">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">Ready to Get Started?</h2>
-                <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-                    Get a personalized quote in minutes. Experience the simplicity of InsureBuy today!
-                </p>
-                <a href="#" class="bg-blue-600 text-white font-bold py-4 px-10 rounded-full shadow-lg text-xl hover:bg-blue-700 transition duration-300 transform hover:scale-105">
-                    Get Your Free Quote Now
-                </a>
-
-                <div class="mt-12 pt-8 border-t border-gray-200">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Contact Us Directly</h3>
-                    <p class="text-lg text-gray-700">For direct assistance, please contact:</p>
-                    <p class="text-xl font-semibold text-blue-700 mt-2">Bharath Kumar</p>
-                    <p class="text-xl font-semibold text-blue-700">+37122722222</p>
-                </div>
-            </div>
-        </section>
-    </div> <!-- End of mainContent -->
-
-    <!-- User Registration/Login Page (remains separate) -->
-    <section id="user-registration-page" class="hidden py-16 bg-blue-50 rounded-lg mx-4 mt-8 shadow-md scroll-mt-20">
+    <!-- Our Popular Insurance Plans Section -->
+    <section id="our-plans-section" class="py-16 bg-gray-100 rounded-lg mx-4 mt-8 shadow-md">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">Account Access</h2>
-            <div id="authFormsContainer" class="max-w-md mx-auto bg-white p-8 rounded-xl shadow-lg border border-blue-200">
-                <div class="flex justify-center mb-6 space-x-4">
-                    <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio text-blue-600 h-5 w-5" name="auth_type" value="register" checked id="radioRegister">
-                        <span class="ml-2 text-gray-700 text-lg font-medium">Register</span>
-                    </label>
-                    <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio text-blue-600 h-5 w-5" name="auth_type" value="login" id="radioLogin">
-                        <span class="ml-2 text-gray-700 text-lg font-medium">Login</span>
-                    </label>
-                    <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio text-blue-600 h-5 w-5" name="auth_type" value="guest" id="radioGuest">
-                        <span class="ml-2 text-gray-700 text-lg font-medium">Guest</span>
-                    </label>
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Find the Right Coverage for You</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-purple-200 hover:border-purple-400 transition duration-300 transform hover:scale-100">
+                    <div class="text-purple-600 text-5xl mb-4">❤️</div> <!-- ICON: Heart -->
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Life Insurance</h3>
+                    <p class="text-gray-700 mb-4">Protect your loved ones' financial future.</p>
+                    <a href="index.html#life-insurance-details" class="inline-block bg-purple-600 text-white font-medium py-2 px-5 rounded-full hover:bg-purple-700 transition duration-300 learn-more-btn">Learn More →</a>
                 </div>
-
-                <!-- Register Fields -->
-                <div id="registerFields" class="space-y-4 text-left">
-                    <div>
-                        <label for="regUsername" class="block text-gray-700 text-sm font-semibold mb-2">Username:</label>
-                        <input type="text" id="regUsername" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Choose a username">
-                        <span id="regUsernameError" class="error-message hidden"></span>
-                    </div>
-                    <div>
-                        <label for="regEmail" class="block text-gray-700 text-sm font-semibold mb-2">Email:</label>
-                        <input type="email" id="regEmail" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your email">
-                        <span id="regEmailError" class="error-message hidden"></span>
-                    </div>
-                    <div>
-                        <label for="regPassword" class="block text-gray-700 text-sm font-semibold mb-2">Password:</label>
-                        <input type="password" id="regPassword" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Create a password">
-                        <div id="passwordStrength" class="text-xs mt-1 text-gray-500"></div>
-                        <span id="regPasswordError" class="error-message hidden"></span>
-                    </div>
-                    <div>
-                        <label for="regConfirmPassword" class="block text-gray-700 text-sm font-semibold mb-2">Confirm Password:</label>
-                        <input type="password" id="regConfirmPassword" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Confirm your password">
-                        <span id="regConfirmPasswordError" class="error-message hidden"></span>
-                    </div>
-                    <button id="registerBtn" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-blue-700 transition duration-300 transform hover:scale-105 mt-6">
-                        Register
-                    </button>
-                    <button id="registerGmailBtn" class="w-full bg-red-600 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-red-700 transition duration-300 transform hover:scale-105 mt-4 flex items-center justify-center space-x-2">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M22.001 12.001C22.001 11.162 21.933 10.329 21.799 9.505L20.001 10.978L20.001 9.001L22.001 9.001C22.001 9.001 22.001 9.001 22.001 9.001Z" fill="#FBCD0B"></path>
-                            <path d="M12.001 21.999C12.838 21.999 13.671 21.931 14.495 21.797L13.022 20.001L14.999 20.001L14.999 22.001C14.999 22.001 14.999 22.001 14.999 22.001Z" fill="#FBCD0B"></path>
-                            <path d="M12.001 2C11.162 2 10.329 2.067 9.505 2.201L10.978 4.001L9.001 4.001L9.001 2.001C9.001 2.001 9.001 2.001 9.001 2.001Z" fill="#FBCD0B"></path>
-                            <path d="M2.201 9.505C2.067 10.329 2 11.162 2 12.001L4.001 10.978L4.001 12.999L2.001 12.999C2.001 12.999 2.001 12.999 2.001 12.999Z" fill="#FBCD0B"></path>
-                            <path d="M12.001 2C6.486 2 2.001 6.486 2.001 12.001C2.001 17.516 6.486 22.001 12.001 22.001C17.516 22.001 22.001 17.516 22.001 12.001C22.001 6.486 17.516 2 12.001 2ZM12.001 19.569C8.031 19.569 4.431 16.711 3.535 12.501C3.497 12.333 3.477 12.167 3.477 12.001C3.477 7.21 7.21 3.477 12.001 3.477C16.792 3.477 20.525 7.21 20.525 12.001C20.525 16.792 16.792 20.525 12.001 20.525C11.835 20.525 11.669 20.505 11.501 20.467C7.491 19.571 4.634 15.971 4.634 12.001C4.634 8.031 8.031 4.634 12.001 4.634C15.971 4.634 19.368 8.031 19.368 12.001C19.368 15.971 15.971 19.368 12.001 19.368Z" fill="#4285F4"></path>
-                            <path d="M12 7V17L18.5 12L12 7Z" fill="#34A853"></path>
-                            <path d="M12 7V17L5.5 12L12 7Z" fill="#EA4335"></path>
-                            <path d="M17.848 10.999L12 17V7L17.848 10.999ZM12 17L5.5 12L12 7V17Z" fill="#4285F4"></path>
-                            <path d="M12.001 19.368C11.835 19.368 11.669 19.348 11.501 19.31L12.001 20.525V19.368Z" fill="#FBBC04"></path>
-                            <path d="M12.001 4.634V3.477L11.501 4.634L12.001 4.634Z" fill="#FBBC04"></path>
-                            <path d="M19.368 12.001H20.525L19.368 11.501V12.001Z" fill="#EA4335"></path>
-                            <path d="M3.477 12.001H4.634L3.477 12.501V12.001Z" fill="#34A853"></path>
-                        </svg>
-                        <span>Register with Gmail</span>
-                    </button>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-blue-200 hover:border-blue-400 transition duration-300 transform hover:scale-100">
+                    <div class="text-blue-600 text-5xl mb-4">🏥</div> <!-- ICON: Hospital/Health -->
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Health Insurance</h3>
+                    <p class="text-gray-700 mb-4">Comprehensive coverage for medical expenses.</p>
+                    <a href="index.html#health-insurance-details" class="inline-block bg-blue-600 text-white font-medium py-2 px-5 rounded-full hover:bg-blue-700 transition duration-300 learn-more-btn">Learn More →</a>
                 </div>
-
-                <!-- Login Fields -->
-                <div id="loginFields" class="space-y-4 text-left hidden">
-                    <div>
-                        <label for="loginUsernameEmail" class="block text-gray-700 text-sm font-semibold mb-2">Username or Email:</label>
-                        <input type="text" id="loginUsernameEmail" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your username or email">
-                        <span id="loginUsernameEmailError" class="error-message hidden"></span>
-                    </div>
-                    <div>
-                        <label for="loginPassword" class="block text-gray-700 text-sm font-semibold mb-2">Password:</label>
-                        <input type="password" id="loginPassword" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your password">
-                        <span id="loginPasswordError" class="error-message hidden"></span>
-                    </div>
-                    <div class="text-right mt-1 mb-4">
-                        <a href="#" id="forgotPasswordLink" class="text-blue-600 hover:text-blue-800 text-sm font-medium">Forgot Password?</a>
-                    </div>
-                    <button id="loginBtn" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-blue-700 transition duration-300 transform hover:scale-105 mt-6">
-                        Login
-                    </button>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-green-200 hover:border-green-400 transition duration-300 transform hover:scale-100">
+                    <div class="text-green-600 text-5xl mb-4">🚗</div> <!-- ICON: Car -->
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Auto Insurance</h3>
+                    <p class="text-gray-700 mb-4">Protect your vehicle and yourself on the road.</p>
+                    <a href="index.html#auto-insurance-details" class="inline-block bg-green-600 text-white font-medium py-2 px-5 rounded-full hover:bg-green-700 transition duration-300 learn-more-btn">Learn More →</a>
                 </div>
-
-                <!-- Guest Fields -->
-                <div id="guestFields" class="space-y-4 text-left hidden">
-                    <div>
-                        <label for="guestUsername" class="block text-gray-700 text-sm font-semibold mb-2">Username (Mandatory):</label>
-                        <input type="text" id="guestUsername" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your guest username">
-                        <span id="guestUsernameError" class="error-message hidden"></span>
-                    </div>
-                    <button id="guestOkBtn" class="w-full bg-green-600 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-green-700 transition duration-300 transform hover:scale-105 mt-6">
-                        OK
-                    </button>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-yellow-200 hover:border-yellow-400 transition duration-300 transform hover:scale-100">
+                    <div class="text-yellow-600 text-5xl mb-4">🏠</div> <!-- ICON: Home -->
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Home Insurance</h3>
+                    <p class="text-gray-700 mb-4">Safeguard your valuable asset from damages.</p>
+                    <a href="index.html#home-insurance-details" class="inline-block bg-yellow-600 text-white font-medium py-2 px-5 rounded-full hover:bg-yellow-700 transition duration-300 learn-more-btn">Learn More →</a>
                 </div>
-
-                <!-- Forgot Password Fields (New Frame) -->
-                <div id="forgotPasswordFields" class="space-y-4 text-left hidden">
-                    <div>
-                        <label for="forgotPasswordEmail" class="block text-gray-700 text-sm font-semibold mb-2">Registered Email ID:</label>
-                        <input type="email" id="forgotPasswordEmail" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your registered email">
-                        <span id="forgotPasswordError" class="error-message hidden"></span>
-                    </div>
-                    <button id="forgotPasswordOkBtn" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-blue-700 transition duration-300 transform hover:scale-105 mt-6">
-                        OK
-                    </button>
-                    <button id="backToLoginFromForgot" class="w-full bg-gray-300 text-gray-800 font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-400 transition duration-300 transform hover:scale-105 mt-4">
-                        Back to Login
-                    </button>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-red-200 hover:border-red-400 transition duration-300 transform hover:scale-100">
+                    <div class="text-red-600 text-5xl mb-4">✈️</div> <!-- ICON: Airplane -->
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Travel Insurance</h3>
+                    <p class="text-gray-700 mb-4">Travel with peace of mind, covered for emergencies.</p>
+                    <a href="index.html#travel-insurance-details" class="inline-block bg-red-600 text-white font-medium py-2 px-5 rounded-full hover:bg-red-700 transition duration-300 learn-more-btn">Learn More →</a>
                 </div>
-
-                <div id="authMessage" class="mt-6 p-3 rounded-lg text-sm hidden"></div>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-indigo-200 hover:border-indigo-400 transition duration-300 transform hover:scale-100">
+                    <div class="text-indigo-600 text-5xl mb-4">🎓</div> <!-- ICON: Graduation Cap -->
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Student Insurance</h3>
+                    <p class="text-gray-700 mb-4">Tailored plans for students, covering health & property.</p>
+                    <a href="index.html#student-insurance-details" class="inline-block bg-indigo-600 text-white font-medium py-2 px-5 rounded-full hover:bg-indigo-700 transition duration-300 learn-more-btn">Learn More →</a>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-orange-200 hover:border-orange-400 transition duration-300 transform hover:scale-100">
+                    <div class="text-orange-600 text-5xl mb-4">🏢</div> <!-- ICON: Building -->
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Business Insurance</h3>
+                    <p class="text-gray-700 mb-4">Protect your business assets and operations.</p>
+                    <a href="index.html#business-insurance-details" class="inline-block bg-orange-600 text-white font-medium py-2 px-5 rounded-full hover:bg-orange-700 transition duration-300 learn-more-btn">Learn More →</a>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-pink-200 hover:border-pink-400 transition duration-300 transform hover:scale-100">
+                    <div class="text-pink-600 text-5xl mb-4">🐾</div> <!-- ICON: Paw Print -->
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Pet Insurance</h3>
+                    <p class="text-gray-700 mb-4">Keep your furry friends healthy with vet coverage.</p>
+                    <a href="index.html#pet-insurance-details" class="inline-block bg-pink-600 text-white font-medium py-2 px-5 rounded-full hover:bg-pink-700 transition duration-300 learn-more-btn">Learn More →</a>
+                </div>
             </div>
-
-            <!-- My Account Dashboard (initially hidden) -->
-            <div id="myAccountDashboard" class="max-w-md mx-auto bg-white p-8 rounded-xl shadow-lg border border-blue-200 mt-8 hidden">
-                <h3 class="text-2xl font-bold text-gray-800 mb-4">Welcome, <span id="loggedInUsername"></span>!</h3>
-                <p class="text-gray-700 mb-6">This is your personalized dashboard. Here you can manage your policies, view quotes, and update your profile.</p>
-                <button id="signOutBtn" class="w-full bg-red-600 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-red-700 transition duration-300 transform hover:scale-105">
-                    Sign Out
-                </button>
-            </div>
-
-            <button id="backToMainWebsiteBtn" class="w-full bg-gray-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-800 transition duration-300 transform hover:scale-105 mt-8">
+            <a href="index.html" id="backToMainWebsiteBtnPlans" class="w-full inline-block bg-gray-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-800 transition duration-300 transform hover:scale-105 mt-8 max-w-xs">
                 Back to Main Website
-            </button>
+            </a>
         </div>
     </section>
 
@@ -719,14 +123,14 @@
                 <div class="md:w-1/4 mb-6 md:mb-0">
                     <h4 class="text-lg font-semibold text-white mb-3">PLANS</h4>
                     <ul class="space-y-2">
-                        <li><a href="plans.html#life-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Life Insurance</a></li>
-                        <li><a href="plans.html#health-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Health Insurance</a></li>
-                        <li><a href="plans.html#auto-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Auto Insurance</a></li>
-                        <li><a href="plans.html#home-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Home Insurance</a></li>
-                        <li><a href="plans.html#travel-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Travel Insurance</a></li>
-                        <li><a href="plans.html#student-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Student Insurance</a></li>
-                        <li><a href="plans.html#business-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Business Insurance</a></li>
-                        <li><a href="plans.html#pet-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Pet Insurance</a></li>
+                        <li><a href="index.html#life-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Life Insurance</a></li>
+                        <li><a href="index.html#health-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Health Insurance</a></li>
+                        <li><a href="index.html#auto-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Auto Insurance</a></li>
+                        <li><a href="index.html#home-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Home Insurance</a></li>
+                        <li><a href="index.html#travel-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Travel Insurance</a></li>
+                        <li><a href="index.html#student-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Student Insurance</a></li>
+                        <li><a href="index.html#business-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Business Insurance</a></li>
+                        <li><a href="index.html#pet-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Pet Insurance</a></li>
                     </ul>
                 </div>
                 <div class="md:w-1/4 mb-6 md:mb-0">
@@ -757,7 +161,6 @@
         </div>
     </footer>
 
-    <!-- External JavaScript file -->
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
