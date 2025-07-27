@@ -139,13 +139,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const signOutBtn = document.getElementById('signOutBtn');
     const authFormsContainer = document.getElementById('authFormsContainer'); 
 
-    // Navigation links to plans.html
-    const navPlansLink = document.getElementById('navPlansLink');
-    const explorePlansBtn = document.getElementById('explorePlansBtn');
+    // Navigation links from index.html header
+    const navHomeLinkIndex = document.getElementById('navHomeLinkIndex');
+    const navPlansLinkIndex = document.getElementById('navPlansLinkIndex');
+    const navAIAssistantLinkIndex = document.getElementById('navAIAssistantLinkIndex');
+    const navWhyChooseUsLinkIndex = document.getElementById('navWhyChooseUsLinkIndex');
+    const navAboutLinkIndex = document.getElementById('navAboutLinkIndex');
+    const navContactLinkIndex = document.getElementById('navContactLinkIndex');
 
-    // Navigation link to index.html from plans.html
-    const navHomeLink = document.getElementById('navHomeLink');
-    const backToMainWebsiteBtnAuthPage = document.getElementById('backToMainWebsiteBtn'); // Button on the auth page
+    // Button in index.html hero section
+    const heroGetQuoteLink = document.getElementById('heroGetQuoteLink'); // This is an <a> tag
+    const explorePlansBtn = document.getElementById('explorePlansBtn'); // This is a <button>
+
+    // Navigation links from plans.html header
+    const navHomeLinkPlans = document.getElementById('navHomeLinkPlans');
+    const navPlansLinkPlans = document.getElementById('navPlansLinkPlans'); // The 'Plans' link on plans.html itself
+    
+    // "Back to Main Website" button on plans.html footer
+    const backToMainWebsiteBtnPlans = document.getElementById('backToMainWebsiteBtnPlans');
+    
+    // "Back to Main Website" button on index.html auth page
+    const backToMainWebsiteBtnAuthPage = document.getElementById('backToMainWebsiteBtnAuthPage');
 
     // "Learn More" buttons on plans.html that link to sections on index.html
     const learnMoreButtons = document.querySelectorAll('.learn-more-btn');
@@ -240,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function showUserRegistrationPage() {
         console.log("showUserRegistrationPage called.");
         // If we are not on index.html, navigate there first
-        if (window.location.pathname.endsWith('/plans.html')) {
+        if (window.location.pathname.includes('/plans.html') || window.location.pathname.includes('/dashboard.html')) {
             window.location.href = getBaseUrl() + 'index.html#user-registration-page';
             return; // Exit to let the new page load and handle the display
         }
@@ -718,7 +732,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Event listener for the "Back to Main Website" button on Auth page (on index.html)
-    if (backToMainWebsiteBtnAuthPage) { // Renamed to avoid conflict with `backToMainWebsiteBtn` on plans.html
+    if (backToMainWebsiteBtnAuthPage) { 
         backToMainWebsiteBtnAuthPage.addEventListener('click', () => {
             console.log("Back to Main Website button clicked from Auth Page.");
             showAllMainContentSections(); // Show all primary homepage sections
@@ -769,26 +783,35 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Event listeners for main navigation links (on both index.html and plans.html)
-    document.querySelectorAll('nav .nav-link').forEach(link => {
-        link.addEventListener('click', (event) => {
-            const href = event.target.getAttribute('href');
-            if (href.startsWith('index.html#') || href.startsWith('#')) { // If it's an internal link on index.html
-                event.preventDefault(); // Prevent default anchor behavior
-                if (window.location.pathname.includes('/plans.html')) {
-                    // If currently on plans.html, navigate to index.html and then scroll
-                    window.location.href = href;
-                } else {
-                    // If already on index.html, just scroll
-                    showAllMainContentSections(); // Ensure all main sections are visible
-                    const targetElement = document.querySelector(href.substring(href.indexOf('#')));
-                    if (targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (document.querySelectorAll('nav .nav-link')) {
+        document.querySelectorAll('nav .nav-link').forEach(link => {
+            link.addEventListener('click', (event) => {
+                const href = event.target.getAttribute('href');
+                // Check if the link is an internal anchor on index.html
+                if (href.startsWith('#') || href.startsWith('index.html#')) { 
+                    event.preventDefault(); // Prevent default anchor behavior
+                    if (window.location.pathname.includes('/plans.html') || window.location.pathname.includes('/dashboard.html')) {
+                        // If currently on plans.html or dashboard.html, navigate to index.html and then scroll
+                        window.location.href = getBaseUrl() + 'index.html' + href.substring(href.indexOf('#'));
+                    } else {
+                        // If already on index.html, just scroll
+                        showAllMainContentSections(); // Ensure all main sections are visible
+                        const targetElement = document.querySelector(href.substring(href.indexOf('#')));
+                        if (targetElement) {
+                            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
                     }
+                } else if (href === 'plans.html') { // Direct link to plans.html
+                    event.preventDefault();
+                    window.location.href = getBaseUrl() + 'plans.html';
+                } else if (href === 'index.html') { // Direct link to index.html (Home)
+                    event.preventDefault();
+                    window.location.href = getBaseUrl() + 'index.html';
                 }
-            }
-            // If it's a direct link to plans.html, let default behavior handle it
+                // For other external links or unhandled internal links, let default behavior apply
+            });
         });
-    });
+    }
 
 
     // Initial state setup based on the current page
@@ -797,19 +820,19 @@ document.addEventListener('DOMContentLoaded', function() {
         checkUserStatus(); // Check user status to set up header links correctly
 
         const hash = window.location.hash;
-        if (window.location.pathname.includes('index.html')) {
+        if (window.location.pathname.includes('index.html') || window.location.pathname === '/') {
             // This is index.html
             if (hash === '#user-registration-page') {
                 showUserRegistrationPage();
-            } else if (hash.endsWith('-details')) { // If it's a detail section hash
+            } else if (hash.endsWith('-details')) { // If it's a detail section hash (e.g., #life-insurance-details)
                 hideAllMainContentSections();
-                const targetSection = document.getElementById(hash.substring(1));
+                const targetSection = document.getElementById(hash.substring(1)); // Remove '#'
                 if (targetSection) {
                     targetSection.classList.remove('hidden');
                     targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             } else {
-                showMainContent(); // Default for index.html
+                showMainContent(); // Default for index.html (show main marketing content)
             }
         } else if (window.location.pathname.includes('plans.html')) {
             // This is plans.html, no special section hiding is needed here as it's the only content
