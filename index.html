@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InsureBuy - Your One-Stop Insurance Solution</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
-    <!-- Google Font: Inter (added from previous version) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -19,11 +16,12 @@
 
             <nav>
                 <ul class="flex space-x-6 items-center">
-                    <li><a href="plans.html" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">Plans</a></li>
-                    <li><a href="#ai-assistant" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">AI Assistant</a></li>
-                    <li><a href="#why-choose-us" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">Why Choose Us?</a></li>
-                    <li><a href="#about" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">About Us</a></li>
-                    <li><a href="#contact" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">Contact</a></li>
+                    <li><a href="index.html" id="navHomeLinkIndex" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">Home</a></li>
+                    <li><a href="plans.html" id="navPlansLinkIndex" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">Plans</a></li>
+                    <li><a href="#ai-assistant" id="navAIAssistantLinkIndex" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">AI Assistant</a></li>
+                    <li><a href="#why-choose-us" id="navWhyChooseUsLinkIndex" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">Why Choose Us?</a></li>
+                    <li><a href="#about" id="navAboutLinkIndex" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">About Us</a></li>
+                    <li><a href="#contact" id="navContactLinkIndex" class="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 p-2 rounded-lg hover:bg-gray-100 nav-link">Contact</a></li>
                     <li>
                         <button id="loginBtnHeader" class="bg-blue-600 text-white font-bold py-2 px-5 rounded-full shadow-md hover:bg-blue-700 transition duration-300 transform hover:scale-105">Login</button>
                     </li>
@@ -35,7 +33,6 @@
         </div>
     </header>
 
-    <!-- Main Website Content Wrapper -->
     <div id="mainContent" class="transition-opacity duration-500">
         <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20 md:py-32 rounded-b-lg shadow-lg">
             <div class="container mx-auto px-4 text-center">
@@ -46,17 +43,16 @@
                     Simplified Insurance Buying. Compare, choose, and buy the best insurance plans tailored for your life, health, home, and auto.
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                    <a href="#contact" class="bg-yellow-400 text-blue-800 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-yellow-300 transition duration-300 transform hover:scale-105 text-xl">
+                    <a href="#contact" id="heroGetQuoteLink" class="bg-yellow-400 text-blue-800 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-yellow-300 transition duration-300 transform hover:scale-105 text-xl">
                         Get Your Free Quote Now
                     </a>
-                    <a href="plans.html" class="border-2 border-white text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-white hover:text-blue-700 transition duration-300 transform hover:scale-105">
+                    <button id="explorePlansBtn" class="border-2 border-white text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-white hover:text-blue-700 transition duration-300 transform hover:scale-105">
                         Explore Plans
-                    </a>
+                    </button>
                 </div>
             </div>
         </section>
 
-        <!-- New: As Seen On / Trusted By Section -->
         <section class="py-12 bg-gray-100 rounded-lg mx-4 mt-8 shadow-md text-center">
             <div class="container mx-auto px-4">
                 <h3 class="text-2xl font-bold text-gray-700 mb-8">Trusted by Partners like:</h3>
@@ -69,8 +65,6 @@
             </div>
         </section>
 
-        <!-- The "Our Popular Insurance Plans" section content is now in plans.html -->
-        <!-- This section is just a placeholder if needed, or can be removed entirely -->
         <section id="our-plans-section" class="hidden"></section>
 
         <section id="why-choose-us" class="py-16 bg-white rounded-lg shadow-md mx-4 mt-8">
@@ -78,23 +72,19 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">An Insurance Experience Designed for You</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <div class="bg-blue-50 p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
-                        <div class="text-blue-600 text-5xl mb-4">🔍</div> <!-- ICON: Magnifying Glass -->
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Easy Comparison</h3>
+                        <div class="text-blue-600 text-5xl mb-4">🔍</div> <h3 class="text-xl font-semibold text-gray-900 mb-3">Easy Comparison</h3>
                         <p class="text-gray-700">Compare multiple plans side-by-side to find the best fit for your needs.</p>
                     </div>
                     <div class="bg-green-50 p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
-                        <div class="text-green-600 text-5xl mb-4">🌐</div> <!-- ICON: Globe -->
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Wide Range of Plans</h3>
+                        <div class="text-green-600 text-5xl mb-4">🌐</div> <h3 class="text-xl font-semibold text-gray-900 mb-3">Wide Range of Plans</h3>
                         <p class="text-gray-700">From health to auto, life to home – we cover all your insurance needs.</p>
                     </div>
                     <div class="bg-purple-50 p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
-                        <div class="text-purple-600 text-5xl mb-4">🛡️</div> <!-- ICON: Shield/Lock -->
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Secure & Trustworthy</h3>
+                        <div class="text-purple-600 text-5xl mb-4">🛡️</div> <h3 class="text-xl font-semibold text-gray-900 mb-3">Secure & Trustworthy</h3>
                         <p class="text-gray-700">Your data is safe. We only partner with reputable insurance providers.</p>
                     </div>
                     <div class="bg-yellow-50 p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
-                        <div class="text-yellow-600 text-5xl mb-4">🎧</div> <!-- ICON: Headset/Support -->
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Expert Support</h3>
+                        <div class="text-yellow-600 text-5xl mb-4">🎧</div> <h3 class="text-xl font-semibold text-gray-900 mb-3">Expert Support</h3>
                         <p class="text-gray-700">Our dedicated team is here to guide you every step of the way.</p>
                     </div>
                 </div>
@@ -109,7 +99,6 @@
                 </p>
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
-                    <!-- Personalized Plan Recommendation -->
                     <div class="bg-white p-8 rounded-xl shadow-lg border border-blue-200">
                         <h3 class="text-2xl font-semibold text-gray-900 mb-4">✨ Get Personalized Plan Recommendations</h3>
                         <textarea id="recommendationInput" class="w-full p-4 border border-gray-300 rounded-lg mb-4 focus:ring-blue-500 focus:border-blue-500" rows="5" placeholder="Tell us about your needs (e.g., 'I am 30, married with two kids, looking for health and life insurance that covers chronic conditions.')."></textarea>
@@ -121,7 +110,6 @@
                         </div>
                     </div>
 
-                    <!-- Coverage Explainer -->
                     <div class="bg-white p-8 rounded-xl shadow-lg border border-green-200">
                         <h3 class="2xl font-semibold text-gray-900 mb-4">✨ Explain Coverage Term</h3>
                         <input type="text" id="termInput" class="w-full p-4 border border-gray-300 rounded-lg mb-4 focus:ring-green-500 focus:border-green-500" placeholder="e.g., 'deductible', 'premium', 'liability coverage'">
@@ -133,7 +121,6 @@
                         </div>
                     </div>
 
-                    <!-- NEW: What If Scenario Planner -->
                     <div class="bg-white p-8 rounded-xl shadow-lg border border-purple-200">
                         <h3 class="2xl font-semibold text-gray-900 mb-4">✨ What If Scenario Planner</h3>
                         <textarea id="scenarioInput" class="w-full p-4 border border-gray-300 rounded-lg mb-4 focus:ring-purple-500 focus:border-purple-500" rows="5" placeholder="Describe a hypothetical situation (e.g., 'What if my car is stolen and I only have liability insurance?')."></textarea>
@@ -202,7 +189,6 @@
             </div>
         </section>
 
-        <!-- In-depth "Learn More" sections (remaining on mainContent) -->
         <section id="life-insurance-details" class="py-16 bg-blue-50 rounded-lg mx-4 mt-8 shadow-md hidden">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Learn More About Life Insurance</h2>
@@ -336,7 +322,7 @@
                     <p class="mb-6">
                         Home insurance, also known as homeowner's insurance, protects your house and your belongings from covered perils like fire, theft, vandalism, and certain natural disasters. It also provides liability coverage for accidents that occur on your property.
                     </p>
-                    <h3 class="2xl font-semibold text-gray-900 mb-4">Key Components of Home Insurance:</h3>
+                    <h3 class2xl font-semibold text-gray-900 mb-4">Key Components of Home Insurance:</h3>
                     <ul class="list-disc list-inside mb-6 space-y-2">
                         <li>
                             <strong>Dwelling Coverage:</strong> Pays to repair or rebuild your home's structure if it's damaged by a covered peril.
@@ -559,10 +545,7 @@
                 </div>
             </div>
         </section>
-    </div> <!-- End of mainContent -->
-
-    <!-- User Registration/Login Page (remains separate) -->
-    <section id="user-registration-page" class="hidden py-16 bg-blue-50 rounded-lg mx-4 mt-8 shadow-md scroll-mt-20">
+    </div> <section id="user-registration-page" class="hidden py-16 bg-blue-50 rounded-lg mx-4 mt-8 shadow-md scroll-mt-20">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">Account Access</h2>
             <div id="authFormsContainer" class="max-w-md mx-auto bg-white p-8 rounded-xl shadow-lg border border-blue-200">
@@ -581,7 +564,6 @@
                     </label>
                 </div>
 
-                <!-- Register Fields -->
                 <div id="registerFields" class="space-y-4 text-left">
                     <div>
                         <label for="regUsername" class="block text-gray-700 text-sm font-semibold mb-2">Username:</label>
@@ -626,7 +608,6 @@
                     </button>
                 </div>
 
-                <!-- Login Fields -->
                 <div id="loginFields" class="space-y-4 text-left hidden">
                     <div>
                         <label for="loginUsernameEmail" class="block text-gray-700 text-sm font-semibold mb-2">Username or Email:</label>
@@ -646,7 +627,6 @@
                     </button>
                 </div>
 
-                <!-- Guest Fields -->
                 <div id="guestFields" class="space-y-4 text-left hidden">
                     <div>
                         <label for="guestUsername" class="block text-gray-700 text-sm font-semibold mb-2">Username (Mandatory):</label>
@@ -658,7 +638,6 @@
                     </button>
                 </div>
 
-                <!-- Forgot Password Fields (New Frame) -->
                 <div id="forgotPasswordFields" class="space-y-4 text-left hidden">
                     <div>
                         <label for="forgotPasswordEmail" class="block text-gray-700 text-sm font-semibold mb-2">Registered Email ID:</label>
@@ -676,7 +655,6 @@
                 <div id="authMessage" class="mt-6 p-3 rounded-lg text-sm hidden"></div>
             </div>
 
-            <!-- My Account Dashboard (initially hidden) -->
             <div id="myAccountDashboard" class="max-w-md mx-auto bg-white p-8 rounded-xl shadow-lg border border-blue-200 mt-8 hidden">
                 <h3 class="text-2xl font-bold text-gray-800 mb-4">Welcome, <span id="loggedInUsername"></span>!</h3>
                 <p class="text-gray-700 mb-6">This is your personalized dashboard. Here you can manage your policies, view quotes, and update your profile.</p>
@@ -685,7 +663,7 @@
                 </button>
             </div>
 
-            <button id="backToMainWebsiteBtn" class="w-full bg-gray-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-800 transition duration-300 transform hover:scale-105 mt-8">
+            <button id="backToMainWebsiteBtnAuthPage" class="w-full bg-gray-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-800 transition duration-300 transform hover:scale-105 mt-8">
                 Back to Main Website
             </button>
         </div>
@@ -718,21 +696,21 @@
                 <div class="md:w-1/4 mb-6 md:mb-0">
                     <h4 class="text-lg font-semibold text-white mb-3">PLANS</h4>
                     <ul class="space-y-2">
-                        <li><a href="plans.html#life-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Life Insurance</a></li>
-                        <li><a href="plans.html#health-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Health Insurance</a></li>
-                        <li><a href="plans.html#auto-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Auto Insurance</a></li>
-                        <li><a href="plans.html#home-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Home Insurance</a></li>
-                        <li><a href="plans.html#travel-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Travel Insurance</a></li>
-                        <li><a href="plans.html#student-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Student Insurance</a></li>
-                        <li><a href="plans.html#business-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Business Insurance</a></li>
-                        <li><a href="plans.html#pet-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Pet Insurance</a></li>
+                        <li><a href="index.html#life-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Life Insurance</a></li>
+                        <li><a href="index.html#health-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Health Insurance</a></li>
+                        <li><a href="index.html#auto-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Auto Insurance</a></li>
+                        <li><a href="index.html#home-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Home Insurance</a></li>
+                        <li><a href="index.html#travel-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Travel Insurance</a></li>
+                        <li><a href="index.html#student-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Student Insurance</a></li>
+                        <li><a href="index.html#business-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Business Insurance</a></li>
+                        <li><a href="index.html#pet-insurance-details" class="text-gray-300 hover:text-white transition duration-300">Pet Insurance</a></li>
                     </ul>
                 </div>
                 <div class="md:w-1/4 mb-6 md:mb-0">
                     <h4 class="text-lg font-semibold text-white mb-3">COMPANY</h4>
                     <ul class="space-y-2">
-                        <li><a href="#about" class="text-gray-300 hover:text-white transition duration-300">About Us</a></li>
-                        <li><a href="#why-choose-us" class="text-gray-300 hover:text-white transition duration-300">Why InsureBuy?</a></li>
+                        <li><a href="index.html#about" class="text-gray-300 hover:text-white transition duration-300">About Us</a></li>
+                        <li><a href="index.html#why-choose-us" class="text-gray-300 hover:text-white transition duration-300">Why InsureBuy?</a></li>
                         <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">Learning Center</a></li>
                         <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">Careers</a></li>
                     </ul>
@@ -740,8 +718,8 @@
                 <div class="md:w-1/4 mb-6 md:mb-0">
                     <h4 class="text-lg font-semibold text-white mb-3">SUPPORT</h4>
                     <ul class="space-y-2">
-                        <li><a href="#contact" class="text-gray-300 hover:text-white transition duration-300">Contact Us</a></li>
-                        <li><a href="#ai-assistant" class="text-gray-300 hover:text-white transition duration-300">AI Assistant</a></li>
+                        <li><a href="index.html#contact" class="text-gray-300 hover:text-white transition duration-300">Contact Us</a></li>
+                        <li><a href="index.html#ai-assistant" class="text-gray-300 hover:text-white transition duration-300">AI Assistant</a></li>
                         <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">FAQ</a></li>
                     </ul>
                 </div>
@@ -756,7 +734,6 @@
         </div>
     </footer>
 
-    <!-- External JavaScript file -->
     <script type="module" src="script.js"></script>
 </body>
 </html>
