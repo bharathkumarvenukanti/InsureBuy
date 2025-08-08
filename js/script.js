@@ -13,7 +13,7 @@ let userId = 'anonymous';
 // Firebase configuration and initialization (from environment variables)
 const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
 const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null; 
+const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
 
 if (Object.keys(firebaseConfig).length > 0) {
     app = initializeApp(firebaseConfig);
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const regConfirmPassword = document.getElementById('regConfirmPassword');
     const registerBtn = document.getElementById('registerBtn');
     const registerGmailBtn = document.getElementById('registerGmailBtn');
-    const passwordStrength = document.getElementById('passwordStrength'); 
+    const passwordStrength = document.getElementById('passwordStrength');
 
     const loginUsernameEmail = document.getElementById('loginUsernameEmail');
     const loginPassword = document.getElementById('loginPassword');
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const myAccountDashboard = document.getElementById('myAccountDashboard');
     const loggedInUsernameSpan = document.getElementById('loggedInUsername');
     const signOutBtn = document.getElementById('signOutBtn');
-    const authFormsContainer = document.getElementById('authFormsContainer'); 
+    const authFormsContainer = document.getElementById('authFormsContainer');
 
     // Navigation links from index.html header
     const navHomeLinkIndex = document.getElementById('navHomeLinkIndex');
@@ -334,7 +334,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const currentHeaderLoginBtn = document.getElementById('loginBtnHeader');
         const currentHeaderRegisterBtn = document.getElementById('registerBtnHeader');
 
-        if (currentHeaderLoginBtn && currentHeaderRegisterBtn) { 
+        if (currentHeaderLoginBtn && currentHeaderRegisterBtn) {
             if (authToken && username) {
                 // User is logged in
                 currentHeaderLoginBtn.classList.add('hidden');
@@ -356,17 +356,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 // User is logged out or guest
                 currentHeaderLoginBtn.classList.remove('hidden');
                 currentHeaderRegisterBtn.textContent = 'Register';
+                currentHeaderLoginBtn.onclick = (event) => {
+                    event.preventDefault();
+                    showUserLoginPage();
+                };
                 currentHeaderRegisterBtn.onclick = (event) => {
-                    event.preventDefault(); // Prevent default button action
-                    showUserRegistrationPage(); // Show auth forms on index.html
-                    // Ensure register form is active by default when not logged in (only applies if on index.html)
-                    if (radioRegister && registerFields && loginFields && guestFields && forgotPasswordFields) {
-                        radioRegister.checked = true;
-                        registerFields.classList.remove('hidden');
-                        loginFields.classList.add('hidden');
-                        guestFields.classList.add('hidden');
-                        forgotPasswordFields.classList.add('hidden');
-                    }
+                    event.preventDefault();
+                    showUserRegistrationPage();
                 };
                 
                 // If currently on the auth page (which is on index.html), ensure forms are visible
@@ -770,7 +766,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Event listener for the "Back to Main Website" button on Auth page (on index.html)
-    if (backToMainWebsiteBtnAuthPage) { 
+    if (backToMainWebsiteBtnAuthPage) {
         backToMainWebsiteBtnAuthPage.addEventListener('click', () => {
             console.log("Back to Main Website button clicked from Auth Page.");
             showAllMainContentSections(); // Show all primary homepage sections
@@ -826,7 +822,7 @@ document.addEventListener('DOMContentLoaded', function() {
             link.addEventListener('click', (event) => {
                 const href = event.target.getAttribute('href');
                 // Check if the link is an internal anchor on index.html
-                if (href.startsWith('#') || href.startsWith('index.html#')) { 
+                if (href.startsWith('#') || href.startsWith('index.html#')) {
                     event.preventDefault(); // Prevent default anchor behavior
                     if (window.location.pathname.includes('/plans.html') || window.location.pathname.includes('/dashboard.html')) {
                         // If currently on plans.html or dashboard.html, navigate to index.html and then scroll
@@ -865,6 +861,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Event listener for the "Explore Plans" button in the hero section
+    if (explorePlansBtn) {
+        explorePlansBtn.addEventListener('click', () => {
+            window.location.href = getBaseUrl() + 'plans.html';
+        });
+    }
+
+    // Event listener for the "Back to Main Website" button on the plans page
+    if (backToMainWebsiteBtnPlans) {
+        backToMainWebsiteBtnPlans.addEventListener('click', () => {
+            window.location.href = getBaseUrl() + 'index.html';
+        });
+    }
+
+
     // Initial state setup based on the current page
     document.addEventListener('DOMContentLoaded', () => {
         console.log("DOMContentLoaded fired.");
@@ -889,7 +900,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // If specifically ?form=login, ensure login form is shown
                 showUserLoginPage(); // Use the specific login page function
             } else if (sectionParam) { // If a section is specified, hide forms and scroll to section
-                showMainContent(); // Ensure main content is visible
+                showAllMainContentSections(); // Ensure main content is visible
                 setTimeout(() => { // Give browser a moment to render content
                     const targetSection = document.getElementById(sectionParam);
                     if (targetSection) {
@@ -905,7 +916,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             } else {
-                showMainContent(); // Default for index.html (show main marketing content)
+                showAllMainContentSections(); // Default for index.html (show main marketing content)
             }
         } else if (window.location.pathname.includes('plans.html')) {
             // This is plans.html, no special section hiding is needed here as it's the only content
