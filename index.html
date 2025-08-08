@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InsureBuy - Your One-Stop Insurance Solution</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
-    <!-- Google Font: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -36,7 +33,6 @@
         </div>
     </header>
 
-    <!-- Main Website Content Wrapper -->
     <div id="mainContent" class="transition-opacity duration-500">
         <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20 md:py-32 rounded-b-lg shadow-lg">
             <div class="container mx-auto px-4 text-center">
@@ -57,7 +53,6 @@
             </div>
         </section>
 
-        <!-- New: As Seen On / Trusted By Section -->
         <section class="py-12 bg-gray-100 rounded-lg mx-4 mt-8 shadow-md text-center">
             <div class="container mx-auto px-4">
                 <h3 class="text-2xl font-bold text-gray-700 mb-8">Trusted by Partners like:</h3>
@@ -70,8 +65,6 @@
             </div>
         </section>
 
-        <!-- The "Our Popular Insurance Plans" section content is now in plans.html -->
-        <!-- This section is just a placeholder if needed, or can be removed entirely -->
         <section id="our-plans-section" class="hidden"></section>
 
         <section id="why-choose-us" class="py-16 bg-white rounded-lg shadow-md mx-4 mt-8">
@@ -132,7 +125,7 @@
                         <h3 class="2xl font-semibold text-gray-900 mb-4">✨ What If Scenario Planner</h3>
                         <textarea id="scenarioInput" class="w-full p-4 border border-gray-300 rounded-lg mb-4 focus:ring-purple-500 focus:border-purple-500" rows="5" placeholder="Describe a hypothetical situation (e.g., 'What if my car is stolen and I only have liability insurance?')."></textarea>
                         <button id="getScenarioAnalysisBtn" class="bg-purple-600 text-white font-bold py-3 px-8 rounded-full shadow-md hover:bg-purple-700 transition duration-300 transform hover:scale-105">
-                            Get ✨ Scenario Analysis
+                            ✨ Get Scenario Analysis
                         </button>
                         <div id="scenarioOutput" class="mt-6 p-4 bg-purple-100 border border-purple-300 rounded-lg text-left text-gray-800 hidden">
                             <p class="text-gray-600 italic">Thinking...</p>
@@ -196,7 +189,6 @@
             </div>
         </section>
 
-        <!-- In-depth "Learn More" sections (remaining on mainContent) -->
         <section id="life-insurance-details" class="py-16 bg-blue-50 rounded-lg mx-4 mt-8 shadow-md hidden">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Learn More About Life Insurance</h2>
@@ -535,6 +527,140 @@
             </div>
         </section>
 
+        <section id="contact" class="py-16 bg-white rounded-lg mx-4 mt-8 shadow-md">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">Ready to Get Started?</h2>
+                <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
+                    Get a personalized quote in minutes. Experience the simplicity of InsureBuy today!
+                </p>
+                <a href="#" class="bg-blue-600 text-white font-bold py-4 px-10 rounded-full shadow-lg text-xl hover:bg-blue-700 transition duration-300 transform hover:scale-105">
+                    Get Your Free Quote Now
+                </a>
+
+                <div class="mt-12 pt-8 border-t border-gray-200">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Contact Us Directly</h3>
+                    <p class="text-lg text-gray-700">For direct assistance, please contact:</p>
+                    <p class="text-xl font-semibold text-blue-700 mt-2">Bharath Kumar</p>
+                    <p class="text-xl font-semibold text-blue-700">+37122722222</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="user-registration-page" class="py-16 px-4 hidden">
+        <div class="container mx-auto max-w-lg card p-8 my-8">
+            <h2 class="text-3xl font-bold text-center mb-6 text-gray-800">Your Account</h2>
+            
+            <div id="authMessage" class="hidden"></div>
+            
+            <div id="authFormsContainer">
+                <div class="flex justify-center space-x-4 mb-6">
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                        <input type="radio" id="radioRegister" name="authMethod" value="register" class="text-blue-600 form-radio focus:ring-blue-500" checked>
+                        <span class="text-gray-700">Register</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                        <input type="radio" id="radioLogin" name="authMethod" value="login" class="text-blue-600 form-radio focus:ring-blue-500">
+                        <span class="text-gray-700">Login</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                        <input type="radio" id="radioGuest" name="authMethod" value="guest" class="text-blue-600 form-radio focus:ring-blue-500">
+                        <span class="text-gray-700">Guest</span>
+                    </label>
+                </div>
+
+                <div id="registerFields">
+                    <div class="space-y-4">
+                        <div>
+                            <label for="regUsername" class="block text-sm font-medium text-gray-700">User Name</label>
+                            <input type="text" id="regUsername" class="input-field mt-1" placeholder="e.g., John Doe">
+                            <span id="regUsernameError" class="error-message hidden"></span>
+                        </div>
+                        <div>
+                            <label for="regEmail" class="block text-sm font-medium text-gray-700">Email Address</label>
+                            <input type="email" id="regEmail" class="input-field mt-1" placeholder="e.g., john.doe@example.com">
+                            <span id="regEmailError" class="error-message hidden"></span>
+                        </div>
+                        <div>
+                            <label for="regPassword" class="block text-sm font-medium text-gray-700">Password</label>
+                            <input type="password" id="regPassword" class="input-field mt-1" placeholder="8-16 characters, uppercase, number, symbol">
+                            <span id="passwordStrength" class="text-xs mt-1 text-gray-500"></span>
+                            <span id="regPasswordError" class="error-message hidden"></span>
+                        </div>
+                        <div>
+                            <label for="regConfirmPassword" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                            <input type="password" id="regConfirmPassword" class="input-field mt-1" placeholder="Re-enter your password">
+                            <span id="regConfirmPasswordError" class="error-message hidden"></span>
+                        </div>
+                        <button id="registerBtn" class="w-full btn-primary">Register</button>
+                        <button id="registerGmailBtn" class="w-full btn-secondary flex items-center justify-center space-x-2">
+                            <svg class="w-5 h-5" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M44 24C44 26.2413 43.81 28.4359 43.4474 30.5487C43.0848 32.6614 42.4821 34.7088 41.6579 36.6579C40.8337 38.607 39.799 40.4468 38.5833 42.1054C37.3676 43.764 35.9753 45.2415 34.4604 46.5204C32.9455 47.7993 31.332 48.8876 29.6582 49.7214C27.9844 50.5552 26.2626 51 24.5 51C22.7374 51 21.0156 50.5552 19.3418 49.7214C17.668 48.8876 16.0545 47.7993 14.5396 46.5204C13.0247 45.2415 11.6324 43.764 10.4167 42.1054C9.20104 40.4468 8.16634 38.607 7.34208 36.6579C6.51781 34.7088 5.91517 32.6614 5.55263 30.5487C5.19009 28.4359 5 26.2413 5 24C5 21.7587 5.19009 19.5641 5.55263 17.4513C5.91517 15.3386 6.51781 13.2912 7.34208 11.3421C8.16634 9.39301 9.20104 7.55325 10.4167 5.8946C11.6324 4.23595 13.0247 2.75845 14.5396 1.47957C16.0545 0.200701 17.668 -0.887622 19.3418 -1.72138C21.0156 -2.55513 22.7374 -3 24.5 -3C26.2626 -3 27.9844 -2.55513 29.6582 -1.72138C31.332 -0.887622 32.9455 0.200701 34.4604 1.47957C35.9753 2.75845 37.3676 4.23595 38.5833 5.8946C39.799 7.55325 40.8337 9.39301 41.6579 11.3421C42.4821 13.2912 43.0848 15.3386 43.4474 17.4513C43.81 19.5641 44 21.7587 44 24Z" fill="#EA4335" stroke="none"/>
+                                <path d="M24 25.5C24 25.5 17 25.5 17 25.5C17 25.5 17 25.5 17 25.5Z" fill="#4285F4" stroke="none"/>
+                                <path d="M24 25.5C24 25.5 17 25.5 17 25.5C17 25.5 17 25.5 17 25.5Z" fill="#34A853" stroke="none"/>
+                                <path d="M24 25.5C24 25.5 17 25.5 17 25.5C17 25.5 17 25.5 17 25.5Z" fill="#F9BC05" stroke="none"/>
+                                <path d="M24 25.5C24 25.5 17 25.5 17 25.5C17 25.5 17 25.5 17 25.5Z" fill="#4285F4" stroke="none"/>
+                            </svg>
+                            <span>Register with Gmail</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="loginFields" class="hidden">
+                    <div class="space-y-4">
+                        <div>
+                            <label for="loginUsernameEmail" class="block text-sm font-medium text-gray-700">Username or Email</label>
+                            <input type="text" id="loginUsernameEmail" class="input-field mt-1" placeholder="Username or Email">
+                            <span id="loginUsernameEmailError" class="error-message hidden"></span>
+                        </div>
+                        <div>
+                            <label for="loginPassword" class="block text-sm font-medium text-gray-700">Password</label>
+                            <input type="password" id="loginPassword" class="input-field mt-1" placeholder="Password">
+                            <span id="loginPasswordError" class="error-message hidden"></span>
+                        </div>
+                        <a href="#" id="forgotPasswordLink" class="text-sm text-blue-600 hover:underline block text-right">Forgot Password?</a>
+                        <button id="loginBtn" class="w-full btn-primary mt-4">Login</button>
+                    </div>
+                </div>
+
+                <div id="guestFields" class="hidden">
+                    <div class="space-y-4">
+                        <div>
+                            <label for="guestUsername" class="block text-sm font-medium text-gray-700">Guest User Name</label>
+                            <input type="text" id="guestUsername" class="input-field mt-1" placeholder="e.g., GuestUser123">
+                            <span id="guestUsernameError" class="error-message hidden"></span>
+                        </div>
+                        <button id="guestOkBtn" class="w-full btn-primary">Continue as Guest</button>
+                    </div>
+                </div>
+
+                <div id="forgotPasswordFields" class="hidden">
+                    <div class="space-y-4">
+                        <div>
+                            <label for="forgotPasswordEmail" class="block text-sm font-medium text-gray-700">Registered Email</label>
+                            <input type="email" id="forgotPasswordEmail" class="input-field mt-1" placeholder="e.g., john.doe@example.com">
+                            <span id="forgotPasswordError" class="error-message hidden"></span>
+                        </div>
+                        <button id="forgotPasswordOkBtn" class="w-full btn-primary">Reset Password</button>
+                        <button id="backToLoginFromForgot" class="w-full btn-secondary mt-2">Back to Login</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="myAccountDashboard" class="hidden p-8 card bg-white">
+                <h2 class="text-2xl font-bold mb-4">Welcome back, <span id="loggedInUsername" class="text-blue-600"></span>!</h2>
+                <p class="text-gray-700 mb-6">This is a placeholder for your account dashboard. You can add sections for policies, claims, etc., here.</p>
+                <a href="dashboard.html" class="btn-primary inline-block">Go to Full Dashboard</a>
+                <button id="signOutBtn" class="btn-secondary ml-4">Sign Out</button>
+            </div>
+
+            <div class="mt-8 text-center">
+                <button id="backToMainWebsiteBtnAuthPage" class="btn-secondary">Back to Main Website</button>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
         <section id="contact" class="py-16 bg-white rounded-lg mx-4 mt-8 shadow-md">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">Ready to Get Started?</h2>
